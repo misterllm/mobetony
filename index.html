@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MO Betony s.r.o. – Betonové podlahy pro váš projekt</title>
+  <meta name="description" content="Profesionální realizace anhydritových, leštěných a průmyslových betonových podlah. 20+ let zkušeností, 500+ projektů po celé ČR. Nezávazná poptávka do 48 hodin." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ========== RESET & ZÁKLADY ========== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0d0d;
+      --bg2:       #141414;
+      --bg3:       #1a1a1a;
+      --bg4:       #222222;
+      --orange:    #f97316;
+      --orange2:   #ea6b0e;
+      --cyan:      #06b6d4;
+      --white:     #ffffff;
+      --gray:      #9ca3af;
+      --gray2:     #6b7280;
+      --border:    #2a2a2a;
+      --border2:   #333333;
+      --font-head: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+      --radius:    16px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ========== NAVIGACE ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Oranžový čtverec s "MO" */
+    .nav-logo-badge {
+      width: 36px;
+      height: 36px;
+      background: var(--orange);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 16px;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .nav-logo-name {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-logo-sub {
+      font-size: 10px;
+      color: var(--gray);
+      letter-spacing: 0.5px;
+    }
+
+    /* Navigační odkazy */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--gray);
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    /* Badge "Nové" */
+    .badge-new {
+      font-size: 10px;
+      font-weight: 600;
+      background: var(--cyan);
+      color: #042c53;
+      padding: 1px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    /* Tlačítko Volejte */
+    .btn-call {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: var(--orange);
+      color: var(--white);
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-call:hover { background: var(--orange2); }
+
+    /* Hamburger – mobil */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ========== HERO ========== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 100px 2rem 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* WhatsApp badge */
+    .whatsapp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      width: fit-content;
+    }
+
+    .whatsapp-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      flex-shrink: 0;
+    }
+
+    /* Hero nadpis */
+    .hero-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(56px, 9vw, 96px);
+      line-height: 0.92;
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .hero-title .orange { color: var(--orange); }
+    .hero-title .gray-dim { color: #555; }
+
+    /* Hero popisek */
+    .hero-sub {
+      font-size: 18px;
+      color: var(--gray);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      line-height: 1.5;
+    }
+
+    /* CTA tlačítka */
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--white);
+      color: var(--bg);
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #e5e7eb; transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid #444;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { border-color: #888; transform: translateY(-1px); }
+
+    /* Statistiky */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      gap: 0;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      width: fit-content;
+    }
+
+    .stat {
+      padding-right: 3rem;
+    }
+    .stat:not(:last-child) {
+      border-right: 1px solid var(--border);
+      margin-right: 3rem;
+    }
+
+    .stat-num {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 40px;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 4px;
+    }
+
+    /* ========== OBECNÉ SEKCE ========== */
+    section {
+      padding: 80px 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(40px, 5vw, 56px);
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--gray);
+      font-size: 16px;
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+    }
+
+    /* ========== TYPY PODLAH ========== */
+    #podlahy .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2.5rem;
+      gap: 2rem;
+    }
+
+    .podlahy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .podlahy-grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    /* Karta podlahy */
+    .card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      border-color: var(--border2);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 22px;
+    }
+
+    .card-icon.gray-icon { background: var(--bg4); }
+
+    .card-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 22px;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    .card-features li::before {
+      content: '';
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1.5px solid var(--orange);
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    /* Menší karta (spodní řada) */
+    .card-small {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+
+    .card-small .card-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      margin-bottom: 0;
+      font-size: 18px;
+    }
+
+    .card-small .card-title { font-size: 18px; margin-bottom: 0.4rem; }
+    .card-small .card-desc { margin-bottom: 0; font-size: 13px; }
+
+    /* ========== BANNER ========== */
+    .banner {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .banner-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--bg4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .banner-text { flex: 1; }
+    .banner-text strong { font-size: 15px; }
+    .banner-text p { font-size: 13px; color: var(--gray); margin-top: 2px; }
+
+    .btn-cyan {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--cyan);
+      color: #042c53;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .btn-cyan:hover { opacity: 0.9; }
+
+    /* ========== JAK PRACUJEME ========== */
+    #proces {
+      padding: 80px 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .step {
+      position: relative;
+    }
+
+    .step-num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid var(--border2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--gray2);
+      margin-bottom: 1.25rem;
+    }
+
+    .step.active .step-num {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: var(--white);
+    }
+
+    .step-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 20px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ========== REFERENCE ========== */
+    #reference {
+      padding: 80px 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .reference-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2.5rem;
+    }
+
+    .link-all {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+    .link-all:hover { color: var(--white); }
+
+    .reference-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    /* Karta reference */
+    .ref-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .ref-card:hover {
+      border-color: var(--border2);
+      transform: translateY(-3px);
+    }
+
+    .ref-img {
+      height: 180px;
+      background: var(--bg4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Typ text v pozadí karty */
+    .ref-type-bg {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 52px;
+      color: rgba(255,255,255,0.07);
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      user-select: none;
+      position: absolute;
+      bottom: 10px;
+      left: 16px;
+    }
+
+    .ref-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-orange { background: rgba(249,115,22,0.2); color: var(--orange); border: 1px solid rgba(249,115,22,0.3); }
+    .badge-cyan   { background: rgba(6,182,212,0.15); color: var(--cyan);   border: 1px solid rgba(6,182,212,0.3); }
+    .badge-gray   { background: rgba(255,255,255,0.08); color: var(--gray); border: 1px solid var(--border2); }
+
+    .ref-info {
+      padding: 1rem 1.25rem;
+    }
+
+    .ref-name {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 18px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .ref-meta {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    /* ========== FAQ ========== */
+    #faq {
+      padding: 80px 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-list {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .faq-item {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      text-align: left;
+      gap: 1rem;
+    }
+
+    .faq-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.3s;
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    .faq-item.open .faq-arrow {
+      background: var(--orange);
+      color: var(--white);
+      transform: rotate(180deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      padding: 0 1.5rem;
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding-bottom: 1.25rem;
+    }
+
+    /* ========== CTA SEKCE ========== */
+    #cta {
+      padding: 0 2rem;
+      max-width: 1200px;
+      margin: 0 auto 0;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #1a0f00 0%, #2d1500 50%, #1a0800 100%);
+      border-radius: var(--radius);
+      border: 1px solid #3d2000;
+      padding: 5rem 3rem;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(44px, 6vw, 72px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .cta-title span { color: var(--orange); }
+
+    .cta-sub {
+      font-size: 16px;
+      color: var(--gray);
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cta-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ========== KONTAKT ========== */
+    #kontakt {
+      padding: 80px 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .kontakt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .kontakt-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .kontakt-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .kontakt-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .kontakt-item-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .kontakt-item-val {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* Formulář */
+    .form-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .form-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 22px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg4);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 14px;
+      transition: border-color 0.2s;
+      outline: none;
+      width: 100%;
+      appearance: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--gray2);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--orange);
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239ca3af' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      cursor: pointer;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--orange2); }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-about {
+      max-width: 280px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .footer-col-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--gray2);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* ========== RESPONSIVITA ========== */
+    @media (max-width: 1024px) {
+      .podlahy-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links, .btn-call { display: none; }
+      .nav-toggle { display: flex; }
+
+      /* Mobilní menu */
+      .nav-mobile {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 64px;
+        left: 0; right: 0;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem;
+        gap: 1.25rem;
+        z-index: 999;
+      }
+      .nav-mobile.open { display: flex; }
+      .nav-mobile a { font-size: 16px; color: var(--white); padding: 0.25rem 0; }
+
+      #hero { padding: 90px 1.25rem 60px; }
+      section { padding: 60px 1.25rem; }
+      #cta { padding: 0 1.25rem; }
+      #kontakt, #faq, #reference, #proces { padding: 60px 1.25rem; }
+
+      .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+      .stat { padding-right: 0; border-right: none !important; margin-right: 0 !important; }
+
+      .podlahy-grid { grid-template-columns: 1fr; }
+      .podlahy-grid-bottom { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .reference-grid { grid-template-columns: 1fr; }
+
+      .kontakt-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .cta-box { padding: 3rem 1.5rem; }
+
+      #podlahy .section-header { flex-direction: column; }
+      .reference-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+
+    /* ========== ANIMACE SCROLL ========== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGACE ========== -->
+  <nav>
+    <a href="#hero" class="nav-logo">
+      <div class="nav-logo-badge">MO</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">MO Betony</span>
+        <span class="nav-logo-sub">S.R.O.</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#podlahy">Podlahy</a></li>
+      <li><a href="#vodo-topo">Vodo-Topo <span class="badge-new">Nové</span></a></li>
+      <li><a href="#proces">Proces</a></li>
+      <li><a href="#reference">Reference</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+
+    <a href="tel:+420XXXXXXXXX" class="btn-call">
+      📞 Volejte
+    </a>
+
+    <!-- Hamburger -->
+    <div class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobilní menu -->
+  <div class="nav-mobile" id="navMobile">
+    <a href="#podlahy">Podlahy</a>
+    <a href="#vodo-topo">Vodo-Topo</a>
+    <a href="#proces">Proces</a>
+    <a href="#reference">Reference</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="tel:+420XXXXXXXXX" style="color: var(--orange); font-weight: 600;">📞 Volejte nám</a>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section id="hero">
+    <div class="whatsapp-badge">
+      <span class="whatsapp-dot"></span>
+      WA: +420 XXX XXX XXX
+    </div>
+
+    <h1 class="hero-title">
+      Betonové<br>
+      <span class="orange">podlahy</span><br>
+      <span class="gray-dim">budoucnosti</span>
+    </h1>
+
+    <p class="hero-sub">
+      Anhydritové, betonové, leštěné i průmyslové podlahy.<br>
+      20+ let zkušeností po celé České republice.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#kontakt" class="btn-primary">Nezávazná poptávka →</a>
+      <a href="#podlahy" class="btn-secondary">Prohlédnout služby</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Projektů</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">50k</div>
+        <div class="stat-label">m² podlah</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Let zkušeností</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Let záruka</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TYPY PODLAH ========== -->
+  <section id="podlahy">
+    <div class="section-header fade-in">
+      <div>
+        <div class="section-label">Naše specializace</div>
+        <h2 class="section-title">Typy podlah</h2>
+      </div>
+      <p class="section-desc">
+        Od samonivelačních potěrů po exkluzivní leštěné betony. Vyberte si řešení pro váš projekt.
+      </p>
+    </div>
+
+    <!-- 3 velké karty -->
+    <div class="podlahy-grid fade-in">
+      <div class="card">
+        <div class="card-icon">🪨</div>
+        <h3 class="card-title">Anhydritové podlahy</h3>
+        <p class="card-desc">Samonivelační litý potěr ideální pro podlahové vytápění. Rychlá aplikace, minimální tloušťka a perfektní rovinnost.</p>
+        <ul class="card-features">
+          <li>Ideální pro podlahové topení</li>
+          <li>Tloušťka od 35 mm</li>
+          <li>Pochůznost do 48 hodin</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <h3 class="card-title">Leštěné betonové podlahy</h3>
+        <p class="card-desc">Designový povrch s vysokým leskem. Mechanicky leštěný beton pro showroomy, lofty a moderní interiéry.</p>
+        <ul class="card-features">
+          <li>Zrcadlový lesk</li>
+          <li>Extrémní odolnost</li>
+          <li>Luxusní vzhled</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon gray-icon">🏭</div>
+        <h3 class="card-title">Průmyslové podlahy</h3>
+        <p class="card-desc">Drátobetonové a hlazené podlahy pro haly, sklady a výrobní prostory. Vysoká nosnost a odolnost.</p>
+        <ul class="card-features">
+          <li>Zátěž až 50 t/m²</li>
+          <li>Protiskluzová úprava</li>
+          <li>Chemická odolnost</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2 menší karty -->
+    <div class="podlahy-grid-bottom fade-in">
+      <div class="card card-small">
+        <div class="card-icon" style="background: var(--bg4); font-size:20px;">🔧</div>
+        <div>
+          <h3 class="card-title">Opravy a sanace</h3>
+          <p class="card-desc">Profesionální opravy prasklin, výtluků a poškozených povrchů. Kompletní renovace starých podlah.</p>
+        </div>
+      </div>
+
+      <div class="card card-small">
+        <div class="card-icon" style="background: var(--bg4); font-size:20px;">🛡️</div>
+        <div>
+          <h3 class="card-title">Ochranné nátěry</h3>
+          <p class="card-desc">Epoxidové a polyuretanové systémy pro maximální ochranu proti opotřebení, chemikáliím a vlhkosti.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== JAK PRACUJEME ========== -->
+  <section id="proces" style="padding: 80px 2rem; max-width: 1200px; margin: 0 auto;">
+
+    <!-- Banner -->
+    <div class="banner fade-in" id="vodo-topo">
+      <div class="banner-icon">✅</div>
+      <div class="banner-text">
+        <strong>Výhoda komplexního řešení</strong>
+        <p>Podlahové topení + anhydritová podlaha od jedné firmy = perfektní koordinace, rychlejší realizace, nižší cena.</p>
+      </div>
+      <a href="#kontakt" class="btn-cyan">Získat nabídku →</a>
+    </div>
+
+    <div class="section-label">Spolupráce</div>
+    <h2 class="section-title">Jak pracujeme</h2>
+
+    <div class="steps-grid fade-in">
+      <div class="step active">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Konzultace</h3>
+        <p class="step-desc">Probereme vaše požadavky, prohlédneme prostor a navrhneme optimální řešení.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Nabídka</h3>
+        <p class="step-desc">Detailní cenová nabídka včetně materiálů, práce a harmonogramu do 48 hodin.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Realizace</h3>
+        <p class="step-desc">Profesionální provedení naším zkušeným týmem s důrazem na kvalitu a termíny.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3 class="step-title">Předání</h3>
+        <p class="step-desc">Kontrola kvality, předání dokumentace a 5letá záruka na naše práce.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== REFERENCE ========== -->
+  <section id="reference" style="padding: 80px 2rem; max-width: 1200px; margin: 0 auto;">
+    <div class="reference-header fade-in">
+      <div>
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title">Reference</h2>
+      </div>
+      <a href="#kontakt" class="link-all">Všechny projekty →</a>
+    </div>
+
+    <div class="reference-grid fade-in">
+      <div class="ref-card">
+        <div class="ref-img">
+          <span class="ref-type-bg">Leštěný beton</span>
+          <span class="ref-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="ref-info">
+          <div class="ref-name">Design showroom</div>
+          <div class="ref-meta">320 m² · Praha 7</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-img">
+          <span class="ref-type-bg">Anhydrit</span>
+          <span class="ref-badge badge-orange" style="background:rgba(234,179,8,0.15);color:#eab308;border-color:rgba(234,179,8,0.3);">Anhydrit</span>
+        </div>
+        <div class="ref-info">
+          <div class="ref-name">Rodinný dům</div>
+          <div class="ref-meta">180 m² · Říčany</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-img">
+          <span class="ref-type-bg">Průmysl</span>
+          <span class="ref-badge badge-gray">Průmyslová</span>
+        </div>
+        <div class="ref-info">
+          <div class="ref-name">Logistický sklad</div>
+          <div class="ref-meta">4 200 m² · Ostrava</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-img">
+          <span class="ref-type-bg">Topení</span>
+          <span class="ref-badge badge-cyan">Vodo-Topo</span>
+        </div>
+        <div class="ref-info">
+          <div class="ref-name">Bytový dům</div>
+          <div class="ref-meta">12 bytů · Brno</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-img">
+          <span class="ref-type-bg">Loft</span>
+          <span class="ref-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="ref-info">
+          <div class="ref-name">Loftový byt</div>
+          <div class="ref-meta">95 m² · Praha 3</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-img">
+          <span class="ref-type-bg">Hala</span>
+          <span class="ref-badge badge-gray">Průmyslová</span>
+        </div>
+        <div class="ref-info">
+          <div class="ref-name">Výrobní hala</div>
+          <div class="ref-meta">2 800 m² · Plzeň</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section id="faq" style="padding: 80px 2rem; max-width: 800px; margin: 0 auto;">
+    <div class="fade-in" style="text-align: center;">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Časté dotazy</h2>
+    </div>
+
+    <div class="faq-list fade-in">
+      <div class="faq-item">
+        <button class="faq-q">
+          Jaký je rozdíl mezi anhydritovou a betonovou podlahou?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          Anhydrit je litý potěr na bázi síranu vápenatého — je samonivelační, ideální pro podlahové topení a rychle schne. Betonová podlaha je robustnější, vhodná pro průmyslové prostory nebo jako základ pro leštění. Oba materiály mají svá specifická použití a rádi vám poradíme, který je pro váš projekt vhodnější.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Jak dlouho trvá realizace podlahy?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          Lití anhydritové podlahy trvá 1 den na běžný rodinný dům. Pochůznost je do 48 hodin, plné zatížení po 7 dnech. U leštěných betonů počítejte s 2–3 týdny včetně broušení a leštění.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Kolik stojí leštěná betonová podlaha?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          Cena závisí na ploše, stavu podkladu a požadovaném stupni lesku. Orientačně se pohybuje od 800 Kč/m² výše. Přesnou cenovou nabídku připravíme do 48 hodin po prohlídce vašeho prostoru.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Instalujete i podlahové topení?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          Ano — naše divize Vodo-Topo instaluje podlahové topení. Výhodou komplexního řešení je perfektní koordinace mezi topenářem a potěrářem, rychlejší realizace a nižší celková cena.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Působíte po celé České republice?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          Ano, realizujeme zakázky po celé ČR. Větší projekty řešíme bez příplatku, u menších vzdálených zakázek může být účtováno dopravné. Kontaktujte nás a domluvíme se.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <div id="cta">
+    <div class="cta-box fade-in">
+      <h2 class="cta-title">Začněme<br><span>spolupracovat</span></h2>
+      <p class="cta-sub">Nezávazná konzultace a cenová nabídka do 48 hodin. Zavolejte nebo vyplňte formulář.</p>
+      <div class="cta-btns">
+        <a href="#kontakt" class="btn-primary">Poptávkový formulář →</a>
+        <a href="tel:+420XXXXXXXXX" class="btn-secondary">📞 +420 XXX XXX XXX</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== KONTAKT ========== -->
+  <section id="kontakt">
+    <div class="section-label fade-in">Kontakt</div>
+    <h2 class="section-title fade-in">Napište nám</h2>
+    <p class="section-desc fade-in">Rádi zodpovíme vaše dotazy a připravíme nezávaznou cenovou nabídku na míru.</p>
+
+    <div class="kontakt-grid">
+      <!-- Info vlevo -->
+      <div class="kontakt-info fade-in">
+        <div class="kontakt-item">
+          <div class="kontakt-icon">📍</div>
+          <div>
+            <div class="kontakt-item-title">Sídlo společnosti</div>
+            <div class="kontakt-item-val">MO Betony s.r.o.<br>[DOPLNIT ADRESU]</div>
+          </div>
+        </div>
+        <div class="kontakt-item">
+          <div class="kontakt-icon">📞</div>
+          <div>
+            <div class="kontakt-item-title">Telefon</div>
+            <div class="kontakt-item-val">+420 XXX XXX XXX</div>
+          </div>
+        </div>
+        <div class="kontakt-item">
+          <div class="kontakt-icon">✉️</div>
+          <div>
+            <div class="kontakt-item-title">E-mail</div>
+            <div class="kontakt-item-val">info@mobetony.cz</div>
+          </div>
+        </div>
+        <div class="kontakt-item">
+          <div class="kontakt-icon">🕐</div>
+          <div>
+            <div class="kontakt-item-title">Provozní doba</div>
+            <div class="kontakt-item-val">Po–Pá: 7:00 – 17:00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulář vpravo -->
+      <div class="form-card fade-in">
+        <div class="form-title">Poptávkový formulář</div>
+
+        <!-- FORMSPREE — sem přijde tvůj endpoint -->
+        <form action="https://formspree.io/f/TVUJ_KOD" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="jmeno">Jméno a příjmení</label>
+              <input type="text" id="jmeno" name="jmeno" placeholder="Jan Novák" required />
+            </div>
+            <div class="form-group">
+              <label for="telefon">Telefon</label>
+              <input type="tel" id="telefon" name="telefon" placeholder="+420 123 456 789" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="jan@firma.cz" required />
+          </div>
+
+          <div class="form-group">
+            <label for="sluzba">Typ služby</label>
+            <select id="sluzba" name="sluzba">
+              <option value="" disabled selected>Vyberte typ služby</option>
+              <option>Anhydritová podlaha</option>
+              <option>Leštěná betonová podlaha</option>
+              <option>Průmyslová podlaha</option>
+              <option>Podlahové topení (Vodo-Topo)</option>
+              <option>Opravy a sanace</option>
+              <option>Ochranné nátěry</option>
+              <option>Nevím, potřebuji poradit</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="zprava">Zpráva</label>
+            <textarea id="zprava" name="zprava" placeholder="Popište váš projekt – rozlohu, lokalitu, termín..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Odeslat poptávku</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-about">
+          <div class="footer-logo">
+            <div class="nav-logo-badge">MO</div>
+            <div class="nav-logo-text">
+              <span class="nav-logo-name">MO Betony</span>
+              <span class="nav-logo-sub">S.R.O.</span>
+            </div>
+          </div>
+          <p class="footer-desc">Profesionální realizace betonových podlah a kompletní vodo-topo instalace. 20+ let zkušeností, 500+ spokojených zákazníků.</p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Služby</div>
+          <ul class="footer-links">
+            <li><a href="#podlahy">Anhydritové podlahy</a></li>
+            <li><a href="#podlahy">Leštěné betony</a></li>
+            <li><a href="#podlahy">Průmyslové podlahy</a></li>
+            <li><a href="#vodo-topo">Vodo-Topo</a></li>
+            <li><a href="#podlahy">Opravy a sanace</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Společnost</div>
+          <ul class="footer-links">
+            <li><a href="#reference">Reference</a></li>
+            <li><a href="#proces">Jak pracujeme</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="#">Ochrana osobních údajů</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2025 MO Betony s.r.o. Všechna práva vyhrazena.</span>
+        <span>Vytvořeno s ❤️ v ČR</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // --- Hamburger menu ---
+    const toggle = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('navMobile');
+
+    toggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+
+    // Zavři menu po kliknutí na odkaz
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    // --- FAQ accordion ---
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+
+        // Zavři všechny
+        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+
+        // Otevři kliknutý (pokud nebyl otevřen)
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // --- Scroll animace (fade-in) ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // --- Aktivní nav link při scrollu ---
+    const sections = document.querySelectorAll('section[id], div[id="cta"]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.style.color = '');
+          const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+          if (active) active.style.color = '#ffffff';
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(sec => navObserver.observe(sec));
+  </script>
+
+</body>
+</html>
