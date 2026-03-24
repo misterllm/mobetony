@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog – MO Betony s.r.o.</title>
+  <meta name="description" content="Rady, tipy a novinky ze světa betonových podlah. Jak vybrat správnou podlahu, údržba, materiály a realizace od MO Betony s.r.o." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ========== RESET & PROMĚNNÉ ========== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0d0d;
+      --bg2:       #141414;
+      --bg3:       #1a1a1a;
+      --bg4:       #222222;
+      --orange:    #f97316;
+      --orange2:   #ea6b0e;
+      --cyan:      #06b6d4;
+      --white:     #ffffff;
+      --gray:      #9ca3af;
+      --gray2:     #6b7280;
+      --border:    #2a2a2a;
+      --border2:   #333333;
+      --font-head: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+      --radius:    16px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ========== NAVIGACE ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo-badge {
+      width: 36px;
+      height: 36px;
+      background: var(--orange);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 16px;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .nav-logo-name {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-logo-sub {
+      font-size: 10px;
+      color: var(--gray);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--gray);
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--white); }
+
+    .badge-new {
+      font-size: 10px;
+      font-weight: 600;
+      background: var(--cyan);
+      color: #042c53;
+      padding: 1px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-call {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: var(--orange);
+      color: var(--white);
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-call:hover { background: var(--orange2); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ========== PAGE HERO ========== */
+    .page-hero {
+      padding: 140px 2rem 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--gray2);
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb a {
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+    .breadcrumb a:hover { color: var(--white); }
+    .breadcrumb .sep { color: var(--gray2); }
+    .breadcrumb .current { color: var(--orange); }
+
+    .page-hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+    }
+
+    .page-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(48px, 7vw, 72px);
+      line-height: 0.92;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .page-title .orange { color: var(--orange); }
+
+    .page-hero-desc {
+      font-size: 17px;
+      color: var(--gray);
+      line-height: 1.6;
+      max-width: 460px;
+    }
+
+    /* ========== BLOG STATS BAR ========== */
+    .blog-stats {
+      display: flex;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .blog-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .blog-stat-num {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 28px;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .blog-stat-label {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    /* ========== FILTR KATEGORIÍ ========== */
+    .blog-filters {
+      padding: 2rem 2rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-tab {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 18px;
+      border-radius: 999px;
+      background: var(--bg3);
+      color: var(--gray);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .filter-tab:hover {
+      border-color: var(--border2);
+      color: var(--white);
+    }
+
+    .filter-tab.active {
+      background: var(--orange);
+      color: var(--white);
+      border-color: var(--orange);
+    }
+
+    /* ========== BLOG GRID ========== */
+    .blog-section {
+      padding: 2rem 2rem 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Hlavní článek — velký, na celou šířku */
+    .blog-featured {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 0;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+
+    .blog-featured:hover {
+      border-color: var(--border2);
+      transform: translateY(-2px);
+    }
+
+    .blog-featured-img {
+      background: var(--bg4);
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-featured-img-text {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 72px;
+      color: rgba(255,255,255,0.04);
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      user-select: none;
+    }
+
+    .blog-featured-content {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .blog-featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .blog-featured-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(24px, 3vw, 32px);
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      transition: color 0.2s;
+    }
+
+    .blog-featured:hover .blog-featured-title {
+      color: var(--orange);
+    }
+
+    .blog-featured-excerpt {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-read-more {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--orange);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .blog-featured:hover .blog-read-more {
+      gap: 10px;
+    }
+
+    /* Grid ostatních článků */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    /* Karta článku */
+    .blog-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      border-color: var(--border2);
+      transform: translateY(-3px);
+    }
+
+    .blog-card-img {
+      height: 180px;
+      background: var(--bg4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-card-img-text {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 48px;
+      color: rgba(255,255,255,0.04);
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      user-select: none;
+    }
+
+    .blog-card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .tag-rady { background: rgba(249,115,22,0.15); color: var(--orange); border: 1px solid rgba(249,115,22,0.25); }
+    .tag-materialy { background: rgba(6,182,212,0.12); color: var(--cyan); border: 1px solid rgba(6,182,212,0.25); }
+    .tag-realizace { background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid rgba(34,197,94,0.25); }
+    .tag-novinky { background: rgba(168,85,247,0.12); color: #a855f7; border: 1px solid rgba(168,85,247,0.25); }
+    .tag-udrzba { background: rgba(234,179,8,0.12); color: #eab308; border: 1px solid rgba(234,179,8,0.25); }
+
+    .blog-date {
+      font-size: 12px;
+      color: var(--gray2);
+    }
+
+    .blog-read-time {
+      font-size: 12px;
+      color: var(--gray2);
+    }
+
+    .blog-card-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 20px;
+      text-transform: uppercase;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+      transition: color 0.2s;
+    }
+
+    .blog-card:hover .blog-card-title {
+      color: var(--orange);
+    }
+
+    .blog-card-excerpt {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .blog-card-footer {
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    .blog-card-read {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--orange);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .blog-card:hover .blog-card-read {
+      gap: 10px;
+    }
+
+    /* ========== LOAD MORE ========== */
+    .blog-load-more {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .btn-load {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid var(--border2);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .btn-load:hover {
+      border-color: #888;
+      transform: translateY(-1px);
+    }
+
+    /* ========== NEWSLETTER CTA ========== */
+    .newsletter-section {
+      padding: 0 2rem 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .newsletter-box {
+      background: linear-gradient(135deg, #1a0f00 0%, #2d1500 50%, #1a0800 100%);
+      border-radius: var(--radius);
+      border: 1px solid #3d2000;
+      padding: 4rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .newsletter-content { }
+
+    .newsletter-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(32px, 4vw, 44px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-title span { color: var(--orange); }
+
+    .newsletter-desc {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-sm);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .newsletter-input::placeholder { color: var(--gray2); }
+    .newsletter-input:focus { border-color: var(--orange); }
+
+    .btn-subscribe {
+      padding: 14px 28px;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-subscribe:hover { background: var(--orange2); }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-about { max-width: 280px; }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .footer-col-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--gray2);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* ========== RESPONSIVITA ========== */
+    @media (max-width: 1024px) {
+      .page-hero-content { grid-template-columns: 1fr; gap: 1.5rem; }
+      .blog-featured { grid-template-columns: 1fr; }
+      .blog-featured-img { min-height: 220px; }
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+      .newsletter-box { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links, .btn-call { display: none; }
+      .nav-toggle { display: flex; }
+
+      .nav-mobile {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 64px;
+        left: 0; right: 0;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem;
+        gap: 1.25rem;
+        z-index: 999;
+      }
+      .nav-mobile.open { display: flex; }
+      .nav-mobile a { font-size: 16px; color: var(--white); padding: 0.25rem 0; }
+
+      .page-hero { padding: 100px 1.25rem 30px; }
+      .blog-stats { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .blog-filters { padding: 1.5rem 1.25rem 0; }
+      .blog-section { padding: 1.5rem 1.25rem 60px; }
+      .newsletter-section { padding: 0 1.25rem 60px; }
+
+      .blog-grid { grid-template-columns: 1fr; }
+      .newsletter-box { padding: 2.5rem 1.5rem; }
+      .newsletter-form { flex-direction: column; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+
+      .blog-stats { flex-wrap: wrap; gap: 1.5rem; }
+    }
+
+    /* ========== ANIMACE ========== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGACE ========== -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-badge">MO</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">MO Betony</span>
+        <span class="nav-logo-sub">S.R.O.</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="typy-podlah.html">Typy podlah</a></li>
+      <li><a href="index.html#podlahy">Služby</a></li>
+      <li><a href="index.html#proces">Proces</a></li>
+      <li><a href="index.html#reference">Reference</a></li>
+      <li><a href="blog.html" class="active">Blog <span class="badge-new">Nové</span></a></li>
+      <li><a href="index.html#kontakt">Kontakt</a></li>
+    </ul>
+
+    <a href="tel:+420774611154" class="btn-call">📞 Volejte</a>
+
+    <div class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobilní menu -->
+  <div class="nav-mobile" id="navMobile">
+    <a href="typy-podlah.html">Typy podlah</a>
+    <a href="index.html#podlahy">Služby</a>
+    <a href="index.html#proces">Proces</a>
+    <a href="index.html#reference">Reference</a>
+    <a href="blog.html" style="color: var(--orange);">Blog</a>
+    <a href="index.html#kontakt">Kontakt</a>
+    <a href="tel:+420774611154" style="color: var(--orange); font-weight: 600;">📞 Volejte nám</a>
+  </div>
+
+  <!-- ========== PAGE HERO ========== -->
+  <div class="page-hero">
+    <div class="breadcrumb fade-in">
+      <a href="index.html">Úvod</a>
+      <span class="sep">›</span>
+      <span class="current">Blog</span>
+    </div>
+
+    <div class="page-hero-content fade-in">
+      <h1 class="page-title">
+        <span class="orange">Blog</span><br>& novinky
+      </h1>
+      <p class="page-hero-desc">
+        Praktické rady, srovnání materiálů a novinky ze světa betonových podlah. Všechno, co potřebujete vědět před realizací.
+      </p>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="blog-stats fade-in">
+    <div class="blog-stat">
+      <span class="blog-stat-num" id="articleCount">6</span>
+      <span class="blog-stat-label">článků</span>
+    </div>
+    <div class="blog-stat">
+      <span class="blog-stat-num">5</span>
+      <span class="blog-stat-label">kategorií</span>
+    </div>
+  </div>
+
+  <!-- ========== FILTR KATEGORIÍ ========== -->
+  <div class="blog-filters fade-in">
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">Všechny</button>
+      <button class="filter-tab" data-filter="rady">Rady & tipy</button>
+      <button class="filter-tab" data-filter="materialy">Materiály</button>
+      <button class="filter-tab" data-filter="realizace">Realizace</button>
+      <button class="filter-tab" data-filter="udrzba">Údržba</button>
+      <button class="filter-tab" data-filter="novinky">Novinky</button>
+    </div>
+  </div>
+
+  <!-- ========== BLOG OBSAH ========== -->
+  <div class="blog-section">
+
+    <!-- Hlavní článek -->
+    <a href="blog/jak-vybrat-podlahu.html" class="blog-featured fade-in" data-category="rady">
+      <div class="blog-featured-img">
+        <span class="blog-featured-img-text">Průvodce</span>
+      </div>
+      <div class="blog-featured-content">
+        <div class="blog-featured-meta">
+          <span class="blog-tag tag-rady">Rady & tipy</span>
+          <span class="blog-date">24. března 2026</span>
+          <span class="blog-read-time">· 6 min čtení</span>
+        </div>
+        <h2 class="blog-featured-title">Jak vybrat správnou podlahu pro váš projekt</h2>
+        <p class="blog-featured-excerpt">
+          Rodinný dům, průmyslová hala nebo moderní loft — každý prostor vyžaduje jiný typ podlahy. Připravili jsme kompletního průvodce, který vám pomůže s rozhodnutím. Porovnáváme materiály, ceny i dobu realizace.
+        </p>
+        <span class="blog-read-more">Číst článek →</span>
+      </div>
+    </a>
+
+    <!-- Grid ostatních článků -->
+    <div class="blog-grid">
+
+      <!-- Článek 2 -->
+      <a href="blog/anhydrit-vs-beton.html" class="blog-card fade-in" data-category="materialy">
+        <div class="blog-card-img">
+          <span class="blog-card-img-text">VS</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-tag tag-materialy">Materiály</span>
+            <span class="blog-date">22. 3. 2026</span>
+            <span class="blog-read-time">· 5 min</span>
+          </div>
+          <h3 class="blog-card-title">Anhydrit vs. beton: Který potěr je lepší?</h3>
+          <p class="blog-card-excerpt">Detailní srovnání dvou nejpoužívanějších materiálů. Kdy zvolit anhydrit a kdy klasický beton?</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-card-read">Číst článek →</span>
+        </div>
+      </a>
+
+      <!-- Článek 3 -->
+      <a href="blog/5-veci-pred-realizaci.html" class="blog-card fade-in" data-category="rady">
+        <div class="blog-card-img">
+          <span class="blog-card-img-text">5×</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-tag tag-rady">Rady & tipy</span>
+            <span class="blog-date">20. 3. 2026</span>
+            <span class="blog-read-time">· 4 min</span>
+          </div>
+          <h3 class="blog-card-title">5 věcí, které musíte vědět před realizací podlahy</h3>
+          <p class="blog-card-excerpt">Od přípravy podkladu po výběr finální úpravy. Vyvarujte se nejčastějších chyb při stavbě.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-card-read">Číst článek →</span>
+        </div>
+      </a>
+
+      <!-- Článek 4 -->
+      <a href="blog/lesteny-beton-luxus.html" class="blog-card fade-in" data-category="materialy">
+        <div class="blog-card-img">
+          <span class="blog-card-img-text">Lesk</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-tag tag-materialy">Materiály</span>
+            <span class="blog-date">18. 3. 2026</span>
+            <span class="blog-read-time">· 5 min</span>
+          </div>
+          <h3 class="blog-card-title">Leštěný beton: Luxus, který vydrží generace</h3>
+          <p class="blog-card-excerpt">Proč si designéři a architekti zamilovali leštěný beton. Jak probíhá broušení a co od něj čekat.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-card-read">Číst článek →</span>
+        </div>
+      </a>
+
+      <!-- Článek 5 -->
+      <a href="blog/podlahove-topeni-anhydrit.html" class="blog-card fade-in" data-category="realizace">
+        <div class="blog-card-img">
+          <span class="blog-card-img-text">Teplo</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-tag tag-realizace">Realizace</span>
+            <span class="blog-date">15. 3. 2026</span>
+            <span class="blog-read-time">· 4 min</span>
+          </div>
+          <h3 class="blog-card-title">Podlahové topení + anhydrit: Ideální kombinace</h3>
+          <p class="blog-card-excerpt">Proč je anhydritová podlaha nejlepší volbou pro podlahové vytápění a jak zajistit správnou realizaci.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-card-read">Číst článek →</span>
+        </div>
+      </a>
+
+      <!-- Článek 6 -->
+      <a href="blog/udrzba-betonove-podlahy.html" class="blog-card fade-in" data-category="udrzba">
+        <div class="blog-card-img">
+          <span class="blog-card-img-text">Péče</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-tag tag-udrzba">Údržba</span>
+            <span class="blog-date">12. 3. 2026</span>
+            <span class="blog-read-time">· 3 min</span>
+          </div>
+          <h3 class="blog-card-title">Jak se starat o betonovou podlahu</h3>
+          <p class="blog-card-excerpt">Jednoduchý návod na údržbu, čištění a ochranu betonových a leštěných podlah. Prodlužte životnost.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-card-read">Číst článek →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Load more (pro budoucí použití) -->
+    <div class="blog-load-more fade-in" id="loadMore" style="display: none;">
+      <button class="btn-load">Zobrazit další články ↓</button>
+    </div>
+
+  </div>
+
+  <!-- ========== NEWSLETTER CTA ========== -->
+  <div class="newsletter-section">
+    <div class="newsletter-box fade-in">
+      <div class="newsletter-content">
+        <h2 class="newsletter-title">Nevíte si <span>rady?</span></h2>
+        <p class="newsletter-desc">Zavolejte nám nebo napište — poradíme vám s výběrem podlahy, materiálu i rozpočtem. Konzultace je zdarma.</p>
+      </div>
+      <div style="text-align: center;">
+        <a href="index.html#kontakt" class="btn-subscribe" style="display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; font-size: 16px; text-decoration: none;">Poptávkový formulář →</a>
+        <div style="margin-top: 12px;">
+          <a href="tel:+420774611154" style="color: var(--gray); font-size: 14px;">nebo volejte: +420 774 611 154</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-about">
+          <div class="footer-logo">
+            <div class="nav-logo-badge">MO</div>
+            <div class="nav-logo-text">
+              <span class="nav-logo-name">MO Betony</span>
+              <span class="nav-logo-sub">S.R.O.</span>
+            </div>
+          </div>
+          <p class="footer-desc">Profesionální realizace betonových podlah a kompletní vodo-topo instalace. 20+ let zkušeností, 500+ spokojených zákazníků.</p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Služby</div>
+          <ul class="footer-links">
+            <li><a href="typy-podlah.html">Typy podlah</a></li>
+            <li><a href="index.html#podlahy">Leštěné betony</a></li>
+            <li><a href="index.html#podlahy">Průmyslové podlahy</a></li>
+            <li><a href="index.html#podlahy">Vodo-Topo</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Společnost</div>
+          <ul class="footer-links">
+            <li><a href="index.html#reference">Reference</a></li>
+            <li><a href="index.html#proces">Jak pracujeme</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2025 MO Betony s.r.o. Všechna práva vyhrazena.</span>
+        <span>Vytvořeno s ❤️ v ČR</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // --- Hamburger menu ---
+    const toggle = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('navMobile');
+
+    toggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    // --- Filtrování kategorií ---
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const blogCards = document.querySelectorAll('.blog-card, .blog-featured');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Aktivní tab
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.dataset.filter;
+
+        blogCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // --- Scroll animace ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

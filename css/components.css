@@ -1,0 +1,78 @@
+/* ============================================
+   KOMPONENTY — components.css
+   Tlačítka, badge a další znovupoužitelné prvky
+   ============================================ */
+
+/* --- Tlačítka --- */
+/* Základní styl společný pro všechna tlačítka */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 28px;
+  border-radius: var(--radius-btn);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+/* Primární tlačítko — oranžové pozadí, bílý text */
+.btn--primary {
+  background: var(--accent-orange);
+  color: #ffffff;
+  border-color: var(--accent-orange);
+}
+
+.btn--primary:hover {
+  background: var(--accent-orange-hover);
+  border-color: var(--accent-orange-hover);
+  /* Jemný glow efekt při hoveru */
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+}
+
+/* Sekundární tlačítko — průhledné, bílý border */
+.btn--secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Větší varianta tlačítka (pro hero sekci) */
+.btn--lg {
+  padding: 16px 32px;
+  font-size: 16px;
+}
+
+
+/* --- Badge "Nové" --- */
+/* Malý štítek — např. u Vodo-Topo v navigaci */
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-left: 6px;
+  line-height: 1;
+}
+
+/* Varianta "Nové" — cyan barva */
+.badge--new {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+}
