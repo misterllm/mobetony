@@ -9,6 +9,35 @@
     gtag('js', new Date());
     gtag('config', 'AW-11264011068');
   </script>
+  <!-- Google Ads: Konverze - kliknutí na telefon -->
+<script>
+function gtag_report_phone_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+    'send_to': 'AW-11264011068/bnGJCJaW05AcELzWjPsp',
+    'value': 200.0,
+    'currency': 'CZK',
+    'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+<!-- Google Ads: Konverze - odeslání poptávkového formuláře -->
+<script>
+function gtag_report_form_conversion() {
+  gtag('event', 'conversion', {
+    'send_to': 'AW-11264011068/OrFACLah3pAcELzWjPsp',
+    'value': 500.0,
+    'currency': 'CZK'
+  });
+  return true;
+}
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MO Betony s.r.o. – Betonové podlahy pro váš projekt</title>
@@ -1045,7 +1074,7 @@
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
 
-    <a href="tel:+420774611154" class="btn-call">
+    <a href="tel:+420774611154" class="btn-call" onclick="gtag_report_phone_conversion();">
       📞 Volejte
     </a>
 
@@ -1063,7 +1092,7 @@
     <a href="#reference">Reference</a>
     <a href="blog.html">Blog <span class="badge-new">Nové</span></a>
     <a href="#kontakt">Kontakt</a>
-    <a href="tel:+420774611154" style="color: var(--orange); font-weight: 600;">📞 Volejte nám</a>
+    <a href="tel:+420774611154" style="color: var(--orange); font-weight: 600;" onclick="gtag_report_phone_conversion();">📞 Volejte nám</a>
   </div>
 
   <!-- ========== HERO ========== -->
@@ -1364,7 +1393,7 @@
       <p class="cta-sub">Nezávazná konzultace a cenová nabídka do 48 hodin. Zavolejte nebo vyplňte formulář.</p>
       <div class="cta-btns">
         <a href="#kontakt" class="btn-primary">Poptávkový formulář →</a>
-        <a href="tel:+420774611154" class="btn-secondary">📞 +420 774 611 154</a>
+        <a href="tel:+420774611154" class="btn-secondary" onclick="gtag_report_phone_conversion();">📞 +420 774 611 154</a>
       </div>
     </div>
   </div>
@@ -1413,7 +1442,7 @@
         <div class="form-title">Poptávkový formulář</div>
 
         <!-- FORMSPREE — sem přijde tvůj endpoint -->
-        <form action="https://formspree.io/f/meerbywn" method="POST">
+        <form action="https://formspree.io/f/meerbywn" method="POST" onsubmit="gtag_report_form_conversion();">
           <div class="form-row">
             <div class="form-group">
               <label for="jmeno">Jméno a příjmení</label>
