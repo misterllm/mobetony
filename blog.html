@@ -326,6 +326,17 @@
       overflow: hidden;
     }
 
+    .blog-featured-img img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .blog-featured:hover .blog-featured-img img {
+      transform: scale(1.05);
+    }
+
     .blog-featured-img-text {
       font-family: var(--font-head);
       font-weight: 900;
@@ -334,6 +345,8 @@
       text-transform: uppercase;
       letter-spacing: -2px;
       user-select: none;
+      position: relative;
+      z-index: 1;
     }
 
     .blog-featured-content {
@@ -419,6 +432,17 @@
       overflow: hidden;
     }
 
+    .blog-card-img img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .blog-card:hover .blog-card-img img {
+      transform: scale(1.05);
+    }
+
     .blog-card-img-text {
       font-family: var(--font-head);
       font-weight: 900;
@@ -427,6 +451,8 @@
       text-transform: uppercase;
       letter-spacing: -1px;
       user-select: none;
+      position: relative;
+      z-index: 1;
     }
 
     .blog-card-body {
@@ -815,8 +841,9 @@
   <div class="blog-section">
 
     <!-- Hlavní článek -->
-    <a href="blog/jak-vybrat-podlahu.html" class="blog-featured fade-in" data-category="rady">
+    <a href="blog/jak-vybrat-podlahu/" class="blog-featured fade-in" data-category="rady">
       <div class="blog-featured-img">
+        <img src="img/blog/0.jpg" alt="Jak vybrat správnou podlahu pro váš projekt" loading="lazy">
         <span class="blog-featured-img-text">Průvodce</span>
       </div>
       <div class="blog-featured-content">
@@ -837,8 +864,9 @@
     <div class="blog-grid">
 
       <!-- Článek 2 -->
-      <a href="blog/anhydrit-vs-beton.html" class="blog-card fade-in" data-category="materialy">
+      <a href="blog/anhydrit-vs-beton/" class="blog-card fade-in" data-category="materialy">
         <div class="blog-card-img">
+          <img src="img/blog/1.jpg" alt="Anhydrit vs. beton – srovnání potěrů" loading="lazy">
           <span class="blog-card-img-text">VS</span>
         </div>
         <div class="blog-card-body">
@@ -856,8 +884,9 @@
       </a>
 
       <!-- Článek 3 -->
-      <a href="blog/5-veci-pred-realizaci.html" class="blog-card fade-in" data-category="rady">
+      <a href="blog/5-veci-pred-realizaci-podlahy/" class="blog-card fade-in" data-category="rady">
         <div class="blog-card-img">
+          <img src="img/blog/2.jpg" alt="5 věcí před realizací podlahy" loading="lazy">
           <span class="blog-card-img-text">5×</span>
         </div>
         <div class="blog-card-body">
@@ -875,8 +904,9 @@
       </a>
 
       <!-- Článek 4 -->
-      <a href="blog/lesteny-beton-luxus.html" class="blog-card fade-in" data-category="materialy">
+      <a href="blog/lesteny-beton-luxus/" class="blog-card fade-in" data-category="materialy">
         <div class="blog-card-img">
+          <img src="img/blog/3.jpg" alt="Leštěný beton – luxusní podlaha" loading="lazy">
           <span class="blog-card-img-text">Lesk</span>
         </div>
         <div class="blog-card-body">
@@ -894,8 +924,9 @@
       </a>
 
       <!-- Článek 5 -->
-      <a href="blog/podlahove-topeni-anhydrit.html" class="blog-card fade-in" data-category="realizace">
+      <a href="blog/podlahove-topeni-anhydrit/" class="blog-card fade-in" data-category="realizace">
         <div class="blog-card-img">
+          <img src="img/blog/4.jpg" alt="Podlahové topení a anhydritová podlaha" loading="lazy">
           <span class="blog-card-img-text">Teplo</span>
         </div>
         <div class="blog-card-body">
@@ -913,8 +944,9 @@
       </a>
 
       <!-- Článek 6 -->
-      <a href="blog/udrzba-betonove-podlahy.html" class="blog-card fade-in" data-category="udrzba">
+      <a href="blog/jak-se-starat-o-betonovou-podlahu/" class="blog-card fade-in" data-category="udrzba">
         <div class="blog-card-img">
+          <img src="img/blog/5.jpg" alt="Údržba betonové podlahy" loading="lazy">
           <span class="blog-card-img-text">Péče</span>
         </div>
         <div class="blog-card-body">

@@ -623,6 +623,16 @@ function gtag_report_form_conversion() {
       overflow: hidden;
     }
 
+    .ref-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      position: absolute;
+      top: 0; left: 0;
+}
+
     /* Typ text v pozadí karty */
     .ref-type-bg {
       font-family: var(--font-head);
@@ -646,11 +656,26 @@ function gtag_report_form_conversion() {
       padding: 3px 10px;
       border-radius: 4px;
       letter-spacing: 0.3px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      
     }
 
-    .badge-orange { background: rgba(249,115,22,0.2); color: var(--orange); border: 1px solid rgba(249,115,22,0.3); }
-    .badge-cyan   { background: rgba(6,182,212,0.15); color: var(--cyan);   border: 1px solid rgba(6,182,212,0.3); }
-    .badge-gray   { background: rgba(255,255,255,0.08); color: var(--gray); border: 1px solid var(--border2); }
+.badge-orange { 
+  background: rgba(249,115,22,0.35);   /* více opacity */
+  color: #fff;                          /* bílý text místo oranžového */
+  border: 1px solid rgba(249,115,22,0.5); 
+}
+.badge-cyan { 
+  background: rgba(6,182,212,0.3); 
+  color: #fff; 
+  border: 1px solid rgba(6,182,212,0.4); 
+}
+.badge-gray { 
+  background: rgba(0,0,0,0.5); 
+  color: #fff; 
+  border: 1px solid rgba(255,255,255,0.15); 
+}
 
     .ref-info {
       padding: 1rem 1.25rem;
@@ -1294,7 +1319,7 @@ function gtag_report_form_conversion() {
   <div class="ref-card">
     <div class="ref-img">
       <img src="img/anhydrit-byty-opava.jpeg" alt="Anhydritová podlaha bytový dům Opava" loading="lazy">
-      <span class="ref-badge badge-cyan">Anhydrit</span>
+      <span class="ref-badge badge-orange" style="background:rgba(234,179,8,0.15);color:#eab308;border-color:rgba(234,179,8,0.3);">Anhydrit</span>
     </div>
     <div class="ref-info">
       <div class="ref-name">Bytový dům</div>
