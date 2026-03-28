@@ -107,13 +107,37 @@
       display: flex; align-items: center; gap: 2rem; list-style: none;
     }
     .nav-links a {
-      font-size: 14px; color: var(--gray);
-      transition: color 0.2s;
-      display: flex; align-items: center; gap: 6px;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a.active { color: var(--white); }
+  font-size: 15px;
+  color: var(--gray);
+  transition: color 0.3s, text-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  padding-bottom: 4px;
+}
 
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 1px;
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: var(--orange);
+  text-shadow: 0 0 8px rgba(249,115,22,0.4);
+}
+
+.nav-links a:hover::after {
+  width: 60%;
+}
     .badge-new {
       font-size: 10px; font-weight: 600;
       background: var(--cyan); color: #042c53;
@@ -537,7 +561,7 @@
 
       <div class="proj-card" data-type="anhydrit">
         <div class="proj-img">
-          <img src="img/anydrit-byty-opava.jpeg" alt="Anhydritová podlaha bytový dům Opava" loading="lazy">
+          <img src="img/anhydrit-byty-opava.jpg" alt="Anhydritová podlaha bytový dům Opava" loading="lazy">
           <span class="proj-badge badge-yellow">Anhydrit</span>
         </div>
         <div class="proj-info">
@@ -572,7 +596,7 @@
 
       <div class="proj-card" data-type="anhydrit">
         <div class="proj-img">
-          <div class="proj-img-placeholder">ANHYDRIT</div>
+          <img src="img/administrativni-budova.jpg" alt="Průmyslová podlaha cukrářská výrobna Brno" loading="lazy">
           <span class="proj-badge badge-yellow">Anhydrit</span>
         </div>
         <div class="proj-info">
@@ -583,56 +607,56 @@
 
       <div class="proj-card" data-type="lesteny">
         <div class="proj-img">
-          <div class="proj-img-placeholder">LESK</div>
+          <img src="img/lestenka-garaz.jpg" alt="Chyba v nacitani" loading="lazy">
           <span class="proj-badge badge-orange">Leštěný beton</span>
         </div>
         <div class="proj-info">
-          <div class="proj-name">Showroom nábytku</div>
-          <div class="proj-meta">420 m² <span class="proj-meta-dot"></span> Brno</div>
-        </div>
-      </div>
-
-      <div class="proj-card" data-type="vodo-topo">
-        <div class="proj-img">
-          <div class="proj-img-placeholder">TEPLO</div>
-          <span class="proj-badge badge-cyan">Vodo-Topo</span>
-        </div>
-        <div class="proj-info">
-          <div class="proj-name">Rodinný dům</div>
-          <div class="proj-meta">185 m² <span class="proj-meta-dot"></span> Prostějov</div>
-        </div>
-      </div>
-
-      <div class="proj-card" data-type="prumyslova">
-        <div class="proj-img">
-          <div class="proj-img-placeholder">HALA</div>
-          <span class="proj-badge badge-gray">Průmyslová</span>
-        </div>
-        <div class="proj-info">
-          <div class="proj-name">Logistický sklad</div>
-          <div class="proj-meta">3 400 m² <span class="proj-meta-dot"></span> Hranice</div>
-        </div>
-      </div>
-
-      <div class="proj-card" data-type="anhydrit">
-        <div class="proj-img">
-          <div class="proj-img-placeholder">BYTY</div>
-          <span class="proj-badge badge-yellow">Anhydrit</span>
-        </div>
-        <div class="proj-info">
-          <div class="proj-name">Bytový komplex</div>
-          <div class="proj-meta">24 bytů <span class="proj-meta-dot"></span> Ostrava</div>
+          <div class="proj-name">Garáž</div>
+          <div class="proj-meta">40 m² <span class="proj-meta-dot"></span> Brno</div>
         </div>
       </div>
 
       <div class="proj-card" data-type="lesteny">
         <div class="proj-img">
-          <div class="proj-img-placeholder">LOFT</div>
+          <img src="img/zakladova-deska.jpg" alt="Chyba v nacitani" loading="lazy">
+          <span class="proj-badge badge-green">Základovka</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Rodinný dům</div>
+          <div class="proj-meta">240 m² <span class="proj-meta-dot"></span> Prostějov</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="prumyslova">
+        <div class="proj-img">
+          <img src="img/logisticky-sklad.jpg" alt="Chyba v nacitani" loading="lazy">
+          <span class="proj-badge badge-gray">Průmyslová</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Logistický sklad</div>
+          <div class="proj-meta">900 m² <span class="proj-meta-dot"></span> Hranice</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="anhydrit">
+        <div class="proj-img">
+          <img src="img/bytovy-komplex.jpg" alt="Chyba v nacitani" loading="lazy">
+          <span class="proj-badge badge-yellow">Anhydrit</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Bytový komplex</div>
+          <div class="proj-meta">24 bytů <span class="proj-meta-dot"></span> Prostějov</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="lesteny">
+        <div class="proj-img">
+          <img src="img/park-sternberk.jpg" alt="Chyba v nacitani" loading="lazy">
           <span class="proj-badge badge-orange">Leštěný beton</span>
         </div>
         <div class="proj-info">
-          <div class="proj-name">Loftový apartmán</div>
-          <div class="proj-meta">110 m² <span class="proj-meta-dot"></span> Praha 7</div>
+          <div class="proj-name">Průmyslový park OL</div>
+          <div class="proj-meta">550 m² <span class="proj-meta-dot"></span> Šternberk</div>
         </div>
       </div>
 
