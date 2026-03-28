@@ -27,17 +27,6 @@ function gtag_report_phone_conversion(url) {
 }
 </script>
 
-<!-- Google Ads: Konverze - odeslání poptávkového formuláře -->
-<script>
-function gtag_report_form_conversion() {
-  gtag('event', 'conversion', {
-    'send_to': 'AW-11264011068/OrFACLah3pAcELzWjPsp',
-    'value': 500.0,
-    'currency': 'CZK'
-  });
-  return true;
-}
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MO Betony s.r.o. – Betonové podlahy pro váš projekt</title>
@@ -1489,9 +1478,9 @@ function gtag_report_form_conversion() {
         <div class="form-title">Poptávkový formulář</div>
 
         <!-- FORMSPREE — sem přijde tvůj endpoint -->
-        <form action="https://formspree.io/f/meerbywn" method="POST">
-          <input type="hidden" name="_next" value="https://mobetony.cz/dekujeme.html"/>
-          <div class="form-row">
+        <form id="poptavkaForm" action="https://formspree.io/f/meerbywn" method="POST">
+         <!-- BEZ hidden _next, BEZ onsubmit -->
+         <div class="form-row">
             <div class="form-group">
               <label for="jmeno">Jméno a příjmení</label>
               <input type="text" id="jmeno" name="jmeno" placeholder="Jan Novák" required />
@@ -1636,5 +1625,36 @@ function gtag_report_form_conversion() {
     sections.forEach(sec => navObserver.observe(sec));
   </script>
 
+  <script>
+    // AJAX odeslání formuláře + redirect na thank-you page
+    document.getElementById('poptavkaForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const btn = form.querySelector('.btn-submit');
+      btn.textContent = 'Odesílám...';
+      btn.disabled = true;
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = 'dekujeme.html';
+          } else {
+            alert('Něco se pokazilo. Zkuste to prosím znovu.');
+            btn.textContent = 'Odeslat poptávku';
+            btn.disabled = false;
+          }
+        })
+        .catch(error => {
+          alert('Chyba připojení. Zkuste to prosím znovu.');
+          btn.textContent = 'Odeslat poptávku';
+          btn.disabled = false;
+        });
+    });
+</script>
 </body>
 </html>
