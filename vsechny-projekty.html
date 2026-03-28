@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11264011068"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-11264011068');
+  </script>
+  <script>
+    function gtag_report_phone_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') { window.location = url; }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-11264011068/bnGJCJaW05AcELzWjPsp',
+        'value': 200.0, 'currency': 'CZK', 'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Všechny projekty – MO Betony s.r.o.</title>
+  <meta name="description" content="Přehled realizovaných projektů MO Betony s.r.o. Anhydritové, leštěné a průmyslové podlahy po celé ČR. 500+ dokončených zakázek." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0d0d;
+      --bg2:       #141414;
+      --bg3:       #1a1a1a;
+      --bg4:       #222222;
+      --orange:    #f97316;
+      --orange2:   #ea6b0e;
+      --cyan:      #06b6d4;
+      --white:     #ffffff;
+      --gray:      #9ca3af;
+      --gray2:     #6b7280;
+      --border:    #2a2a2a;
+      --border2:   #333333;
+      --font-head: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+      --radius:    16px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ========== NAVIGACE ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo-badge {
+      width: 36px; height: 36px;
+      background: var(--orange);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 900; font-size: 16px;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-text {
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+    .nav-logo-name { font-family: var(--font-head); font-weight: 800; font-size: 17px; letter-spacing: 0.3px; }
+    .nav-logo-sub  { font-size: 10px; color: var(--gray); letter-spacing: 0.5px; }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px; color: var(--gray);
+      transition: color 0.2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--white); }
+
+    .badge-new {
+      font-size: 10px; font-weight: 600;
+      background: var(--cyan); color: #042c53;
+      padding: 1px 6px; border-radius: 4px; letter-spacing: 0.3px;
+    }
+
+    .btn-call {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 18px;
+      background: var(--orange); color: var(--white);
+      border-radius: 6px; font-size: 14px; font-weight: 600;
+      transition: background 0.2s; white-space: nowrap;
+    }
+    .btn-call:hover { background: var(--orange2); }
+
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+    }
+    .nav-toggle span {
+      display: block; width: 22px; height: 2px;
+      background: var(--white); border-radius: 2px; transition: all 0.3s;
+    }
+
+    .nav-mobile {
+      display: none; flex-direction: column;
+      position: fixed; top: 64px; left: 0; right: 0;
+      background: rgba(13,13,13,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      gap: 1.25rem;
+      z-index: 999;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-size: 16px; color: var(--gray); transition: color 0.2s; }
+    .nav-mobile a:hover { color: var(--white); }
+
+    /* ========== PAGE HEADER ========== */
+    .page-header {
+      padding: 120px 2rem 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--gray2);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: var(--orange); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--orange2); }
+    .breadcrumb span { color: var(--gray2); }
+
+    .page-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(48px, 7vw, 80px);
+      line-height: 0.92;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .page-title .orange { color: var(--orange); }
+
+    .page-desc {
+      font-size: 17px;
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Statistiky */
+    .stats-row {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      display: flex; flex-direction: column;
+    }
+    .stat-num {
+      font-family: var(--font-head);
+      font-weight: 900; font-size: 36px;
+      color: var(--orange); line-height: 1;
+    }
+    .stat-label {
+      font-size: 13px; color: var(--gray); margin-top: 2px;
+    }
+
+    /* ========== FILTRY ========== */
+    .filters-bar {
+      padding: 0 2rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 13px; font-weight: 600;
+      font-family: var(--font-body);
+      cursor: pointer;
+      border: 1px solid var(--border2);
+      background: var(--bg3);
+      color: var(--gray);
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { color: var(--white); border-color: var(--gray2); }
+    .filter-btn.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: var(--white);
+    }
+
+    /* ========== PROJECTS GRID ========== */
+    .projects-section {
+      padding: 0 2rem 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .proj-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .proj-card:hover {
+      border-color: var(--border2);
+      transform: translateY(-4px);
+    }
+
+    .proj-img {
+      height: 220px;
+      background: var(--bg4);
+      position: relative;
+      overflow: hidden;
+    }
+    .proj-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      position: absolute;
+      top: 0; left: 0;
+      transition: transform 0.4s ease;
+    }
+    .proj-card:hover .proj-img img {
+      transform: scale(1.04);
+    }
+
+    /* Placeholder pro projekty bez fotky */
+    .proj-img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 900; font-size: 56px;
+      color: rgba(255,255,255,0.06);
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      user-select: none;
+    }
+
+    .proj-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 4px;
+      letter-spacing: 0.3px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 1;
+    }
+    .badge-orange { background: rgba(249,115,22,0.35); color: #fff; border: 1px solid rgba(249,115,22,0.5); }
+    .badge-yellow { background: rgba(234,179,8,0.3); color: #fde047; border: 1px solid rgba(234,179,8,0.4); }
+    .badge-cyan   { background: rgba(6,182,212,0.3); color: #fff; border: 1px solid rgba(6,182,212,0.4); }
+    .badge-gray   { background: rgba(0,0,0,0.5); color: #fff; border: 1px solid rgba(255,255,255,0.15); }
+
+    .proj-info {
+      padding: 1.1rem 1.25rem 1.25rem;
+    }
+    .proj-name {
+      font-family: var(--font-head);
+      font-weight: 800; font-size: 20px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .proj-meta {
+      font-size: 13px; color: var(--gray);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .proj-meta-dot {
+      width: 3px; height: 3px; border-radius: 50%;
+      background: var(--gray2); flex-shrink: 0;
+    }
+
+    /* ========== CTA BANNER ========== */
+    .cta-strip {
+      padding: 0 2rem 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #1a0f00 0%, #2d1500 50%, #1a0800 100%);
+      border-radius: var(--radius);
+      border: 1px solid #3d2000;
+      padding: 4rem 3rem;
+      text-align: center;
+    }
+    .cta-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .cta-title span { color: var(--orange); }
+    .cta-sub {
+      font-size: 16px; color: var(--gray);
+      max-width: 460px; margin: 0 auto 2rem;
+    }
+    .cta-btns {
+      display: flex; justify-content: center;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center;
+      padding: 12px 28px;
+      background: var(--orange); color: var(--white);
+      border-radius: 6px; font-weight: 600; font-size: 15px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--orange2); }
+    .btn-secondary {
+      display: inline-flex; align-items: center;
+      padding: 12px 28px;
+      background: transparent; color: var(--white);
+      border: 1px solid var(--border2);
+      border-radius: 6px; font-weight: 600; font-size: 15px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gray); background: var(--bg3); }
+
+    /* ========== FOOTER ========== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+    .footer-desc { font-size: 14px; color: var(--gray); line-height: 1.7; max-width: 320px; }
+    .footer-col-title { font-family: var(--font-head); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--white); margin-bottom: 1rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { font-size: 14px; color: var(--gray); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 1.5rem; border-top: 1px solid var(--border);
+      font-size: 13px; color: var(--gray2); flex-wrap: wrap; gap: 0.5rem;
+    }
+
+    /* ========== FADE-IN ========== */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .nav-links, .btn-call { display: none; }
+      .nav-toggle { display: flex; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .stats-row { gap: 1.5rem; }
+      .cta-box { padding: 2.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGACE ========== -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-badge">MO</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">MO Betony</span>
+        <span class="nav-logo-sub">S.R.O.</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="typy-podlah.html">Typy podlah</a></li>
+      <li><a href="index.html#podlahy">Služby</a></li>
+      <li><a href="index.html#proces">Proces</a></li>
+      <li><a href="index.html#reference" class="active">Reference</a></li>
+      <li><a href="blog.html">Blog <span class="badge-new">Nové</span></a></li>
+      <li><a href="index.html#kontakt">Kontakt</a></li>
+    </ul>
+
+    <a href="tel:+420774611154" class="btn-call" onclick="gtag_report_phone_conversion();">
+      📞 Volejte
+    </a>
+
+    <div class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobilní menu -->
+  <div class="nav-mobile" id="navMobile">
+    <a href="typy-podlah.html">Typy podlah</a>
+    <a href="index.html#podlahy">Služby</a>
+    <a href="index.html#proces">Proces</a>
+    <a href="index.html#reference">Reference</a>
+    <a href="blog.html">Blog <span class="badge-new">Nové</span></a>
+    <a href="index.html#kontakt">Kontakt</a>
+    <a href="tel:+420774611154" style="color: var(--orange); font-weight: 600;" onclick="gtag_report_phone_conversion();">📞 Volejte nám</a>
+  </div>
+
+  <!-- ========== PAGE HEADER ========== -->
+  <div class="page-header">
+    <div class="breadcrumb fade-in">
+      <a href="index.html">Úvod</a>
+      <span>›</span>
+      <span>Všechny projekty</span>
+    </div>
+
+    <h1 class="page-title fade-in">
+      Naše<br>
+      <span class="orange">projekty</span>
+    </h1>
+    <p class="page-desc fade-in">
+      Každá podlaha má svůj příběh. Tady jsou ty naše — od rodinných domů po průmyslové haly po celé České republice.
+    </p>
+
+    <div class="stats-row fade-in">
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Dokončených projektů</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50 000+</div>
+        <div class="stat-label">m² realizovaných podlah</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Let zkušeností</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== FILTRY ========== -->
+  <div class="filters-bar fade-in">
+    <button class="filter-btn active" data-filter="all">Vše</button>
+    <button class="filter-btn" data-filter="anhydrit">Anhydrit</button>
+    <button class="filter-btn" data-filter="lesteny">Leštěný beton</button>
+    <button class="filter-btn" data-filter="prumyslova">Průmyslová</button>
+    <button class="filter-btn" data-filter="vodo-topo">Vodo-Topo</button>
+  </div>
+
+  <!-- ========== PROJECTS GRID ========== -->
+  <section class="projects-section">
+    <div class="projects-grid fade-in">
+
+      <!-- === REÁLNÉ PROJEKTY (tvoje fotky) === -->
+
+      <div class="proj-card" data-type="lesteny">
+        <div class="proj-img">
+          <img src="img/autoservis.jpg" alt="Leštěný beton autoservis" loading="lazy">
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Autoservis</div>
+          <div class="proj-meta">320 m² <span class="proj-meta-dot"></span> Olomouc</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="anhydrit">
+        <div class="proj-img">
+          <img src="img/anhydrit-rodinny-dum.jpeg" alt="Anhydritová podlaha rodinný dům Šternberk" loading="lazy">
+          <span class="proj-badge badge-yellow">Anhydrit</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Rodinný dům</div>
+          <div class="proj-meta">240 m² <span class="proj-meta-dot"></span> Šternberk</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="prumyslova">
+        <div class="proj-img">
+          <img src="img/divadlo-dolany.jpeg" alt="Průmyslová podlaha divadlo Dolany" loading="lazy">
+          <span class="proj-badge badge-gray">Průmyslová</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Divadlo</div>
+          <div class="proj-meta">1 300 m² <span class="proj-meta-dot"></span> Dolany</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="anhydrit">
+        <div class="proj-img">
+          <img src="img/anydrit-byty-opava.jpeg" alt="Anhydritová podlaha bytový dům Opava" loading="lazy">
+          <span class="proj-badge badge-yellow">Anhydrit</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Bytový dům</div>
+          <div class="proj-meta">900 m² <span class="proj-meta-dot"></span> Opava</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="lesteny">
+        <div class="proj-img">
+          <img src="img/lesteny-beton-hala.jpg" alt="Leštěný beton výrobní hala Přerov" loading="lazy">
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Výrobní hala</div>
+          <div class="proj-meta">1 200 m² <span class="proj-meta-dot"></span> Přerov</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="prumyslova">
+        <div class="proj-img">
+          <img src="img/cukrarska-vyrobna.jpg" alt="Průmyslová podlaha cukrářská výrobna Brno" loading="lazy">
+          <span class="proj-badge badge-gray">Průmyslová</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Cukrářská výrobna</div>
+          <div class="proj-meta">730 m² <span class="proj-meta-dot"></span> Brno</div>
+        </div>
+      </div>
+
+      <!-- === DALŠÍ PROJEKTY (placeholder — doplníš fotky) === -->
+
+      <div class="proj-card" data-type="anhydrit">
+        <div class="proj-img">
+          <div class="proj-img-placeholder">ANHYDRIT</div>
+          <span class="proj-badge badge-yellow">Anhydrit</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Administrativní budova</div>
+          <div class="proj-meta">580 m² <span class="proj-meta-dot"></span> Olomouc</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="lesteny">
+        <div class="proj-img">
+          <div class="proj-img-placeholder">LESK</div>
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Showroom nábytku</div>
+          <div class="proj-meta">420 m² <span class="proj-meta-dot"></span> Brno</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="vodo-topo">
+        <div class="proj-img">
+          <div class="proj-img-placeholder">TEPLO</div>
+          <span class="proj-badge badge-cyan">Vodo-Topo</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Rodinný dům</div>
+          <div class="proj-meta">185 m² <span class="proj-meta-dot"></span> Prostějov</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="prumyslova">
+        <div class="proj-img">
+          <div class="proj-img-placeholder">HALA</div>
+          <span class="proj-badge badge-gray">Průmyslová</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Logistický sklad</div>
+          <div class="proj-meta">3 400 m² <span class="proj-meta-dot"></span> Hranice</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="anhydrit">
+        <div class="proj-img">
+          <div class="proj-img-placeholder">BYTY</div>
+          <span class="proj-badge badge-yellow">Anhydrit</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Bytový komplex</div>
+          <div class="proj-meta">24 bytů <span class="proj-meta-dot"></span> Ostrava</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="lesteny">
+        <div class="proj-img">
+          <div class="proj-img-placeholder">LOFT</div>
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Loftový apartmán</div>
+          <div class="proj-meta">110 m² <span class="proj-meta-dot"></span> Praha 7</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <div class="cta-strip">
+    <div class="cta-box fade-in">
+      <h2 class="cta-title">Váš projekt<br><span>je na řadě</span></h2>
+      <p class="cta-sub">Nezávazná konzultace a cenová nabídka do 48 hodin.</p>
+      <div class="cta-btns">
+        <a href="index.html#kontakt" class="btn-primary">Poptávkový formulář →</a>
+        <a href="tel:+420774611154" class="btn-secondary" onclick="gtag_report_phone_conversion();">📞 +420 774 611 154</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">
+            <div class="nav-logo-badge">MO</div>
+            <div class="nav-logo-text">
+              <span class="nav-logo-name">MO Betony</span>
+              <span class="nav-logo-sub">S.R.O.</span>
+            </div>
+          </div>
+          <p class="footer-desc">Profesionální realizace betonových podlah a kompletní vodo-topo instalace. 15+ let zkušeností, 500+ spokojených zákazníků.</p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Služby</div>
+          <ul class="footer-links">
+            <li><a href="typy-podlah.html">Typy podlah</a></li>
+            <li><a href="index.html#podlahy">Anhydritové podlahy</a></li>
+            <li><a href="index.html#podlahy">Leštěné betony</a></li>
+            <li><a href="index.html#podlahy">Průmyslové podlahy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Společnost</div>
+          <ul class="footer-links">
+            <li><a href="vsechny-projekty.html">Všechny projekty</a></li>
+            <li><a href="index.html#proces">Jak pracujeme</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="index.html#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2025 MO Betony s.r.o. Všechna práva vyhrazena.</span>
+        <span>Vytvořeno s ❤️ v ČR</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // Hamburger menu
+    const toggle = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('navMobile');
+    toggle.addEventListener('click', () => mobileNav.classList.toggle('open'));
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    // Fade-in animace
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Filtrování projektů
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.proj-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.type === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
