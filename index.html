@@ -1489,7 +1489,8 @@ function gtag_report_form_conversion() {
         <div class="form-title">Poptávkový formulář</div>
 
         <!-- FORMSPREE — sem přijde tvůj endpoint -->
-        <form action="https://formspree.io/f/meerbywn" method="POST" onsubmit="gtag_report_form_conversion();">
+        <form action="https://formspree.io/f/meerbywn" method="POST">
+          <input type="hidden" name="_next" value="https://mobetony.cz/dekujeme.html"/>
           <div class="form-row">
             <div class="form-group">
               <label for="jmeno">Jméno a příjmení</label>
