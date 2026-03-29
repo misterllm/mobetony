@@ -240,8 +240,8 @@ function gtag_report_phone_conversion(url) {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
       object-position: center 95%;
+      display: block;
     }
 
     .hero__before { z-index: 1; }
@@ -1219,14 +1219,15 @@ function gtag_report_phone_conversion(url) {
       .nav-mobile a { font-size: 16px; color: var(--white); padding: 0.25rem 0; }
 
       #hero { min-height: 100svh; cursor: default; }
+      .hero__layer img { object-position: center 95%; }
       section { padding: 60px 1.25rem; }
       #cta { padding: 0 1.25rem; }
       #kontakt, #faq, #reference, #proces { padding: 60px 1.25rem; }
 
       .hero__content { padding: 0 24px; padding-top: 15vh; justify-content: flex-start; }
-      .hero-stats { gap: 24px; padding: 16px 24px; flex-wrap: wrap; }
+      .hero-stats { gap: 16px; padding: 16px 24px; flex-wrap: wrap; }
       .stat-num { font-size: 28px; }
-      .hero__label { font-size: 12px; bottom: 80px; }
+      .hero__label { font-size: 11px; bottom: auto; top: 80px; padding: 6px 14px; }
       .hero__handle { width: 40px; height: 40px; }
       .hero__handle svg { width: 20px; height: 20px; }
 
