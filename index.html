@@ -358,7 +358,7 @@ function gtag_report_phone_conversion(url) {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 0 8%;
+      padding: 80px 8% 100px;
       pointer-events: none;
     }
 
@@ -505,6 +505,25 @@ function gtag_report_phone_conversion(url) {
 
     #hero.hero--hint .hero__after {
       animation: hint-clip 2.5s ease-in-out;
+    }
+
+    /* Short viewports — compress hero content so CTA stays visible */
+    @media (max-height: 700px) {
+      .hero-title { font-size: clamp(36px, 6vw, 72px); margin-bottom: 1rem; }
+      .hero-sub { margin-bottom: 1.5rem; }
+      .whatsapp-badge { margin-bottom: 1rem; }
+      .hero-stats { padding: 14px 8%; gap: 32px; }
+      .hero__content { padding-top: 70px; padding-bottom: 80px; }
+    }
+
+    @media (max-height: 550px) {
+      .hero-title { font-size: clamp(28px, 5vw, 56px); margin-bottom: 0.75rem; }
+      .hero-sub { margin-bottom: 1rem; font-size: 13px; }
+      .whatsapp-badge { display: none; }
+      .hero-stats { padding: 10px 8%; gap: 24px; }
+      .stat-num { font-size: 24px; }
+      .hero__content { padding-top: 64px; padding-bottom: 70px; }
+      .btn-primary, .btn-secondary { padding: 10px 20px; font-size: 13px; }
     }
 
     /* ========== OBECNÉ SEKCE ========== */
