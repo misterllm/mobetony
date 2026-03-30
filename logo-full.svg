@@ -1,0 +1,53 @@
+<svg viewBox="0 0 250 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="badge"><rect x="0" y="0" width="250" height="220" rx="36"/></clipPath>
+  </defs>
+  <rect x="0" y="0" width="250" height="220" rx="36" fill="#1a1a1a"/>
+
+  <!-- House -->
+  <path d="M43,104 L90,50 L137,104 L137,140 L43,140 Z" fill="#ffffff" opacity="0.87"/>
+  <path d="M38,106 L90,44 L142,106" fill="none" stroke="#f97316" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="77" y="118" width="26" height="22" rx="3" fill="#1a1a1a"/>
+  <circle cx="98" cy="130" r="2" fill="#f97316"/>
+
+  <!-- Mixer drum -->
+  <g clip-path="url(#badge)">
+    <ellipse cx="275" cy="85" rx="22" ry="30" fill="#6b6b6b" transform="rotate(-10 275 85)"/>
+    <path d="M273,57 L210,63 Q195,66 195,85 Q195,104 210,107 L273,113" fill="#6b6b6b"/>
+    <path d="M270,62 L215,67 Q207,69 207,82 Q207,84 209,87" fill="#808080" opacity="0.45"/>
+    <ellipse cx="201" cy="87" rx="11" ry="20" fill="#5a5a5a"/>
+    <ellipse cx="201" cy="87" rx="6" ry="13" fill="#3a3a3a"/>
+    <path d="M265,65 Q250,73 240,85 Q230,97 220,103" fill="none" stroke="#fff" stroke-width="2" opacity="0.15"/>
+    <path d="M270,70 Q255,78 245,90 Q235,102 225,108" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.1"/>
+
+    <line x1="210" y1="110" x2="210" y2="125" stroke="#555" stroke-width="3" stroke-linecap="round"/>
+    <line x1="250" y1="110" x2="250" y2="125" stroke="#555" stroke-width="3" stroke-linecap="round"/>
+    <line x1="207" y1="125" x2="255" y2="125" stroke="#555" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="217" cy="135" r="11" fill="#444" stroke="#555" stroke-width="1.5"/>
+    <circle cx="217" cy="135" r="5" fill="#333" stroke="#555" stroke-width="0.8"/>
+    <circle cx="245" cy="135" r="11" fill="#444" stroke="#555" stroke-width="1.5"/>
+    <circle cx="245" cy="135" r="5" fill="#333" stroke="#555" stroke-width="0.8"/>
+  </g>
+
+  <!-- Chute -->
+  <path d="M197,98 L185,112" fill="none" stroke="#aaa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M197,98 L185,112" fill="none" stroke="#ccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Concrete stream -->
+  <path d="M184,114 Q179,122 175,130 Q172,136 170,144" fill="none" stroke="#f97316" stroke-width="8" stroke-linecap="round" opacity="0.9"/>
+  <path d="M183,116 Q177,126 173,136 Q171,141 169,144" fill="none" stroke="#f97316" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Splash -->
+  <path d="M166,143 Q160,148 153,146" fill="none" stroke="#f97316" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+  <path d="M173,143 Q179,148 186,146" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" opacity="0.25"/>
+  <circle cx="157" cy="143" r="2" fill="#f97316" opacity="0.25"/>
+  <circle cx="182" cy="144" r="1.5" fill="#f97316" opacity="0.2"/>
+
+  <!-- Floor -->
+  <line x1="30" y1="146" x2="230" y2="146" stroke="#f97316" stroke-width="9" stroke-linecap="round"/>
+  <line x1="40" y1="159" x2="220" y2="159" stroke="#f97316" stroke-width="2.5" opacity="0.2" stroke-linecap="round"/>
+
+  <!-- Text -->
+  <text x="125" y="252" text-anchor="middle" font-family="'Barlow Condensed', 'Arial Narrow', sans-serif" font-weight="700" font-size="36" fill="#ffffff" letter-spacing="2">MO-BETONY</text>
+  <text x="125" y="278" text-anchor="middle" font-family="'Barlow Condensed', 'Arial Narrow', sans-serif" font-weight="400" font-size="13" fill="#f97316" letter-spacing="4">BETONOVÉ PODLAHY</text>
+</svg>
