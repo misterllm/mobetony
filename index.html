@@ -1911,3 +1911,14 @@ function gtag_report_phone_conversion(url) {
             btn.textContent = 'Odeslat poptávku';
             btn.disabled = false;
           }
+          })
+        .catch(error => {
+          alert('Něco se pokazilo. Zkuste to prosím znovu.');
+          btn.textContent = 'Odeslat poptávku';
+          btn.disabled = false;
+        });
+    });
+  </script>
+
+</body>
+</html>
