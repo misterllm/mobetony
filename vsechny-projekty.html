@@ -331,6 +331,10 @@
     .badge-yellow { background: rgba(234,179,8,0.3); color: #fde047; border: 1px solid rgba(234,179,8,0.4); }
     .badge-cyan   { background: rgba(6,182,212,0.3); color: #fff; border: 1px solid rgba(6,182,212,0.4); }
     .badge-gray   { background: rgba(0,0,0,0.5); color: #fff; border: 1px solid rgba(255,255,255,0.15); }
+    .badge-red    { background: rgba(239,68,68,0.3); color: #fca5a5; border: 1px solid rgba(239,68,68,0.4); }
+    .badge-blue   { background: rgba(59,130,246,0.3); color: #93c5fd; border: 1px solid rgba(59,130,246,0.4); }
+    .badge-purple { background: rgba(168,85,247,0.3); color: #d8b4fe; border: 1px solid rgba(168,85,247,0.4); }
+    .badge-green  { background: rgba(34,197,94,0.3); color: #86efac; border: 1px solid rgba(34,197,94,0.4); }
 
     .proj-info {
       padding: 1.1rem 1.25rem 1.25rem;
@@ -522,6 +526,9 @@
     <button class="filter-btn" data-filter="lesteny">Leštěný beton</button>
     <button class="filter-btn" data-filter="prumyslova">Průmyslová</button>
     <button class="filter-btn" data-filter="vodo-topo">Vodo-Topo</button>
+    <button class="filter-btn" data-filter="operna-stena">Opěrná stěna</button>
+    <button class="filter-btn" data-filter="betonaz">Betonáž</button>
+    <button class="filter-btn" data-filter="betonaz-pricek">Betonáž příček</button>
   </div>
 
   <!-- ========== PROJECTS GRID ========== -->
@@ -661,6 +668,129 @@
         <div class="proj-info">
           <div class="proj-name">Průmyslový park OL</div>
           <div class="proj-meta">550 m² <span class="proj-meta-dot"></span> Šternberk</div>
+        </div>
+      </div>
+
+      <!-- === NOVÉ PROJEKTY (březen 2026) === -->
+
+      <div class="proj-card" data-type="operna-stena">
+        <div class="proj-img">
+          <img src="img/operna-stena-kromeriz.jpeg" alt="Opěrná stěna v montované hale Kroměříž" loading="lazy">
+          <span class="proj-badge badge-red">Opěrná stěna</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Montovaná hala</div>
+          <div class="proj-meta">90 m³ <span class="proj-meta-dot"></span> Kroměříž</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="betonaz-pricek">
+        <div class="proj-img">
+          <img src="img/pricky-paseka.jpeg" alt="Příčky v 12 halách Paseka u Šternberka" loading="lazy">
+          <span class="proj-badge badge-purple">Betonáž příček</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Příčky v 12 halách</div>
+          <div class="proj-meta">Paseka u Šternberka</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="betonaz-pricek">
+        <div class="proj-img">
+          <img src="img/obvodova-pricka-paseka.jpeg" alt="Obvodová příčka v 12 halách Paseka u Šternberka" loading="lazy">
+          <span class="proj-badge badge-purple">Betonáž příček</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Obvodová příčka v 12 halách</div>
+          <div class="proj-meta">890 m³ <span class="proj-meta-dot"></span> Paseka u Šternberka</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="betonaz">
+        <div class="proj-img">
+          <img src="img/sklep-divadlo-dolany.jpeg" alt="Betonáž sklepu Divadlo Dolany" loading="lazy">
+          <span class="proj-badge badge-blue">Betonáž</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Divadlo — sklep</div>
+          <div class="proj-meta">290 m² <span class="proj-meta-dot"></span> Dolany</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="lesteny">
+        <div class="proj-img">
+          <img src="img/lesteny-beton-kralice.jpeg" alt="Leštěný beton Kralice na Hané" loading="lazy">
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Leštěný beton</div>
+          <div class="proj-meta">40 m² <span class="proj-meta-dot"></span> Kralice na Hané</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="lesteny">
+        <div class="proj-img">
+          <img src="img/lesteny-beton-roznov.jpeg" alt="Leštěný beton v procesu Rožnov pod Radhoštěm" loading="lazy">
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Leštěný beton v procesu</div>
+          <div class="proj-meta">115 m² <span class="proj-meta-dot"></span> Rožnov pod Radhoštěm</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="betonaz">
+        <div class="proj-img">
+          <img src="img/betonaz-spolecensky-dum-prostejov.jpeg" alt="Betonáž Společenský dům Prostějov" loading="lazy">
+          <span class="proj-badge badge-blue">Betonáž</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Společenský dům</div>
+          <div class="proj-meta">650 m² <span class="proj-meta-dot"></span> Prostějov</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="betonaz">
+        <div class="proj-img">
+          <img src="img/betonaz-kostel-opava.jpeg" alt="Betonáž Kostelu Opava" loading="lazy">
+          <span class="proj-badge badge-blue">Betonáž</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Kostel</div>
+          <div class="proj-meta">190 m² <span class="proj-meta-dot"></span> Opava</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="betonaz">
+        <div class="proj-img">
+          <img src="img/betonaz-chodby-ondrasovka.jpeg" alt="Betonáž chodeb v areálu Ondrášovka" loading="lazy">
+          <span class="proj-badge badge-blue">Betonáž</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Areál Ondrášovka</div>
+          <div class="proj-meta">620 m² <span class="proj-meta-dot"></span> Ondrášov</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="betonaz">
+        <div class="proj-img">
+          <img src="img/betonaz-wellness-mohelnice.jpeg" alt="Betonáž Wellness střediska Mohelnice" loading="lazy">
+          <span class="proj-badge badge-blue">Betonáž</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Wellness středisko</div>
+          <div class="proj-meta">320 m² <span class="proj-meta-dot"></span> Mohelnice</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="betonaz">
+        <div class="proj-img">
+          <img src="img/betonaz-pristavba-hala-olomouc.jpeg" alt="Betonáž 2 pater přístavby v hale Olomouc" loading="lazy">
+          <span class="proj-badge badge-blue">Betonáž</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Přístavba haly — 2 patra</div>
+          <div class="proj-meta">410 m² <span class="proj-meta-dot"></span> Olomouc</div>
         </div>
       </div>
 
