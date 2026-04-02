@@ -116,6 +116,30 @@
       display: flex; align-items: center; gap: 2rem; list-style: none;
     }
 
+    .nav-links a {
+      font-size: 15px;
+      color: var(--gray);
+      transition: color 0.3s, text-shadow 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      border-radius: 1px;
+      transition: width 0.25s ease;
+    }
+
 .nav-links a:hover {
   color: var(--orange);
   text-shadow: 0 0 8px rgba(249,115,22,0.4);
