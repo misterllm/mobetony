@@ -90,49 +90,12 @@
     }
 
     .nav-logo-badge {
-      width: 36px; height: 36px;
-      background: var(--orange);
+      width: 36px;
+      height: 36px;
       border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-head);
-      font-weight: 900; font-size: 16px;
-      color: var(--white);
-      letter-spacing: -0.5px;
       flex-shrink: 0;
+      object-fit: contain;
     }
-
-    .nav-logo-text {
-      display: flex; flex-direction: column; line-height: 1.1;
-    }
-    .nav-logo-name { font-family: var(--font-head); font-weight: 800; font-size: 17px; letter-spacing: 0.3px; }
-    .nav-logo-sub  { font-size: 10px; color: var(--gray); letter-spacing: 0.5px; }
-
-    .nav-links {
-      display: flex; align-items: center; gap: 2rem; list-style: none;
-    }
-    .nav-links a {
-  font-size: 15px;
-  color: var(--gray);
-  transition: color 0.3s, text-shadow 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  position: relative;
-  padding-bottom: 4px;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background: var(--orange);
-  border-radius: 1px;
-  transition: width 0.25s ease;
-}
 
 .nav-links a:hover {
   color: var(--orange);
@@ -451,10 +414,10 @@
   <!-- ========== NAVIGACE ========== -->
   <nav>
     <a href="index.html" class="nav-logo">
-      <div class="nav-logo-badge">MO</div>
+      <img src="android-chrome-512x512.png" alt="MO Betony logo" class="nav-logo-badge">
       <div class="nav-logo-text">
         <span class="nav-logo-name">MO Betony</span>
-        <span class="nav-logo-sub">S.R.O.</span>
+        <span class="nav-logo-sub">BETONOVÉ PODLAHY</span>
       </div>
     </a>
 
@@ -826,10 +789,10 @@
       <div class="footer-top">
         <div>
           <div class="footer-logo">
-            <div class="nav-logo-badge">MO</div>
+            <img src="android-chrome-512x512.png" alt="MO Betony logo" class="nav-logo-badge">
             <div class="nav-logo-text">
               <span class="nav-logo-name">MO Betony</span>
-              <span class="nav-logo-sub">S.R.O.</span>
+              <span class="nav-logo-sub">BETONOVÉ PODLAHY</span>
             </div>
           </div>
           <p class="footer-desc">Profesionální realizace betonových podlah a kompletní vodo-topo instalace. 15+ let zkušeností, 500+ spokojených zákazníků.</p>

@@ -65,7 +65,7 @@
         /* NAV */
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(13,13,13,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
         .nav-logo { display: flex; align-items: center; gap: 10px; }
-        .nav-logo-badge { width: 36px; height: 36px; background: var(--orange); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-weight: 900; font-size: 16px; color: var(--white); letter-spacing: -0.5px; flex-shrink: 0; }
+        .nav-logo-badge { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; object-fit: contain; }
         .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
         .nav-logo-name { font-family: var(--font-head); font-weight: 800; font-size: 17px; letter-spacing: 0.3px; }
         .nav-logo-sub { font-size: 10px; color: var(--gray); letter-spacing: 0.5px; }
@@ -177,10 +177,10 @@
     <!-- NAV -->
     <nav>
         <a href="/index.html" class="nav-logo">
-            <div class="nav-logo-badge">MO</div>
+            <img src="/android-chrome-512x512.png" alt="MO Betony logo" class="nav-logo-badge">
             <div class="nav-logo-text">
                 <span class="nav-logo-name">MO Betony</span>
-                <span class="nav-logo-sub">S.R.O.</span>
+                <span class="nav-logo-sub">BETONOVÉ PODLAHY</span>
             </div>
         </a>
         <ul class="nav-links">
@@ -364,10 +364,10 @@
             <div class="footer-top">
                 <div class="footer-about">
                     <div class="footer-logo">
-                        <div class="nav-logo-badge">MO</div>
+                        <img src="/android-chrome-512x512.png" alt="MO Betony logo" class="nav-logo-badge">
                         <div class="nav-logo-text">
                             <span class="nav-logo-name">MO Betony</span>
-                            <span class="nav-logo-sub">S.R.O.</span>
+                            <span class="nav-logo-sub">BETONOVÉ PODLAHY</span>
                         </div>
                     </div>
                     <p class="footer-desc">Profesionální realizace betonových podlah a kompletní elektro-vodo-topo instalace. 15+ let zkušeností, 500+ spokojených zákazníků.</p>
