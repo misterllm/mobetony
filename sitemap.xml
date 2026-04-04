@@ -1,61 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- ==============================
-       HLAVNÍ STRÁNKY
-       ============================== -->
+  <!-- HLAVNÍ STRÁNKY -->
 
   <url>
     <loc>https://mobetony.cz/</loc>
-    <lastmod>2025-04-04</lastmod>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://mobetony.cz/typy-podlah</loc>
-    <lastmod>2025-04-04</lastmod>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://mobetony.cz/vsechny-projekty</loc>
-    <lastmod>2025-04-04</lastmod>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://mobetony.cz/technicke-prace</loc>
-    <lastmod>2025-04-04</lastmod>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://mobetony.cz/blog</loc>
-    <lastmod>2025-04-04</lastmod>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- ==============================
-       BLOG ČLÁNKY
-       — doplň slugy svých 14 článků
-       — vzor: https://mobetony.cz/blog/[slug-clanku]/
-       ============================== -->
+  <!-- BLOG ČLÁNKY -->
 
-  <!-- PŘÍKLAD — nahraď za skutečné slugy: -->
-  <!-- 
   <url>
-    <loc>https://mobetony.cz/blog/anhydritova-podlaha-cena/</loc>
-    <lastmod>2025-03-01</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://mobetony.cz/blog/5-veci-pred-realizaci-podlahy/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
-  -->
 
-  <!-- SEM PŘIDEJ VŠECH 14 ČLÁNKŮ podle vzoru výše -->
+  <url>
+    <loc>https://mobetony.cz/blog/anhydrit-vs-beton/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/cena-anhydritove-podlahy/</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/cerpani-betonu/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/jak-se-starat-o-betonovou-podlahu/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/jak-vybrat-podlahu/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/kolik-stoji-lita-podlaha/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/lesteny-beton-luxus/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/lesteny-beton-pruvodce/</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/podlaha-do-garaze/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/podlahove-topeni-anhydrit/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/prumyslove-podlahy-firmy/</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/prumyslove-podlahy-pruvodce/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/realizace-lite-podlahy/</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/rekonstrukce-podlahy/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/vysychani-anhydritu/</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
 </urlset>
