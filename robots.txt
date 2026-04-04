@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Stránky které Google nemá indexovat
+Disallow: /dekujeme
+
+# Sitemap
+Sitemap: https://mobetony.cz/sitemap.xml
