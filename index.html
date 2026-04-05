@@ -1911,7 +1911,7 @@ function gtag_report_phone_conversion(url) {
             <label for="zprava">Zpráva</label>
             <textarea id="zprava" name="zprava" placeholder="Popište váš projekt – rozlohu, lokalitu, termín..."></textarea>
           </div>
-
+          <input type="hidden" name="_next" value="https://mobetony.cz/dekujeme.html">
           <button type="submit" class="btn-submit">Odeslat poptávku</button>
         </form>
       </div>
@@ -2069,27 +2069,32 @@ function gtag_report_phone_conversion(url) {
     sections.forEach(sec => navObserver.observe(sec));
   </script>
 
-  <script>
-    // AJAX odeslání formuláře + redirect na thank-you page
-    document.getElementById('poptavkaForm').addEventListener('submit', function (e) {
-      e.preventDefault();
+<script>
+  document.getElementById('poptavkaForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.btn-submit');
+    btn.textContent = 'Odesílám...';
+    btn.disabled = true;
 
-      const form = e.target;
-      const btn = form.querySelector('.btn-submit');
-      btn.textContent = 'Odesílám...';
-      btn.disabled = true;
-
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      })
-        .then(response => {
-          if (response.ok) {
-            window.location.href = 'dekujeme.html';
-          } else {
-            alert('Něco se pokazilo. Zkuste to prosím znovu.');
-            btn.textContent = 'Odeslat poptávku';
-            btn.disabled = false;
-          }
-          })
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        window.location.href = 'dekujeme.html';
+      } else {
+        alert('Něco se pokazilo. Zkuste to prosím znovu.');
+        btn.textContent = 'Odeslat poptávku';
+        btn.disabled = false;
+      }
+    })
+    .catch(() => {
+      alert('Něco se pokazilo. Zkuste to prosím znovu.');
+      btn.textContent = 'Odeslat poptávku';
+      btn.disabled = false;
+    });
+  });
+</script>
