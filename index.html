@@ -5,6 +5,8 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
+  <link rel="preload" as="image" href="/img/hero-after.webp" fetchpriority="high">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11264011068"></script>
   <script>
@@ -36,9 +38,10 @@ function gtag_report_phone_conversion(url) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MO Betony s.r.o. – Betonové podlahy pro váš projekt</title>
   <meta name="description" content="Profesionální realizace anhydritových, leštěných a průmyslových betonových podlah. 20+ let zkušeností, 500+ projektů po celé ČR. Nezávazná poptávka do 48 hodin." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
   <style>
     /* ========== RESET & ZÁKLADY ========== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1440,7 +1443,7 @@ function gtag_report_phone_conversion(url) {
 
     <!-- AFTER layer (new floor — right side, clipped) -->
     <div class="hero__layer hero__after" id="heroAfter">
-      <img src="img/hero-after.webp" alt="Nová leštěná betonová podlaha — hotový výsledek" loading="eager">
+      <img src="img/hero-after.webp" alt="Nová leštěná betonová podlaha — hotový výsledek" loading="eager" fetchpriority="high">
     </div>
 
     <!-- Orange divider line -->
