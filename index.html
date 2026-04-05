@@ -5,7 +5,8 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
-  <link rel="preload" as="image" href="/img/hero-after.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="img/hero-after-mobile.webp" media="(max-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="img/hero-after.webp" media="(min-width: 769px)" fetchpriority="high">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11264011068"></script>
@@ -1434,16 +1435,22 @@ function gtag_report_phone_conversion(url) {
     <a href="tel:+420774611154" style="color: var(--orange); font-weight: 600;" onclick="gtag_report_phone_conversion();">📞 Volejte nám</a>
   </div>
 
-  <!-- ========== HERO — Before/After Slider ========== -->
+<!-- ========== HERO — Before/After Slider ========== -->
   <div id="hero" class="hero--hint">
     <!-- BEFORE layer (old floor — left side) -->
     <div class="hero__layer hero__before">
-      <img src="img/hero-before.webp" alt="Stará zničená podlaha průmyslové haly" loading="eager">
+      <picture>
+        <source media="(max-width: 768px)" srcset="img/hero-before-mobile.webp" type="image/webp">
+        <img src="img/hero-before.webp" alt="Stará zničená podlaha průmyslové haly" loading="eager">
+      </picture>
     </div>
 
     <!-- AFTER layer (new floor — right side, clipped) -->
     <div class="hero__layer hero__after" id="heroAfter">
-      <img src="img/hero-after.webp" alt="Nová leštěná betonová podlaha — hotový výsledek" loading="eager" fetchpriority="high">
+      <picture>
+        <source media="(max-width: 768px)" srcset="img/hero-after-mobile.webp" type="image/webp">
+        <img src="img/hero-after.webp" alt="Nová leštěná betonová podlaha — hotový výsledek" loading="eager" fetchpriority="high">
+      </picture>
     </div>
 
     <!-- Orange divider line -->
