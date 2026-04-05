@@ -152,4 +152,41 @@
     <priority>0.7</priority>
   </url>
 
+<!-- Přidat do sitemap.xml — 5 nových článků (2026-04-05) -->
+ 
+  <url>
+    <loc>https://mobetony.cz/blog/anhydrit-novostavba/</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+ 
+  <url>
+    <loc>https://mobetony.cz/blog/samonivelacni-sterka/</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+ 
+  <url>
+    <loc>https://mobetony.cz/blog/podlaha-rekonstrukce-bytu/</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+ 
+  <url>
+    <loc>https://mobetony.cz/blog/cementovy-poter-olomouc/</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+ 
+  <url>
+    <loc>https://mobetony.cz/blog/tepelna-izolace-pod-podlahou/</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
