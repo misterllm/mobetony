@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11264011068"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-11264011068');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO -->
+  <title>Ceník podlah 2026 — Cena za m² | MO Betony s.r.o.</title>
+  <meta name="description" content="Orientační ceník anhydritových podlah, leštěného betonu a průmyslových podlah. Cena za m² od 350 Kč. Nezávazná kalkulace do 48 hodin. Olomouc a okolí.">
+  <link rel="canonical" href="https://mobetony.cz/cenik.html">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ceník podlah 2026 — Cena za m² | MO Betony">
+  <meta property="og:description" content="Orientační ceník anhydritových podlah, leštěného betonu a průmyslových podlah. Cena za m² od 350 Kč.">
+  <meta property="og:image" content="https://mobetony.cz/img/og-image.jpg">
+  <meta property="og:url" content="https://mobetony.cz/cenik.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:site_name" content="MO Betony s.r.o.">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Schema.org — FAQPage for pricing questions -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Kolik stojí anhydritová podlaha za m²?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Orientační cena anhydritové podlahy se pohybuje od 350 do 550 Kč/m² v závislosti na ploše, tloušťce vrstvy a přístupu na stavbu. Přesnou kalkulaci připravíme do 48 hodin po prohlídce."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kolik stojí leštěný beton za m²?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cena leštěné betonové podlahy začíná na 800 Kč/m² a závisí na požadovaném stupni lesku, stavu podkladu a velikosti plochy. Větší plochy znamenají nižší cenu za m²."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kolik stojí průmyslová podlaha za m²?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Průmyslové podlahy se cenově pohybují od 600 Kč/m² výše. Cenu ovlivňuje typ podlahy (drátobeton, hlazený beton, epoxid), požadovaná nosnost a rozsah přípravných prací."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Co všechno je zahrnuto v ceně podlahy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "V naší ceně je zahrnuta konzultace, materiál, doprava, realizace a záruka 5 let. Případné dodatečné práce (demolice staré podlahy, příprava podkladu) kalkulujeme zvlášť."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg:        #0d0d0d;
+      --bg2:       #141414;
+      --bg3:       #1a1a1a;
+      --bg4:       #222222;
+      --orange:    #f97316;
+      --orange2:   #ea6b0e;
+      --cyan:      #06b6d4;
+      --white:     #ffffff;
+      --gray:      #9ca3af;
+      --gray2:     #6b7280;
+      --border:    #2a2a2a;
+      --border2:   #333333;
+      --font-head: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+      --radius:    16px;
+      --radius-sm: 8px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--orange); text-decoration: none; transition: color 0.3s; }
+    a:hover { color: var(--orange2); }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: 64px;
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-badge {
+      width: 36px; height: 36px; background: var(--orange); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head); font-weight: 900; font-size: 16px; color: var(--white);
+    }
+    .nav-logo-text { display: flex; flex-direction: column; }
+    .nav-logo-name { font-family: var(--font-head); font-weight: 800; font-size: 17px; color: var(--white); line-height: 1.1; }
+    .nav-logo-sub { font-size: 10px; color: var(--gray); letter-spacing: 1.5px; }
+
+    .nav-links { list-style: none; display: flex; gap: 28px; align-items: center; }
+    .nav-links a {
+      font-size: 15px; color: var(--gray);
+      transition: color 0.3s, text-shadow 0.3s;
+      position: relative; padding-bottom: 4px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 0; height: 2px;
+      background: var(--orange); border-radius: 1px;
+      transition: width 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--orange); text-shadow: 0 0 8px rgba(249,115,22,0.4); }
+    .nav-links a:hover::after { width: 60%; }
+
+    .badge-new {
+      background: var(--cyan); color: var(--white);
+      font-size: 10px; font-weight: 700; padding: 2px 6px;
+      border-radius: 4px; margin-left: 4px; vertical-align: super;
+    }
+
+    .btn-call {
+      background: var(--orange); color: var(--white) !important;
+      padding: 8px 18px; border-radius: var(--radius-sm);
+      font-weight: 600; font-size: 14px;
+      transition: background 0.3s;
+    }
+    .btn-call:hover { background: var(--orange2); }
+
+    #navToggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    #navToggle span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; transition: 0.3s; }
+
+    #navMobile {
+      display: none; position: fixed; top: 64px; left: 0; right: 0;
+      background: rgba(13,13,13,0.95); backdrop-filter: blur(12px);
+      padding: 24px; z-index: 999; border-bottom: 1px solid var(--border);
+    }
+    #navMobile a {
+      display: block; padding: 12px 0; color: var(--gray); font-size: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    #navMobile a:hover { color: var(--orange); }
+
+    /* ===== HERO SECTION ===== */
+    .page-hero {
+      padding: 140px 32px 80px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+    }
+    .page-hero .breadcrumb {
+      font-size: 14px; color: var(--gray2); margin-bottom: 20px;
+    }
+    .page-hero .breadcrumb a { color: var(--gray); }
+    .page-hero h1 {
+      font-family: var(--font-head); font-weight: 900; font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1; margin-bottom: 20px;
+    }
+    .page-hero h1 span { color: var(--orange); }
+    .page-hero .subtitle {
+      font-size: 18px; color: var(--gray); max-width: 640px; margin: 0 auto 32px;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .container {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+    }
+
+    /* ===== PRICING CARDS ===== */
+    .pricing-section {
+      padding: 60px 0 80px;
+    }
+    .pricing-section .section-label {
+      font-size: 13px; color: var(--orange); text-transform: uppercase;
+      letter-spacing: 2px; font-weight: 600; margin-bottom: 8px; text-align: center;
+    }
+    .pricing-section h2 {
+      font-family: var(--font-head); font-weight: 800; font-size: clamp(28px, 4vw, 40px);
+      text-align: center; margin-bottom: 48px; line-height: 1.15;
+    }
+
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+    }
+
+    .pricing-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 36px 28px; transition: border-color 0.3s, transform 0.3s;
+      display: flex; flex-direction: column;
+    }
+    .pricing-card:hover {
+      border-color: var(--orange); transform: translateY(-4px);
+    }
+    .pricing-card.featured {
+      border-color: var(--orange);
+      background: linear-gradient(180deg, rgba(249,115,22,0.08) 0%, var(--bg3) 40%);
+      position: relative;
+    }
+    .pricing-card.featured::before {
+      content: 'Nejčastější volba';
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--orange); color: var(--white);
+      font-size: 12px; font-weight: 700; padding: 4px 16px;
+      border-radius: 20px; white-space: nowrap;
+    }
+
+    .pricing-card .card-icon {
+      font-size: 32px; margin-bottom: 16px;
+    }
+    .pricing-card h3 {
+      font-family: var(--font-head); font-weight: 800; font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .pricing-card .card-desc {
+      font-size: 15px; color: var(--gray); margin-bottom: 24px; line-height: 1.6;
+    }
+    .pricing-card .price-block {
+      margin-bottom: 24px;
+    }
+    .pricing-card .price-from {
+      font-size: 13px; color: var(--gray2); text-transform: uppercase; letter-spacing: 1px;
+    }
+    .pricing-card .price-value {
+      font-family: var(--font-head); font-weight: 900; font-size: 44px;
+      color: var(--orange); line-height: 1.1;
+    }
+    .pricing-card .price-unit {
+      font-size: 18px; color: var(--gray); font-weight: 400;
+    }
+    .pricing-card .price-note {
+      font-size: 13px; color: var(--gray2); margin-top: 4px;
+    }
+
+    .pricing-card ul {
+      list-style: none; margin-bottom: 28px; flex-grow: 1;
+    }
+    .pricing-card ul li {
+      font-size: 15px; color: var(--gray); padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .pricing-card ul li::before {
+      content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0;
+    }
+
+    .pricing-card .card-cta {
+      display: block; text-align: center;
+      background: transparent; border: 2px solid var(--orange); color: var(--orange);
+      padding: 12px 24px; border-radius: var(--radius-sm);
+      font-weight: 600; font-size: 15px; transition: all 0.3s;
+    }
+    .pricing-card .card-cta:hover {
+      background: var(--orange); color: var(--white);
+    }
+    .pricing-card.featured .card-cta {
+      background: var(--orange); color: var(--white);
+    }
+    .pricing-card.featured .card-cta:hover {
+      background: var(--orange2);
+    }
+
+    /* ===== WHAT'S INCLUDED ===== */
+    .included-section {
+      padding: 60px 0 80px;
+      border-top: 1px solid var(--border);
+    }
+    .included-section h2 {
+      font-family: var(--font-head); font-weight: 800; font-size: clamp(28px, 4vw, 36px);
+      text-align: center; margin-bottom: 48px;
+    }
+    .included-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    }
+    .included-item {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 24px; display: flex; gap: 16px; align-items: flex-start;
+    }
+    .included-item .item-icon {
+      font-size: 24px; flex-shrink: 0; width: 48px; height: 48px;
+      background: var(--bg4); border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .included-item h4 {
+      font-family: var(--font-head); font-weight: 700; font-size: 17px; margin-bottom: 4px;
+    }
+    .included-item p {
+      font-size: 14px; color: var(--gray); line-height: 1.5;
+    }
+
+    /* ===== FACTORS ===== */
+    .factors-section {
+      padding: 60px 0 80px;
+      border-top: 1px solid var(--border);
+    }
+    .factors-section h2 {
+      font-family: var(--font-head); font-weight: 800; font-size: clamp(28px, 4vw, 36px);
+      text-align: center; margin-bottom: 16px;
+    }
+    .factors-section .section-desc {
+      font-size: 16px; color: var(--gray); text-align: center;
+      max-width: 620px; margin: 0 auto 48px;
+    }
+    .factors-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .factor-item {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 28px 24px; text-align: center;
+    }
+    .factor-item .factor-icon { font-size: 28px; margin-bottom: 12px; }
+    .factor-item h4 {
+      font-family: var(--font-head); font-weight: 700; font-size: 17px; margin-bottom: 8px;
+    }
+    .factor-item p { font-size: 14px; color: var(--gray); line-height: 1.5; }
+
+    /* ===== FAQ ===== */
+    .faq-section {
+      padding: 60px 0 80px;
+      border-top: 1px solid var(--border);
+    }
+    .faq-section h2 {
+      font-family: var(--font-head); font-weight: 800; font-size: clamp(28px, 4vw, 36px);
+      text-align: center; margin-bottom: 48px;
+    }
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-q {
+      width: 100%; background: none; border: none; color: var(--white);
+      font-family: var(--font-body); font-size: 16px; font-weight: 600;
+      padding: 20px 0; cursor: pointer; text-align: left;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq-q:hover { color: var(--orange); }
+    .faq-q .faq-toggle {
+      font-size: 20px; color: var(--gray); transition: transform 0.3s;
+    }
+    .faq-item.active .faq-toggle { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
+    }
+    .faq-a-inner {
+      padding: 0 0 20px; font-size: 15px; color: var(--gray); line-height: 1.7;
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      padding: 80px 32px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      border-top: 1px solid var(--border);
+    }
+    .cta-banner h2 {
+      font-family: var(--font-head); font-weight: 800; font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 16px;
+    }
+    .cta-banner p {
+      font-size: 17px; color: var(--gray); max-width: 540px; margin: 0 auto 32px;
+    }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-primary {
+      background: var(--orange); color: var(--white); padding: 14px 32px;
+      border-radius: var(--radius-sm); font-weight: 600; font-size: 16px;
+      transition: background 0.3s;
+    }
+    .cta-btn-primary:hover { background: var(--orange2); color: var(--white); }
+    .cta-btn-secondary {
+      border: 2px solid var(--border); color: var(--white); padding: 14px 32px;
+      border-radius: var(--radius-sm); font-weight: 600; font-size: 16px;
+      transition: border-color 0.3s;
+    }
+    .cta-btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 48px 32px 24px;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+    }
+    .footer-brand .nav-logo { margin-bottom: 16px; }
+    .footer-brand p { font-size: 14px; color: var(--gray); line-height: 1.6; max-width: 320px; }
+    .footer-col h4 {
+      font-family: var(--font-head); font-weight: 700; font-size: 15px;
+      margin-bottom: 16px; color: var(--white);
+    }
+    .footer-col a {
+      display: block; color: var(--gray); font-size: 14px; padding: 4px 0;
+    }
+    .footer-col a:hover { color: var(--orange); }
+    .footer-bottom {
+      max-width: 1100px; margin: 32px auto 0;
+      padding-top: 24px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; font-size: 13px; color: var(--gray2);
+    }
+
+    /* ===== FADE-IN ===== */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links, .btn-call { display: none; }
+      #navToggle { display: block; }
+      .nav { padding: 0 16px; }
+      .page-hero { padding: 120px 16px 60px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .included-grid { grid-template-columns: 1fr; }
+      .factors-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .factors-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-badge">MO</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">MO Betony</span>
+        <span class="nav-logo-sub">S.R.O.</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="typy-podlah.html">Typy podlah</a></li>
+      <li><a href="index.html#podlahy">Služby</a></li>
+      <li><a href="index.html#reference">Reference</a></li>
+      <li><a href="blog.html">Blog <span class="badge-new">Nové</span></a></li>
+      <li><a href="index.html#kontakt">Kontakt</a></li>
+    </ul>
+
+    <a href="tel:+420774611154" class="btn-call" onclick="return gtag_report_phone_conversion(this.href);">📞 +420 774 611 154</a>
+
+    <button id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div id="navMobile">
+    <a href="typy-podlah.html">Typy podlah</a>
+    <a href="index.html#podlahy">Služby</a>
+    <a href="index.html#reference">Reference</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#kontakt">Kontakt</a>
+    <a href="tel:+420774611154" onclick="return gtag_report_phone_conversion(this.href);">📞 Volejte nám</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="page-hero">
+    <div class="breadcrumb">
+      <a href="index.html">Úvod</a> / <strong>Ceník podlah</strong>
+    </div>
+    <h1>Orientační <span>ceník podlah</span></h1>
+    <p class="subtitle">Každý projekt je unikátní — ceny závisí na ploše, podkladu a náročnosti. Zde najdete orientační rozmezí cen za m², které vám pomohou s plánováním rozpočtu.</p>
+  </section>
+
+  <!-- ===== PRICING CARDS ===== -->
+  <section class="pricing-section">
+    <div class="container">
+      <p class="section-label">Ceny za m²</p>
+      <h2>Naše služby a orientační ceny</h2>
+
+      <div class="pricing-grid">
+
+        <!-- Anhydrit -->
+        <div class="pricing-card featured fade-in">
+          <div class="card-icon">🪨</div>
+          <h3>Anhydritová podlaha</h3>
+          <p class="card-desc">Samonivelační litý potěr — ideální pro rodinné domy a podlahové topení.</p>
+          <div class="price-block">
+            <div class="price-from">Cena od</div>
+            <div class="price-value">350 <span class="price-unit">Kč/m²</span></div>
+            <div class="price-note">Samotné lití anhydritu. S broušením od 450 Kč/m².</div>
+          </div>
+          <ul>
+            <li>Lití anhydritového potěru</li>
+            <li>Ideální rovinnost povrchu</li>
+            <li>Tloušťka od 35 mm</li>
+            <li>Pochůznost do 48 hodin</li>
+            <li>Vhodné pro podlahové topení</li>
+          </ul>
+          <a href="index.html#kontakt" class="card-cta">Nezávazná poptávka →</a>
+        </div>
+
+        <!-- Leštěný beton -->
+        <div class="pricing-card fade-in">
+          <div class="card-icon">✨</div>
+          <h3>Leštěný beton</h3>
+          <p class="card-desc">Prémiová podlaha se zrcadlovým leskem pro showroomy, lofty a haly.</p>
+          <div class="price-block">
+            <div class="price-from">Cena od</div>
+            <div class="price-value">800 <span class="price-unit">Kč/m²</span></div>
+            <div class="price-note">Závisí na stupni lesku a stavu podkladu.</div>
+          </div>
+          <ul>
+            <li>Broušení a leštění betonu</li>
+            <li>Zrcadlový povrch</li>
+            <li>Extrémní odolnost</li>
+            <li>Bezúdržbový provoz</li>
+            <li>Luxusní designový vzhled</li>
+          </ul>
+          <a href="index.html#kontakt" class="card-cta">Nezávazná poptávka →</a>
+        </div>
+
+        <!-- Průmyslová -->
+        <div class="pricing-card fade-in">
+          <div class="card-icon">🏭</div>
+          <h3>Průmyslová podlaha</h3>
+          <p class="card-desc">Odolné podlahy pro sklady, haly a výrobní prostory s vysokou zátěží.</p>
+          <div class="price-block">
+            <div class="price-from">Cena od</div>
+            <div class="price-value">600 <span class="price-unit">Kč/m²</span></div>
+            <div class="price-note">Drátobeton, hlazený beton, epoxidové systémy.</div>
+          </div>
+          <ul>
+            <li>Nosnost až 50 t/m²</li>
+            <li>Chemická odolnost</li>
+            <li>Protiskluzová úprava</li>
+            <li>Vhodné pro VZV provoz</li>
+            <li>Minimální údržba</li>
+          </ul>
+          <a href="index.html#kontakt" class="card-cta">Nezávazná poptávka →</a>
+        </div>
+
+        <!-- Cementové potěry / Lité podlahy -->
+        <div class="pricing-card fade-in">
+          <div class="card-icon">🏗️</div>
+          <h3>Cementové potěry</h3>
+          <p class="card-desc">Tradiční lité podlahy pro garáže, sklepy, přístavby a velké plochy.</p>
+          <div class="price-block">
+            <div class="price-from">Cena od</div>
+            <div class="price-value">280 <span class="price-unit">Kč/m²</span></div>
+            <div class="price-note">Klasický mokrý potěr. Strojní hlazení od 350 Kč/m².</div>
+          </div>
+          <ul>
+            <li>Mokré i polosuché potěry</li>
+            <li>Vhodné pro velké plochy</li>
+            <li>Garáže, sklepy, přístavby</li>
+            <li>Strojní hlazení povrchu</li>
+            <li>Spolehlivý základ pod dlažbu</li>
+          </ul>
+          <a href="index.html#kontakt" class="card-cta">Nezávazná poptávka →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT'S INCLUDED ===== -->
+  <section class="included-section">
+    <div class="container">
+      <h2>Co je zahrnuto v ceně</h2>
+      <div class="included-grid">
+        <div class="included-item fade-in">
+          <div class="item-icon">📋</div>
+          <div>
+            <h4>Konzultace a zaměření</h4>
+            <p>Bezplatná prohlídka prostoru, posouzení podkladu a návrh optimálního řešení.</p>
+          </div>
+        </div>
+        <div class="included-item fade-in">
+          <div>
+            <div class="item-icon">🚛</div>
+          </div>
+          <div>
+            <h4>Materiál a doprava</h4>
+            <p>Kvalitní materiály od ověřených dodavatelů (CEMEX, Skanska) včetně dopravy na stavbu.</p>
+          </div>
+        </div>
+        <div class="included-item fade-in">
+          <div class="item-icon">👷</div>
+          <div>
+            <h4>Profesionální realizace</h4>
+            <p>Zkušený tým s 15+ lety praxe. Důraz na kvalitu, čistotu a dodržení termínů.</p>
+          </div>
+        </div>
+        <div class="included-item fade-in">
+          <div class="item-icon">🛡️</div>
+          <div>
+            <h4>Záruka 5 let</h4>
+            <p>Na všechny naše realizace poskytujeme záruku 5 let. Reklamace řešíme obratem.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FACTORS ===== -->
+  <section class="factors-section">
+    <div class="container">
+      <h2>Co ovlivňuje konečnou cenu</h2>
+      <p class="section-desc">Každá stavba je jiná. Tyto faktory určují finální kalkulaci vašeho projektu.</p>
+      <div class="factors-grid">
+        <div class="factor-item fade-in">
+          <div class="factor-icon">📐</div>
+          <h4>Velikost plochy</h4>
+          <p>Větší plochy = nižší cena za m². Při plochách nad 200 m² poskytujeme množstevní slevy.</p>
+        </div>
+        <div class="factor-item fade-in">
+          <div class="factor-icon">🔧</div>
+          <h4>Stav podkladu</h4>
+          <p>Kvalitní rovný podklad snižuje náklady. Demolice, vyrovnání nebo sanace se kalkulují zvlášť.</p>
+        </div>
+        <div class="factor-item fade-in">
+          <div class="factor-icon">📏</div>
+          <h4>Tloušťka vrstvy</h4>
+          <p>Tloušťka anhydritu od 35 mm. Silnější vrstva pro podlahové topení nebo vyšší zátěž zvyšuje spotřebu materiálu.</p>
+        </div>
+        <div class="factor-item fade-in">
+          <div class="factor-icon">📍</div>
+          <h4>Lokace stavby</h4>
+          <p>Olomouc a okolí bez příplatku. U vzdálenějších projektů může být účtováno dopravné.</p>
+        </div>
+        <div class="factor-item fade-in">
+          <div class="factor-icon">🏗️</div>
+          <h4>Přístupnost</h4>
+          <p>Čerpání do vyšších pater, úzké přístupy nebo nutnost ručního přenosu mohou ovlivnit cenu.</p>
+        </div>
+        <div class="factor-item fade-in">
+          <div class="factor-icon">⚙️</div>
+          <h4>Typ dokončení</h4>
+          <p>Samotné lití je levnější. Broušení, leštění nebo ochranný nátěr navyšují celkovou investici.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>Časté dotazy k cenám</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Kolik stojí anhydritová podlaha za m²?<span class="faq-toggle">▾</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Orientační cena anhydritové podlahy se pohybuje od 350 do 550 Kč/m² v závislosti na ploše, tloušťce vrstvy a přístupu na stavbu. Samotné lití začíná na 350 Kč/m², kompletní řešení včetně broušení od 450 Kč/m². Přesnou kalkulaci připravíme do 48 hodin po prohlídce. <a href="index.html#kontakt">Napište nám →</a></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Kolik stojí leštěný beton za m²?<span class="faq-toggle">▾</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Cena leštěné betonové podlahy začíná na 800 Kč/m² a závisí na požadovaném stupni lesku, stavu podkladu a velikosti plochy. Větší plochy znamenají výrazně nižší cenu za m². Pro přesnou nabídku nás <a href="index.html#kontakt">kontaktujte</a>.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Kolik stojí průmyslová podlaha za m²?<span class="faq-toggle">▾</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Průmyslové podlahy se cenově pohybují od 600 Kč/m² výše. Cenu ovlivňuje typ podlahy (drátobeton, hlazený beton, epoxid), požadovaná nosnost a rozsah přípravných prací. Každý projekt kalkulujeme individuálně.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Co všechno je zahrnuto v ceně?<span class="faq-toggle">▾</span></button>
+          <div class="faq-a"><div class="faq-a-inner">V naší ceně je zahrnuta konzultace, materiál, doprava na stavbu, realizace a záruka 5 let. Případné dodatečné práce jako demolice staré podlahy nebo příprava podkladu kalkulujeme zvlášť — vše transparentně v cenové nabídce.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Jak rychle dostanu cenovou nabídku?<span class="faq-toggle">▾</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Po prohlídce prostoru (nebo na základě dodaných podkladů — půdorys, fotky, rozměry) připravíme detailní cenovou nabídku do 48 hodin. Nabídka je samozřejmě nezávazná. <a href="index.html#kontakt">Poptejte cenovou nabídku →</a></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Poskytujete množstevní slevy?<span class="faq-toggle">▾</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Ano. U ploch nad 200 m² nabízíme zvýhodněné ceny. Pro developerské projekty a opakovanou spolupráci máme individuální ceníky. Kontaktujte nás pro osobní nabídku.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-banner">
+    <h2>Chcete přesnou kalkulaci?</h2>
+    <p>Pošlete nám rozměry, fotky nebo půdorys a my vám do 48 hodin připravíme detailní cenovou nabídku na míru.</p>
+    <div class="cta-buttons">
+      <a href="index.html#kontakt" class="cta-btn-primary">Nezávazná poptávka →</a>
+      <a href="tel:+420774611154" class="cta-btn-secondary" onclick="return gtag_report_phone_conversion(this.href);">📞 +420 774 611 154</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-badge">MO</div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-name">MO Betony</span>
+            <span class="nav-logo-sub">BETONOVÉ PODLAHY</span>
+          </div>
+        </a>
+        <p>Profesionální realizace betonových, anhydritových, leštěných a průmyslových podlah. 15+ let zkušeností, 500+ spokojených zákazníků.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Služby</h4>
+        <a href="typy-podlah.html">Typy podlah</a>
+        <a href="anhydritova-podlaha.html">Anhydritové podlahy</a>
+        <a href="lesteny-beton.html">Leštěné betony</a>
+        <a href="prumyslova-podlaha.html">Průmyslové podlahy</a>
+        <a href="typy-podlah.html">Opravy a sanace</a>
+      </div>
+      <div class="footer-col">
+        <h4>Společnost</h4>
+        <a href="vsechny-projekty.html">Reference</a>
+        <a href="index.html#proces">Jak pracujeme</a>
+        <a href="blog.html">Blog</a>
+        <a href="cenik.html">Ceník</a>
+        <a href="index.html#kontakt">Kontakt</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MO Betony s.r.o. Všechna práva vyhrazena.</span>
+      <span>Marty Industries 8</span>
+    </div>
+  </footer>
+
+  <!-- ===== JS ===== -->
+  <script>
+    // Phone conversion
+    function gtag_report_phone_conversion(url) {
+      var callback = function() {
+        if (typeof(url) != 'undefined') { window.location = url; }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-11264011068/bnGJCJaW05AcELzWjPsp',
+        'value': 200.0, 'currency': 'CZK', 'event_callback': callback
+      });
+      return false;
+    }
+
+    // Mobile nav toggle
+    document.getElementById('navToggle').addEventListener('click', function() {
+      const mobile = document.getElementById('navMobile');
+      mobile.style.display = mobile.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const item = this.parentElement;
+        const answer = item.querySelector('.faq-a');
+        const wasActive = item.classList.contains('active');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.faq-a').style.maxHeight = null;
+        });
+
+        // Open clicked (if wasn't open)
+        if (!wasActive) {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
