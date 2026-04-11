@@ -1514,7 +1514,255 @@ function gtag_report_phone_conversion(url) {
 .kontakt-person-contacts a:hover { opacity: 0.75; }
 .kontakt-person-contacts span { color: var(--gray2); }
 
+/* ========== STICKY MOBILE CALL BUTTON ========== */
+.sticky-call {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 998;
+  padding: 14px 32px;
+  background: var(--orange);
+  color: var(--white);
+  border-radius: 50px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 20px rgba(249,115,22,0.5), 0 2px 8px rgba(0,0,0,0.4);
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+  text-decoration: none;
+  gap: 8px;
+  align-items: center;
+  white-space: nowrap;
+}
+.sticky-call.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.sticky-call:active { transform: translateX(-50%) scale(0.97); }
+@media (max-width: 768px) {
+  .sticky-call { display: flex; }
+}
 
+/* ========== ORANGE GLOW ON CTA BUTTONS ========== */
+.btn-primary {
+  box-shadow: 0 0 15px rgba(249,115,22,0.2);
+}
+.btn-primary:hover {
+  box-shadow: 0 0 25px rgba(249,115,22,0.5), 0 4px 12px rgba(0,0,0,0.3);
+  transform: translateY(-2px) scale(1.03);
+}
+.btn-submit {
+  box-shadow: 0 0 12px rgba(249,115,22,0.25);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.btn-submit:hover {
+  box-shadow: 0 0 25px rgba(249,115,22,0.5);
+  transform: translateY(-1px);
+}
+
+/* ========== GOOGLE REVIEWS SECTION ========== */
+.reviews-section {
+  padding: 80px 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.reviews-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.reviews-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 8px 20px 8px 14px;
+  margin-bottom: 1.5rem;
+}
+.reviews-badge-stars {
+  display: flex;
+  gap: 2px;
+}
+.reviews-badge-stars svg { width: 18px; height: 18px; }
+.reviews-badge-score {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--white);
+}
+.reviews-badge-label {
+  font-size: 13px;
+  color: var(--gray);
+}
+.reviews-track {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border2) transparent;
+}
+.reviews-track::-webkit-scrollbar { height: 4px; }
+.reviews-track::-webkit-scrollbar-track { background: transparent; }
+.reviews-track::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+.review-card {
+  flex: 0 0 340px;
+  scroll-snap-align: start;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  transition: border-color 0.2s;
+}
+.review-card:hover { border-color: var(--border2); }
+.review-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+.review-card-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.review-card-name {
+  font-weight: 600;
+  font-size: 15px;
+}
+.review-card-meta {
+  font-size: 12px;
+  color: var(--gray);
+}
+.review-card-stars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 0.75rem;
+}
+.review-card-stars svg { width: 16px; height: 16px; }
+.review-card-text {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.7;
+  font-style: italic;
+}
+.reviews-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+.reviews-cta a {
+  font-size: 14px;
+  color: var(--orange);
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+.reviews-cta a:hover { opacity: 0.75; }
+
+/* ========== REF CARD CLICKABLE + OVERLAY ========== */
+a.ref-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.ref-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(249,115,22,0.0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  z-index: 2;
+}
+.ref-img-overlay span {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s, transform 0.3s;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--white);
+}
+a.ref-card-link:hover .ref-img-overlay {
+  background: rgba(249,115,22,0.35);
+}
+a.ref-card-link:hover .ref-img-overlay span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== TRUST STRIP NEAR FORM ========== */
+.form-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+.form-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--gray);
+}
+.form-trust-item svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ========== MINI REVIEW NEAR FORM ========== */
+.form-mini-review {
+  background: var(--bg4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.form-mini-review-stars {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.form-mini-review-stars svg { width: 14px; height: 14px; }
+.form-mini-review-text {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.6;
+  font-style: italic;
+}
+.form-mini-review-author {
+  font-size: 12px;
+  color: var(--gray2);
+  font-style: normal;
+  margin-top: 4px;
+}
   </style>
   <script type="application/ld+json">
 {
@@ -1866,93 +2114,118 @@ function gtag_report_phone_conversion(url) {
 
     <div class="reference-grid fade-in">
 
+  <a href="vsechny-projekty.html" class="ref-card-link">
   <div class="ref-card">
     <div class="ref-img">
       <img src="img/anhydrit-rodinny-dum.webp" alt="Anhydritová podlaha rodinný dům Šternberk" loading="lazy">
       <span class="ref-badge badge-orange" style="background:rgba(234,179,8,0.15);color:#eab308;border-color:rgba(234,179,8,0.3);">Anhydrit</span>
+      <div class="ref-img-overlay"><span>Zobrazit projekty →</span></div>
     </div>
     <div class="ref-info">
       <div class="ref-name">Rodinný dům</div>
       <div class="ref-meta">240 m² · Šternberk</div>
     </div>
   </div>
+  </a>
 
+  <a href="vsechny-projekty.html" class="ref-card-link">
   <div class="ref-card">
     <div class="ref-img">
       <img src="img/divadlo-dolany.webp" alt="Průmyslová podlaha divadlo Dolany" loading="lazy">
       <span class="ref-badge badge-blue">Betonáž</span>
+      <div class="ref-img-overlay"><span>Zobrazit projekty →</span></div>
     </div>
     <div class="ref-info">
       <div class="ref-name">Divadlo</div>
       <div class="ref-meta">840 m² · Dolany</div>
     </div>
   </div>
+  </a>
 
+  <a href="vsechny-projekty.html" class="ref-card-link">
   <div class="ref-card">
     <div class="ref-img">
       <img src="img/anhydrit-byty-opava.webp" alt="Anhydritová podlaha bytový dům Opava" loading="lazy">
       <span class="ref-badge badge-orange" style="background:rgba(234,179,8,0.15);color:#eab308;border-color:rgba(234,179,8,0.3);">Anhydrit</span>
+      <div class="ref-img-overlay"><span>Zobrazit projekty →</span></div>
     </div>
     <div class="ref-info">
       <div class="ref-name">Bytový dům</div>
       <div class="ref-meta">900m² · Opava</div>
     </div>
   </div>
+  </a>
 
+  <a href="vsechny-projekty.html" class="ref-card-link">
   <div class="ref-card">
     <div class="ref-img">
       <img src="img/lesteny-beton-hala.webp" alt="Leštěný beton výrobní hala Přerov" loading="lazy">
       <span class="ref-badge badge-gray">Průmyslová</span>
+      <div class="ref-img-overlay"><span>Zobrazit projekty →</span></div>
     </div>
     <div class="ref-info">
       <div class="ref-name">Výrobní hala</div>
       <div class="ref-meta">650m² · Nový Jičín</div>
     </div>
   </div>
+  </a>
 
+  <a href="vsechny-projekty.html" class="ref-card-link">
   <div class="ref-card">
     <div class="ref-img">
       <img src="img/logisticky-sklad.webp" alt="Průmyslová podlaha cukrářská výrobna" loading="lazy">
       <span class="ref-badge badge-orange">Leštěný beton</span>
+      <div class="ref-img-overlay"><span>Zobrazit projekty →</span></div>
     </div>
     <div class="ref-info">
       <div class="ref-name">Logistický sklad</div>
       <div class="ref-meta">900 m² · Hranice</div>
     </div>
   </div>
+  </a>
 
+  <a href="vsechny-projekty.html" class="ref-card-link">
   <div class="ref-card">
     <div class="ref-img">
       <img src="img/operna-stena-kromeriz.webp" alt="Opěrná stěna v montované hale Kroměříž" loading="lazy">
       <span class="ref-badge badge-red">Opěrná stěna</span>
+      <div class="ref-img-overlay"><span>Zobrazit projekty →</span></div>
     </div>
     <div class="ref-info">
       <div class="ref-name">Montovaná hala</div>
       <div class="ref-meta">90 m³ · Kroměříž</div>
     </div>
   </div>
+  </a>
 
+  <a href="vsechny-projekty.html" class="ref-card-link">
   <div class="ref-card">
     <div class="ref-img">
       <img src="img/betonaz-spolecensky-dum-prostejov.webp" alt="Betonáž Společenský dům Prostějov" loading="lazy">
       <span class="ref-badge badge-blue">Betonáž</span>
+      <div class="ref-img-overlay"><span>Zobrazit projekty →</span></div>
     </div>
     <div class="ref-info">
       <div class="ref-name">Společenský dům</div>
       <div class="ref-meta">650 m² · Prostějov</div>
     </div>
   </div>
+  </a>
 
+  <a href="vsechny-projekty.html" class="ref-card-link">
   <div class="ref-card">
     <div class="ref-img">
       <img src="img/pricky-paseka.webp" alt="Příčky v 12 halách Paseka u Šternberka" loading="lazy">
       <span class="ref-badge badge-purple">Betonáž příček</span>
+      <div class="ref-img-overlay"><span>Zobrazit projekty →</span></div>
     </div>
     <div class="ref-info">
       <div class="ref-name">Příčky v 12 halách</div>
       <div class="ref-meta">Paseka u Šternberka</div>
     </div>
   </div>
+  </a>
+
 </div>
   </section>
 
