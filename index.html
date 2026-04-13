@@ -73,7 +73,7 @@ function gtag_report_phone_conversion(url) {
       --radius-sm: 8px;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     body {
       background: var(--bg);
@@ -230,6 +230,7 @@ function gtag_report_phone_conversion(url) {
       max-height: 1100px;
       overflow: hidden;
       cursor: col-resize;
+      touch-action: pan-y; /* FIX: prevents browser from scrolling page horizontally on hero swipe */
       /* Reset section defaults for hero */
       padding: 0;
       max-width: none;
@@ -1409,6 +1410,14 @@ function gtag_report_phone_conversion(url) {
 }
 .btn-outline:hover { background: var(--orange); color: var(--white); }
 
+/* FIX Bug 2: Techprace mobile overrides — must come AFTER base techprace CSS to win cascade */
+@media (max-width: 768px) {
+  .techprace-block { padding: 1.5rem 1.25rem; }
+  .techprace-icons { grid-template-columns: 1fr; gap: 0.75rem; }
+  .techprace-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .techprace-header p { max-width: 100%; }
+}
+
 /* ========== PROČ MO BETONY ========== */
 .proc-wrap {
   background: var(--bg2);
@@ -2439,7 +2448,7 @@ a.ref-card-link:hover .ref-img-overlay span {
         <div class="kontakt-icon">📍</div>
         <div>
           <div class="kontakt-item-title">Sídlo společnosti</div>
-          <div class="kontakt-item-val">MO Betony s.r.o.<br>Kaštanová 1055/14, Olomouc 779 00</div>
+          <div class="kontakt-item-val">MO Betony s.r.o.<br>Kaštanová 1055/14,<br> Olomouc 779 00</div>
         </div>
       </div>
       <div class="kontakt-item">
@@ -2632,7 +2641,7 @@ a.ref-card-link:hover .ref-img-overlay span {
   </footer>
 
   <!-- ========== SLIDER JS ========== -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     (function() {
       const hero = document.getElementById('hero');
       const heroAfter = document.getElementById('heroAfter');
@@ -2747,21 +2756,4 @@ a.ref-card-link:hover .ref-img-overlay span {
     fetch(form.action, {
       method: 'POST',
       body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(response => {
-      if (response.ok) {
-        window.location.href = 'dekujeme.html';
-      } else {
-        alert('Něco se pokazilo. Zkuste to prosím znovu.');
-        btn.textContent = 'Odeslat poptávku';
-        btn.disabled = false;
-      }
-    })
-    .catch(() => {
-      alert('Něco se pokazilo. Zkuste to prosím znovu.');
-      btn.textContent = 'Odeslat poptávku';
-      btn.disabled = false;
-    });
-  });
-</script>
+      headers: { 'Accept
