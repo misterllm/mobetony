@@ -281,4 +281,39 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://mobetony.cz/blog/skladba-podlahy/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/podlahove-topeni-cena/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/podlaha-rodinny-dum/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/lesteny-beton-cena/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/blog/betonove-podlahy-olomouc/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
