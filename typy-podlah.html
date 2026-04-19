@@ -248,6 +248,11 @@
       transition: all 0.3s;
     }
 
+    /* Mobile nav — skryté mimo media query */
+    .nav-mobile {
+      display: none;
+    }
+
     /* ========== PAGE HERO ========== */
     .page-hero {
       padding: 140px 2rem 60px;
@@ -484,6 +489,23 @@
       transition: background 0.2s, transform 0.15s;
     }
     .btn-cta:hover { background: #e5e7eb; transform: translateY(-1px); }
+
+    .btn-lp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: transparent;
+      color: var(--orange);
+      border: 1.5px solid var(--orange);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+      margin-left: 12px;
+    }
+    .btn-lp:hover { background: var(--orange); color: var(--white); transform: translateY(-1px); }
+    @media (max-width: 600px) { .btn-lp { margin-left: 0; margin-top: 10px; } }
 
     /* ========== SROVNÁVACÍ TABULKA ========== */
     .compare-section {
@@ -790,13 +812,17 @@
       opacity: 1;
       transform: translateY(0);
     }
+    /* Fallback — pokud JS nefunguje, obsah je viditelný */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity: 1; transform: none; transition: none; }
+    }
   </style>
 </head>
 <body>
 
   <!-- ========== NAVIGACE ========== -->
   <nav>
-    <a href="index.html" class="nav-logo">
+    <a href="/" class="nav-logo">
       <img src="android-chrome-512x512.png" alt="MO Betony logo" class="nav-logo-badge">
       <div class="nav-logo-text">
         <span class="nav-logo-name">MO Betony</span>
@@ -805,12 +831,12 @@
     </a>
 
     <ul class="nav-links">
-      <li><a href="typy-podlah.html" class="active">Typy podlah</a></li>
-      <li><a href="index.html#podlahy">Služby</a></li>
-      <li><a href="index.html#proces">Proces</a></li>
-      <li><a href="index.html#reference">Reference</a></li>
-      <li><a href="blog.html">Blog <span class="badge-new">Nové</span></a></li>
-      <li><a href="index.html#kontakt">Kontakt</a></li>
+      <li><a href="/typy-podlah" class="active">Typy podlah</a></li>
+      <li><a href="/#podlahy">Služby</a></li>
+      <li><a href="/#proces">Proces</a></li>
+      <li><a href="/#reference">Reference</a></li>
+      <li><a href="/blog">Blog <span class="badge-new">Nové</span></a></li>
+      <li><a href="/#kontakt">Kontakt</a></li>
     </ul>
 
     <a href="tel:+420774611154" class="btn-call" onclick="return gtag_report_phone_conversion(this.href);">📞 Volejte</a>
@@ -822,19 +848,19 @@
 
   <!-- Mobilní menu -->
   <div class="nav-mobile" id="navMobile">
-    <a href="typy-podlah.html" style="color: var(--orange);">Typy podlah</a>
-    <a href="index.html#podlahy">Služby</a>
-    <a href="index.html#proces">Proces</a>
-    <a href="index.html#reference">Reference</a>
-    <a href="blog.html">Blog</a>
-    <a href="index.html#kontakt">Kontakt</a>
+    <a href="/typy-podlah" style="color: var(--orange);">Typy podlah</a>
+    <a href="/#podlahy">Služby</a>
+    <a href="/#proces">Proces</a>
+    <a href="/#reference">Reference</a>
+    <a href="/blog">Blog</a>
+    <a href="/#kontakt">Kontakt</a>
     <a href="tel:+420774611154" style="color: var(--orange); font-weight: 600;">📞 Volejte nám</a>
   </div>
 
   <!-- ========== PAGE HERO ========== -->
   <div class="page-hero">
     <div class="breadcrumb fade-in">
-      <a href="index.html">Úvod</a>
+      <a href="/">Úvod</a>
       <span class="sep">›</span>
       <span class="current">Typy podlah</span>
     </div>
@@ -885,7 +911,8 @@
           <span class="floor-use-tag">Komerční prostory</span>
         </div>
 
-        <a href="index.html#kontakt" class="btn-cta">Nezávazná poptávka →</a>
+        <a href="/#kontakt" class="btn-cta">Nezávazná poptávka →</a>
+        <a href="/betonove-podlahy-olomouc/" class="btn-lp">Detailní stránka →</a>
         <p style="margin-top:1.25rem; font-size:13px; color:var(--gray2);">📖 Čtěte také: <a href="/blog/jak-se-starat-o-betonovou-podlahu/" style="color:var(--orange);">Jak se starat o betonovou podlahu</a> · <a href="/blog/rekonstrukce-podlahy/" style="color:var(--orange);">Rekonstrukce podlahy krok za krokem</a></p>
       </div>
 
@@ -934,7 +961,8 @@
           <span class="floor-use-tag">Novostavby</span>
         </div>
 
-        <a href="index.html#kontakt" class="btn-cta">Nezávazná poptávka →</a>
+        <a href="/#kontakt" class="btn-cta">Nezávazná poptávka →</a>
+        <a href="/anhydritove-podlahy-olomouc/" class="btn-lp">Detailní stránka →</a>
         <p style="margin-top:1.25rem; font-size:13px; color:var(--gray2);">📖 Čtěte také: <a href="/blog/anhydrit-vs-beton/" style="color:var(--orange);">Anhydrit vs. beton – co vybrat?</a> · <a href="/blog/podlahove-topeni-anhydrit/" style="color:var(--orange);">Podlahové topení a anhydrit</a> · <a href="/blog/vysychani-anhydritu/" style="color:var(--orange);">Jak správně vysychat anhydrit</a></p>
       </div>
 
@@ -984,7 +1012,8 @@
           <span class="floor-use-tag">Obchody</span>
         </div>
 
-        <a href="index.html#kontakt" class="btn-cta">Nezávazná poptávka →</a>
+        <a href="/#kontakt" class="btn-cta">Nezávazná poptávka →</a>
+        <a href="/lesteny-beton-olomouc/" class="btn-lp">Detailní stránka →</a>
         <p style="margin-top:1.25rem; font-size:13px; color:var(--gray2);">📖 Čtěte také: <a href="/blog/lesteny-beton-pruvodce/" style="color:var(--orange);">Průvodce leštěným betonem</a> · <a href="/blog/lesteny-beton-luxus/" style="color:var(--orange);">Leštěný beton jako luxusní prvek</a></p>
       </div>
 
@@ -1033,7 +1062,8 @@
           <span class="floor-use-tag">Autoservisy</span>
         </div>
 
-        <a href="index.html#kontakt" class="btn-cta">Nezávazná poptávka →</a>
+        <a href="/#kontakt" class="btn-cta">Nezávazná poptávka →</a>
+        <a href="/prumyslove-podlahy-olomouc/" class="btn-lp">Detailní stránka →</a>
         <p style="margin-top:1.25rem; font-size:13px; color:var(--gray2);">📖 Čtěte také: <a href="/blog/prumyslove-podlahy-pruvodce/" style="color:var(--orange);">Průmyslové podlahy – kompletní průvodce</a> · <a href="/blog/prumyslove-podlahy-firmy/" style="color:var(--orange);">Jak vybrat průmyslovou podlahu pro firmu</a></p>
       </div>
 
@@ -1082,7 +1112,7 @@
           <span class="floor-use-tag">Mokré prostory</span>
         </div>
 
-        <a href="index.html#kontakt" class="btn-cta">Nezávazná poptávka →</a>
+        <a href="/#kontakt" class="btn-cta">Nezávazná poptávka →</a>
       </div>
 
       <div class="floor-visual">
@@ -1131,7 +1161,7 @@
           <span class="floor-use-tag">Terasy</span>
         </div>
 
-        <a href="index.html#kontakt" class="btn-cta">Nezávazná poptávka →</a>
+        <a href="/#kontakt" class="btn-cta">Nezávazná poptávka →</a>
       </div>
 
       <div class="floor-visual">
@@ -1180,7 +1210,7 @@
           <span class="floor-use-tag">Přístavby</span>
         </div>
 
-        <a href="index.html#kontakt" class="btn-cta">Nezávazná poptávka →</a>
+        <a href="/#kontakt" class="btn-cta">Nezávazná poptávka →</a>
       </div>
 
       <div class="floor-visual">
@@ -1294,7 +1324,7 @@
       <h2 class="cta-title">Nevíte, který typ<br><span>zvolit?</span></h2>
       <p class="cta-sub">Poradíme vám s výběrem ideální podlahy pro váš projekt. Konzultace zdarma, nabídka do 48 hodin.</p>
       <div class="cta-btns">
-        <a href="index.html#kontakt" class="btn-primary">Poptávkový formulář →</a>
+        <a href="/#kontakt" class="btn-primary">Poptávkový formulář →</a>
         <a href="tel:+420774611154" class="btn-secondary">📞 +420 774 611 154</a>
       </div>
     </div>
@@ -1318,21 +1348,21 @@
         <div>
           <div class="footer-col-title">Služby</div>
           <ul class="footer-links">
-            <li><a href="typy-podlah.html">Typy podlah</a></li>
-            <li><a href="lesteny-beton.html">Leštěné betony</a></li>
-            <li><a href="prumyslova-podlaha.html">Průmyslové podlahy</a></li>
-            <li><a href="index.html#podlahy">Vodo-Topo</a></li>
+            <li><a href="/typy-podlah">Typy podlah</a></li>
+            <li><a href="/lesteny-beton-olomouc/">Leštěné betony</a></li>
+            <li><a href="/prumyslove-podlahy-olomouc/">Průmyslové podlahy</a></li>
+            <li><a href="/#podlahy">Vodo-Topo</a></li>
           </ul>
         </div>
 
         <div>
           <div class="footer-col-title">Společnost</div>
           <ul class="footer-links">
-            <li><a href="index.html#reference">Reference</a></li>
-            <li><a href="index.html#proces">Jak pracujeme</a></li>
-            <li><a href="index.html#faq">FAQ</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="index.html#kontakt">Kontakt</a></li>
+            <li><a href="/#reference">Reference</a></li>
+            <li><a href="/#proces">Jak pracujeme</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/#kontakt">Kontakt</a></li>
           </ul>
         </div>
       </div>
@@ -1359,16 +1389,20 @@
     });
 
     // Scroll animace (fade-in)
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05 });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    } else {
+      // Fallback — bez IntersectionObserver zobrazíme vše hned
+      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    }
   </script>
 </body>
 </html>
