@@ -292,12 +292,13 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
-      transition: border-color 0.2s, transform 0.2s;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
     }
     .proj-card:hover {
-      border-color: var(--border2);
-      transform: translateY(-4px);
+      border-color: rgba(249,115,22,0.5);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(249,115,22,0.15), 0 4px 12px rgba(0,0,0,0.4);
     }
 
     .proj-img {
@@ -313,10 +314,16 @@
       display: block;
       position: absolute;
       top: 0; left: 0;
-      transition: transform 0.4s ease;
+      transition: transform 0.5s ease;
     }
     .proj-card:hover .proj-img img {
-      transform: scale(1.04);
+      transform: scale(1.06);
+    }
+    .proj-card:hover .proj-badge {
+      transform: translateY(-2px);
+    }
+    .proj-badge {
+      transition: transform 0.3s ease;
     }
 
     /* Placeholder pro projekty bez fotky */
@@ -358,6 +365,10 @@
       font-weight: 800; font-size: 20px;
       text-transform: uppercase;
       margin-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+    .proj-card:hover .proj-name {
+      color: var(--orange);
     }
     .proj-meta {
       font-size: 13px; color: var(--gray);
@@ -551,6 +562,51 @@
 
       <!-- === REÁLNÉ PROJEKTY (tvoje fotky) === -->
 
+
+      <div class="proj-card" data-type="lesteny">
+        <div class="proj-img">
+          <img src="img/pridani13.webp" alt="Leštěný beton průmyslová hala Olomouc" loading="lazy">
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Průmyslová hala</div>
+          <div class="proj-meta">950 m² <span class="proj-meta-dot"></span> Olomouc</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="lesteny">
+        <div class="proj-img">
+          <img src="img/pridani17.webp" alt="Leštěný beton servis Zlín" loading="lazy">
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Servis</div>
+          <div class="proj-meta">350 m² <span class="proj-meta-dot"></span> Zlín</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="prumyslova">
+        <div class="proj-img">
+          <img src="img/pridani9.webp" alt="Strojně hlazená venkovní plocha Přerov" loading="lazy">
+          <span class="proj-badge badge-gray">Průmyslová</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Zpevněná plocha</div>
+          <div class="proj-meta">800 m² <span class="proj-meta-dot"></span> Přerov</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="lesteny">
+        <div class="proj-img">
+          <img src="img/pridani1800.webp" alt="Leštěný beton výrobní hala Ostrava" loading="lazy">
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Výrobní hala</div>
+          <div class="proj-meta">1 800 m² <span class="proj-meta-dot"></span> Uherské Hradiště</div>
+        </div>
+      </div>
+
       <div class="proj-card" data-type="anhydrit">
         <div class="proj-img">
           <img src="img/anhydrit-rodinny-dum.webp" alt="Anhydritová podlaha rodinný dům Šternberk" loading="lazy">
@@ -581,6 +637,74 @@
         <div class="proj-info">
           <div class="proj-name">Bytový dům</div>
           <div class="proj-meta">900 m² <span class="proj-meta-dot"></span> Opava</div>
+        </div>
+      </div>
+
+      <!-- === NOVÉ REFERENCE (duben 2026) === -->
+
+      <div class="proj-card" data-type="lesteny">
+        <div class="proj-img">
+          <img src="img/pridani2.webp" alt="Leštěný beton dílna Olomouc" loading="lazy">
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Dílna</div>
+          <div class="proj-meta">150 m² <span class="proj-meta-dot"></span> Olomouc</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="lesteny">
+        <div class="proj-img">
+          <img src="img/pridani6.webp" alt="Betonáž průmyslové haly Brno" loading="lazy">
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Průmyslová hala</div>
+          <div class="proj-meta">380 m² <span class="proj-meta-dot"></span> Brno</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="prumyslova">
+        <div class="proj-img">
+          <img src="img/pridani5.webp" alt="Průmyslová podlaha logistická hala Ostrava" loading="lazy">
+          <span class="proj-badge badge-gray">Průmyslová</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Logistická hala</div>
+          <div class="proj-meta">1 400 m² <span class="proj-meta-dot"></span> Ostrava</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="prumyslova">
+        <div class="proj-img">
+          <img src="img/pridani7.webp" alt="Betonáž venkovní plochy Zlín" loading="lazy">
+          <span class="proj-badge badge-gray">Průmyslová</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Venkovní plocha</div>
+          <div class="proj-meta">320 m² <span class="proj-meta-dot"></span> Zlín</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="prumyslova">
+        <div class="proj-img">
+          <img src="img/pridani10.webp" alt="Průmyslová podlaha zpevněná plocha Jeseník" loading="lazy">
+          <span class="proj-badge badge-gray">Průmyslová</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Zpevněná plocha</div>
+          <div class="proj-meta">70 m² <span class="proj-meta-dot"></span> Nový Jičín</div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-type="betonaz">
+        <div class="proj-img">
+          <img src="img/lestena_ostrava.webp" alt="Betonáž podzemních garáží Brno" loading="lazy">
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Rodinný dům</div>
+          <div class="proj-meta">350 m² <span class="proj-meta-dot"></span> Ostrava</div>
         </div>
       </div>
 

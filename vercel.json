@@ -25,6 +25,11 @@
       "source": "/blog/lity-poter-cena",
       "destination": "/blog/cena-anhydritove-podlahy",
       "permanent": true
+    },
+    {
+      "source": "/blog/anhydrit-nebo-cement",
+      "destination": "/blog/anhydrit-vs-beton",
+      "permanent": true
     }
   ]
 }
