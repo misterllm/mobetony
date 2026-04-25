@@ -558,7 +558,7 @@
 
   <!-- ========== PROJECTS GRID ========== -->
   <section class="projects-section">
-    <div class="projects-grid fade-in">
+    <div class="projects-grid">
 
       <!-- === REÁLNÉ PROJEKTY (tvoje fotky) === -->
 
@@ -1141,7 +1141,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08 });
+    }, { threshold: 0 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     // Filtrování projektů
