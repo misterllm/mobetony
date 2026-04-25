@@ -2027,46 +2027,46 @@ a.ref-card-link:hover .ref-img-overlay span {
 </head>
 <body>
 
-  <!-- ========== NAVIGACE ========== -->
-  <nav>
-    <a href="#hero" class="nav-logo">
-      <img src="android-chrome-512x512.png" alt="MO Betony logo" class="nav-logo-badge">
-      <div class="nav-logo-text">
-        <span class="nav-logo-name">MO Betony</span>
-        <span class="nav-logo-sub">BETONOVÉ PODLAHY</span>
-      </div>
-    </a>
-
-    <ul class="nav-links">
-      <li><a href="typy-podlah.html">Typy podlah</a></li>
-      <li><a href="index.html#podlahy">Služby</a></li>
-      <li><a href="#proces">Proces</a></li>
-      <li><a href="vsechny-projekty.html">Reference</a></li>
-      <li><a href="cenik.html">Ceník</a></li>
-      <li><a href="blog.html">Blog <span class="badge-new">Nové</span></a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-    </ul>
-
-    <a href="tel:+420774611154" class="btn-call" onclick="gtag_report_phone_conversion();">
-      📞 Volejte
-    </a>
-
-    <!-- Hamburger -->
-    <div class="nav-toggle" id="navToggle" aria-label="Menu">
-      <span></span><span></span><span></span>
+<!-- ========== NAVIGACE ========== -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="android-chrome-512x512.png" alt="MO Betony logo" class="nav-logo-badge">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">MO Betony</span>
+      <span class="nav-logo-sub">BETONOVÉ PODLAHY</span>
     </div>
-  </nav>
+  </a>
 
-  <!-- Mobilní menu -->
-  <div class="nav-mobile" id="navMobile">
-    <a href="typy-podlah.html">Typy podlah</a>
-    <a href="index.html#podlahy">Služby</a>
-    <a href="#proces">Proces</a>
-    <a href="#reference">Reference</a>
-    <a href="blog.html">Blog <span class="badge-new">Nové</span></a>
-    <a href="#kontakt">Kontakt</a>
-    <a href="tel:+420774611154" style="color: var(--orange); font-weight: 600;" onclick="gtag_report_phone_conversion();">📞 Volejte nám</a>
+  <ul class="nav-links">
+    <li><a href="/typy-podlah">Typy podlah</a></li>
+    <li><a href="#podlahy">Služby</a></li>
+    <li><a href="#proces">Proces</a></li>
+    <li><a href="/cenik">Ceník</a></li>
+    <li><a href="#reference">Reference</a></li>
+    <li><a href="/blog">Blog <span class="badge-new">Nové</span></a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+
+  <a href="tel:+420774611154" class="btn-call" onclick="return gtag_report_phone_conversion(this.href);">
+    📞 Volejte
+  </a>
+
+  <div class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
   </div>
+</nav>
+
+<!-- Mobilní menu -->
+<div class="nav-mobile" id="navMobile">
+  <a href="/typy-podlah">Typy podlah</a>
+  <a href="#podlahy">Služby</a>
+  <a href="#proces">Proces</a>
+  <a href="/cenik" style="color:var(--orange);font-weight:600;">Ceník</a>
+  <a href="#reference">Reference</a>
+  <a href="/blog">Blog <span class="badge-new">Nové</span></a>
+  <a href="#kontakt">Kontakt</a>
+  <a href="tel:+420774611154" style="color:var(--orange);font-weight:600;" onclick="return gtag_report_phone_conversion(this.href);">📞 Volejte nám</a>
+</div>
 
 <!-- ========== HERO — Before/After Slider ========== -->
   <div id="hero" class="hero--hint">
