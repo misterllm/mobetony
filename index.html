@@ -957,6 +957,86 @@ nav {
     .card-small .card-title { font-size: 18px; margin-bottom: 0.4rem; }
     .card-small .card-desc { margin-bottom: 0; font-size: 13px; }
 
+    /* ========== PHOTO SERVICE CARDS ========== */
+    .service-photo-card {
+      position: relative; overflow: hidden;
+      border-radius: var(--radius);
+      min-height: 370px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      text-decoration: none; cursor: pointer;
+      border: 1px solid var(--border);
+    }
+    .service-photo-card-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .service-photo-card:hover .service-photo-card-img { transform: scale(1.07); }
+    .service-photo-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.1) 100%);
+      transition: background 0.35s ease;
+    }
+    .service-photo-card:hover .service-photo-card-overlay {
+      background: linear-gradient(to top, rgba(249,115,22,0.85) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0.1) 100%);
+    }
+    .service-photo-card-body {
+      position: relative; z-index: 1;
+      padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 0.4rem;
+    }
+    .service-photo-card-icon {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: rgba(249,115,22,0.2);
+      border: 1px solid rgba(249,115,22,0.4);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.4rem;
+    }
+    .service-photo-card-title {
+      font-family: var(--font-head); font-weight: 800;
+      font-size: 21px; color: var(--white);
+      text-transform: uppercase; line-height: 1.1;
+    }
+    .service-photo-card-desc {
+      font-size: 13px; color: rgba(255,255,255,0.8);
+      line-height: 1.5; margin-bottom: 0.3rem;
+    }
+    .service-photo-card-features {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 4px;
+      margin-bottom: 0.6rem;
+    }
+    .service-photo-card-features li {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 12px; color: rgba(255,255,255,0.75);
+    }
+    .service-photo-card-features li::before {
+      content: ''; width: 12px; height: 12px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.55);
+      flex-shrink: 0;
+    }
+    .service-photo-card-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--font-head); font-size: 13px;
+      font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--white);
+      opacity: 0; transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .service-photo-card:hover .service-photo-card-cta { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      .service-photo-card { min-height: 300px; }
+      .service-photo-card-cta { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      .podlahy-grid { grid-template-columns: 1fr; }
+      .service-photo-card { min-height: 260px; }
+    }
+
     /* ========== BANNER ========== */
     .banner {
       background: var(--bg3);
@@ -2485,61 +2565,83 @@ a.ref-card-link:hover .ref-img-overlay span {
       </p>
     </div>
 
-<!-- 3 velké karty -->
+<!-- 3 velké karty — photo cards -->
 <div class="podlahy-grid fade-in">
-  <div class="card">
-    <div class="card-icon">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/>
-  <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/>
-  <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/>
-</svg>
-</div>
-    <h3 class="card-title">Anhydritové podlahy</h3>
-    <p class="card-desc">Samonivelační litý potěr, který sám obteče podlahové topení a dokonale vyrovná podklad. Naše hlavní specializace v Olomouci a okolí.</p>
-    <ul class="card-features">
-      <li>Ideální pro podlahové topení</li>
-      <li>Tloušťka od 35 mm</li>
-      <li>Pochůznost do 48 hodin</li>
-    </ul>
-    <a href="anhydritova-podlaha.html" class="card-cta-btn">Více o anhydritových podlahách →</a>
-  </div>
 
-  <div class="card">
-    <div class="card-icon">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M6 3h12l4 6-10 13L2 9z"/>
-    <path d="M11 3 8 9l4 13 4-13-3-6"/>
-    <path d="M2 9h20"/>
-  </svg>
-</div>
-    <h3 class="card-title">Leštěné betonové podlahy</h3>
-    <p class="card-desc">Zrcadlový povrch s výjimečnou odolností — bez koberců, bez dlaždic. Prémiové řešení pro showroomy, lofty i průmyslové haly.</p>
-    <ul class="card-features">
-      <li>Zrcadlový lesk</li>
-      <li>Extrémní odolnost</li>
-      <li>Luxusní vzhled</li>
-    </ul>
-    <a href="lesteny-beton.html" class="card-cta-btn">Více o leštěném betonu →</a>
-  </div>
+  <a href="/anhydritove-podlahy-olomouc" class="service-photo-card">
+    <img class="service-photo-card-img" src="img/landing/anhydritova-podlaha-olomouc-rd.webp" alt="Anhydritová podlaha Olomouc — rodinný dům, MO Betony" loading="lazy" width="600" height="370">
+    <div class="service-photo-card-overlay"></div>
+    <div class="service-photo-card-body">
+      <div class="service-photo-card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/>
+          <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/>
+          <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/>
+        </svg>
+      </div>
+      <h3 class="service-photo-card-title">Anhydritové podlahy</h3>
+      <p class="service-photo-card-desc">Samonivelační litý potěr, který sám obteče podlahové topení a dokonale vyrovná podklad. Naše hlavní specializace v Olomouci a okolí.</p>
+      <ul class="service-photo-card-features">
+        <li>Ideální pro podlahové topení</li>
+        <li>Tloušťka od 35 mm</li>
+        <li>Pochůznost do 48 hodin</li>
+      </ul>
+      <div class="service-photo-card-cta">
+        Více o anhydritových podlahách
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+  </a>
 
-  <div class="card">
-    <div class="card-icon">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35z"/>
-    <path d="M6 18h1"/><path d="M10 18h1"/><path d="M6 14h1"/><path d="M10 14h1"/>
-    <rect x="14" y="14" width="4" height="6" rx="1"/>
-  </svg>
-</div>
-    <h3 class="card-title">Průmyslové podlahy</h3>
-    <p class="card-desc">Drátobetonové, hlazené i epoxidové podlahy pro sklady, výrobní haly a autoservisy. Nosnost až 50 t/m², Olomoucký i Jihomoravský kraj.</p>
-    <ul class="card-features">
-      <li>Zátěž až 50 t/m²</li>
-      <li>Protiskluzová úprava</li>
-      <li>Chemická odolnost</li>
-    </ul>
-    <a href="prumyslova-podlaha.html" class="card-cta-btn">Více o průmyslových podlahách →</a>
-  </div>
+  <a href="/lesteny-beton-olomouc" class="service-photo-card">
+    <img class="service-photo-card-img" src="img/landing/lesteny-beton-olomouc-rd.webp" alt="Leštěný beton Olomouc — rodinný dům, MO Betony" loading="lazy" width="600" height="370">
+    <div class="service-photo-card-overlay"></div>
+    <div class="service-photo-card-body">
+      <div class="service-photo-card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <circle cx="12" cy="12" r="3.5"/>
+        </svg>
+      </div>
+      <h3 class="service-photo-card-title">Leštěné betonové podlahy</h3>
+      <p class="service-photo-card-desc">Zrcadlový povrch s výjimečnou odolností — bez koberců, bez dlaždic. Prémiové řešení pro showroomy, lofty i průmyslové haly.</p>
+      <ul class="service-photo-card-features">
+        <li>Zrcadlový lesk</li>
+        <li>Extrémní odolnost</li>
+        <li>Luxusní vzhled</li>
+      </ul>
+      <div class="service-photo-card-cta">
+        Více o leštěném betonu
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+  </a>
+
+  <a href="/prumyslove-podlahy-olomouc" class="service-photo-card">
+    <img class="service-photo-card-img" src="img/landing/prumyslova-podlaha-vyroba-olomouc.webp" alt="Průmyslová podlaha výroba Olomouc — MO Betony" loading="lazy" width="600" height="370">
+    <div class="service-photo-card-overlay"></div>
+    <div class="service-photo-card-body">
+      <div class="service-photo-card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35z"/>
+          <path d="M6 18h1"/><path d="M10 18h1"/><path d="M6 14h1"/><path d="M10 14h1"/>
+          <rect x="14" y="14" width="4" height="6" rx="1"/>
+        </svg>
+      </div>
+      <h3 class="service-photo-card-title">Průmyslové podlahy</h3>
+      <p class="service-photo-card-desc">Drátobetonové, hlazené i epoxidové podlahy pro sklady, výrobní haly a autoservisy. Nosnost až 50 t/m², Olomoucký i Jihomoravský kraj.</p>
+      <ul class="service-photo-card-features">
+        <li>Zátěž až 50 t/m²</li>
+        <li>Protiskluzová úprava</li>
+        <li>Chemická odolnost</li>
+      </ul>
+      <div class="service-photo-card-cta">
+        Více o průmyslových podlahách
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </div>
+  </a>
+
 </div>
 
 <!-- 3 malé karty -->
@@ -2560,11 +2662,13 @@ a.ref-card-link:hover .ref-img-overlay span {
   </div>
 
   <div class="card card-small">
-    <div class="card-icon" style="background: var(--bg4); font-size:20px;">🔧</div>
+    <div class="card-icon" style="background: var(--bg4);">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    </div>
     <div>
       <h3 class="card-title">Opravy a sanace</h3>
       <p class="card-desc">Profesionální opravy prasklin, výtluků a poškozených povrchů. Kompletní renovace starých podlah.</p>
-      <a href="#kontakt" class="card-cta-link">Nezávazná konzultace →</a>
+      <a href="/kontakt" class="card-cta-link">Nezávazná konzultace →</a>
     </div>
   </div>
 
