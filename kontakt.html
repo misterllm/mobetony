@@ -936,6 +936,45 @@
       transform: translateY(-1px);
     }
 
+    /* Reference foto strip ve formuláři */
+    .form-ref-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 1.5rem;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .form-ref-strip-item {
+      position: relative;
+      height: 90px;
+      overflow: hidden;
+    }
+    .form-ref-strip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .form-ref-strip-item:hover img { transform: scale(1.05); }
+    .form-ref-strip-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .form-ref-strip-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray2);
+      margin-bottom: 0.6rem;
+    }
+
     /* Trust strip */
     .form-trust {
       display: flex;
@@ -1230,7 +1269,7 @@
     </div>
     <div class="page-header-label">Kontakt</div>
     <h1 class="page-header-title">Kontaktujte nás</h1>
-    <p class="page-header-desc">Jsme tu pro vás Po–Pá 7:00–17:00. Rádi zodpovíme dotazy a připravíme nezávaznou cenovou nabídku do 48 hodin.</p>
+    <p class="page-header-desc">Jsme tu pro vás Po–So 7:00–17:00. Rádi zodpovíme Vaše dotazy, či se domluvíme na osobní schůzce telefonicky. Následně připravíme nezávaznou cenovou nabídku do 48 hodin.</p>
   </div>
 </div>
 
@@ -1273,7 +1312,7 @@
         <div>
           <div class="kontakt-item-title">Firemní e-mail</div>
           <div class="kontakt-item-val">
-            <a href="mailto:info@mobetony.cz">info@mobetony.cz</a>
+            <a href="mailto:info@mobetony.cz">info@mobetony.cz<br>havlicek@mobetony.cz</a>
           </div>
         </div>
       </div>
@@ -1285,7 +1324,7 @@
         </div>
         <div>
           <div class="kontakt-item-title">Provozní doba</div>
-          <div class="kontakt-item-val">Po–Pá: 7:00–17:00<br>So–Ne: Zavřeno</div>
+          <div class="kontakt-item-val">Po–So: 7:00–17:00<br>Ne: Dle předchozí domluvy</div>
         </div>
       </div>
 
@@ -1393,6 +1432,21 @@
     <!-- ===== PRAVÝ SLOUPEC – FORMULÁŘ ===== -->
     <div class="form-card fade-in">
       <div class="form-title">Poptávkový formulář</div>
+
+      <!-- Ukázka realizací -->
+      <div class="form-ref-strip-label">Ukázka naší práce</div>
+      <div class="form-ref-strip">
+        <div class="form-ref-strip-item">
+          <img src="img/anhydrit-rodinny-dum.webp" alt="Anhydritová podlaha rodinný dům" loading="lazy" width="240" height="90">
+        </div>
+        <div class="form-ref-strip-item">
+          <img src="img/lesteny-beton-hala.webp" alt="Leštěný beton průmyslová hala" loading="lazy" width="240" height="90">
+        </div>
+        <div class="form-ref-strip-item">
+          <img src="img/hala-prumyslova.webp" alt="Průmyslová betonová podlaha" loading="lazy" width="240" height="90">
+        </div>
+      </div>
+
       <form id="poptavkaForm" action="https://formspree.io/f/meerbywn" method="POST">
         <div class="form-row">
           <div class="form-group">
