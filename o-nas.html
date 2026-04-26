@@ -36,6 +36,7 @@
   <meta property="og:title" content="O nás – MO Betony s.r.o." />
   <meta property="og:description" content="Příběh firmy, tým specialistů a certifikovaný partner CEMEX. Anhydritové, leštěné a průmyslové podlahy s 15+ lety zkušeností." />
   <meta property="og:url" content="https://mobetony.cz/o-nas" />
+  <meta property="og:image" content="https://mobetony.cz/img/og-image.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="cs_CZ" />
   <meta property="og:site_name" content="MO Betony s.r.o." />
@@ -54,7 +55,9 @@
       "url": "https://mobetony.cz",
       "telephone": "+420774611154",
       "email": "info@mobetony.cz",
+      "image": "https://mobetony.cz/android-chrome-512x512.png",
       "foundingDate": "2020",
+      "numberOfEmployees": { "@type": "QuantitativeValue", "value": 10 },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Kaštanová 1055/14",
@@ -62,20 +65,29 @@
         "postalCode": "779 00",
         "addressCountry": "CZ"
       },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Olomoucký kraj" },
+        { "@type": "AdministrativeArea", "name": "Jihomoravský kraj" }
+      ],
       "employee": [
         {
           "@type": "Person",
           "name": "Martin Havlíček",
           "jobTitle": "Jednatel",
+          "image": "https://mobetony.cz/img/team-martin.jpg",
+          "telephone": "+420774611154",
           "description": "Zakladatel MO Betony s.r.o. Se zázemím v oboru od roku 2020 — od čerpání betonu po komplexní realizaci podlah.",
-          "worksFor": { "@type": "Organization", "name": "MO Betony s.r.o." }
+          "worksFor": { "@type": "Organization", "name": "MO Betony s.r.o." },
+          "knowsAbout": ["Anhydritové podlahy", "Leštěný beton", "Průmyslové podlahy", "Drátkobeton"]
         },
         {
           "@type": "Person",
           "name": "Ing. Petr Jeřábek",
           "jobTitle": "Stavební inženýr",
+          "image": "https://mobetony.cz/img/team-petr.jpg",
           "description": "Certifikovaný stavební inženýr, zodpovídá za technické řešení, instalace a pokrytí Jihomoravského kraje.",
-          "worksFor": { "@type": "Organization", "name": "MO Betony s.r.o." }
+          "worksFor": { "@type": "Organization", "name": "MO Betony s.r.o." },
+          "knowsAbout": ["Projektová dokumentace", "Podlahové topení", "Vodoinstalace", "Průmyslové stavitelství"]
         }
       ],
       "knowsAbout": [
@@ -146,24 +158,55 @@
     .nav-logo { display: flex; align-items: center; gap: 10px; }
     .nav-logo-badge { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; object-fit: contain; }
     .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-    .nav-logo-name { font-family: var(--font-head); font-weight: 800; font-size: 17px; letter-spacing: 0.3px; }
+    .nav-logo-name { font-family: var(--font-head); font-weight: 800; font-size: 17px; letter-spacing: 0.3px; color: var(--white); }
     .nav-logo-sub { font-size: 10px; color: var(--gray); letter-spacing: 0.5px; }
-    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 15px; color: var(--gray); transition: color 0.3s, text-shadow 0.3s; position: relative; padding-bottom: 4px; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+    .nav-links > li { position: relative; }
+    .nav-links a { font-size: 15px; color: var(--gray); transition: color 0.3s, text-shadow 0.3s; display: flex; align-items: center; gap: 6px; position: relative; padding-bottom: 4px; text-decoration: none; }
     .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--orange); border-radius: 1px; transition: width 0.25s ease; }
     .nav-links a:hover { color: var(--orange); text-shadow: 0 0 8px rgba(249,115,22,0.4); }
     .nav-links a:hover::after { width: 60%; }
-    .nav-links a.active { color: var(--white); }
-    .badge-new { background: var(--cyan); color: #042c53; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 20px; font-family: var(--font-head); letter-spacing: 0.5px; text-transform: uppercase; vertical-align: middle; margin-left: 4px; }
-    .btn-call { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; background: var(--orange); color: var(--white); border-radius: var(--radius-sm); font-family: var(--font-head); font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s; white-space: nowrap; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { cursor: pointer; background: none; border: none; font-family: inherit; font-size: 15px; color: var(--gray); padding: 0 0 4px 0; display: flex; align-items: center; gap: 6px; transition: color 0.3s, text-shadow 0.3s; position: relative; }
+    .nav-dropdown-toggle::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--orange); border-radius: 1px; transition: width 0.25s ease; }
+    .nav-dropdown:hover .nav-dropdown-toggle, .nav-dropdown.open .nav-dropdown-toggle { color: var(--orange); text-shadow: 0 0 8px rgba(249,115,22,0.4); }
+    .nav-dropdown:hover .nav-dropdown-toggle::after, .nav-dropdown.open .nav-dropdown-toggle::after { width: 60%; }
+    .nav-dropdown-toggle .chevron { width: 12px; height: 12px; transition: transform 0.25s ease; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-dropdown:hover .chevron, .nav-dropdown.open .chevron { transform: rotate(180deg); }
+    .nav-dropdown-panel { position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(-8px); width: 620px; background: rgba(20,20,20,0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s; box-shadow: 0 12px 48px rgba(0,0,0,0.6), 0 0 1px rgba(249,115,22,0.15); }
+    .nav-dropdown:hover .nav-dropdown-panel, .nav-dropdown.open .nav-dropdown-panel { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown-panel::before { content: ''; position: absolute; top: -14px; left: 0; right: 0; height: 14px; }
+    .nav-dropdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .nav-dropdown-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; background: var(--bg3); border-radius: var(--radius-sm); border-left: 3px solid var(--orange); transition: background 0.2s ease, transform 0.2s ease; text-decoration: none; }
+    .nav-dropdown-item:hover { background: var(--bg4); transform: translateX(2px); }
+    .nav-dropdown-item::after { display: none !important; }
+    .nav-dropdown-icon { width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; stroke: var(--orange); stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-dropdown-text { display: flex; flex-direction: column; gap: 3px; }
+    .nav-dropdown-title { color: var(--white); font-weight: 600; font-size: 14px; line-height: 1.2; }
+    .nav-dropdown-desc { color: var(--gray); font-size: 12px; line-height: 1.4; }
+    .nav-dropdown-footer { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); text-align: center; }
+    .nav-dropdown-footer a { color: var(--orange); font-size: 13px; font-weight: 600; padding-bottom: 0; display: inline-flex; gap: 6px; }
+    .nav-dropdown-footer a::after { display: none; }
+    .nav-dropdown-footer a:hover { color: var(--orange2); }
+    .badge-new { font-size: 10px; font-weight: 600; background: var(--cyan); color: #042c53; padding: 1px 6px; border-radius: 4px; letter-spacing: 0.3px; }
+    .btn-call { display: flex; align-items: center; gap: 8px; padding: 8px 18px; background: var(--orange); color: var(--white); border-radius: 6px; font-size: 14px; font-weight: 600; transition: background 0.2s; white-space: nowrap; text-decoration: none; }
     .btn-call:hover { background: var(--orange2); }
-    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: 0.3s; }
-    .nav-mobile { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; flex-direction: column; gap: 1.25rem; z-index: 999; }
-    .nav-mobile a { font-size: 16px; color: var(--gray); font-weight: 500; transition: color 0.2s; }
-    .nav-mobile a:hover { color: var(--orange); }
+    .btn-call svg { stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+    .nav-mobile { display: none; flex-direction: column; position: fixed; top: 64px; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; gap: 1.25rem; z-index: 999; max-height: calc(100vh - 64px); overflow-y: auto; }
     .nav-mobile.open { display: flex; }
-    @media (max-width: 768px) {
+    .nav-mobile a { font-size: 16px; color: var(--white); padding: 0.25rem 0; text-decoration: none; }
+    .nav-mobile-dropdown { display: flex; flex-direction: column; }
+    .nav-mobile-dropdown-toggle { background: none; border: none; font-family: inherit; font-size: 16px; color: var(--white); padding: 0.25rem 0; cursor: pointer; display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .nav-mobile-dropdown-toggle .chevron { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.25s ease; }
+    .nav-mobile-dropdown.open .nav-mobile-dropdown-toggle .chevron { transform: rotate(180deg); }
+    .nav-mobile-dropdown-list { display: none; flex-direction: column; gap: 0.85rem; padding: 0.85rem 0 0.5rem 1.25rem; border-left: 2px solid var(--border); margin-left: 4px; }
+    .nav-mobile-dropdown.open .nav-mobile-dropdown-list { display: flex; }
+    .nav-mobile-dropdown-list a { font-size: 15px; color: var(--gray); padding: 0; display: flex; align-items: center; gap: 10px; }
+    .nav-mobile-dropdown-list a:hover { color: var(--orange); }
+    .nav-mobile-dropdown-list a svg { width: 16px; height: 16px; stroke: var(--orange); stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    @media (max-width: 960px) {
       .nav-links, .btn-call { display: none; }
       .nav-toggle { display: flex; }
     }
@@ -378,15 +421,86 @@
       margin-bottom: 1.25rem;
     }
     .leader-avatar {
-      width: 56px; height: 56px;
+      width: 72px; height: 72px;
       border-radius: 50%;
       background: var(--bg4);
       border: 2px solid var(--orange);
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-head);
-      font-weight: 900; font-size: 22px;
-      color: var(--orange);
       flex-shrink: 0;
+      overflow: hidden;
+      color: var(--orange);
+    }
+    .leader-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      border-radius: 50%;
+    }
+    .leader-avatar svg {
+      width: 38px; height: 38px;
+      stroke: var(--orange); stroke-width: 1.5; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* ========== PHOTO GALLERY ========== */
+    .gallery-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+    .gallery-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+    }
+    .gallery-header {
+      text-align: center; margin-bottom: 48px;
+    }
+    .gallery-header .section-sub {
+    max-width: 600px; margin: 0 auto;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 10px 14px;
+      background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+      font-size: 13px; color: var(--white); font-weight: 500;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-item-caption { opacity: 1; }
+    .gallery-item-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; color: var(--gray2);
+      font-size: 13px; text-align: center; padding: 16px;
+    }
+    .gallery-item-placeholder svg {
+      width: 32px; height: 32px;
+      stroke: var(--border2); stroke-width: 1.5; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid .gallery-item:last-child { display: none; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
     }
     .leader-name {
       font-family: var(--font-head);
@@ -596,33 +710,88 @@
   </a>
 
   <ul class="nav-links">
-    <li><a href="/typy-podlah">Typy podlah</a></li>
-    <li><a href="/#podlahy">Služby</a></li>
-    <li><a href="/#proces">Proces</a></li>
-    <li><a href="/vsechny-projekty">Reference</a></li>
+    <li class="nav-dropdown" id="navDropdown">
+      <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+        Služby
+        <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-dropdown-panel" role="menu">
+        <div class="nav-dropdown-grid">
+          <a href="/anhydritove-podlahy-olomouc" class="nav-dropdown-item">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l9-12 9 12H3z"/><path d="M7 17v3M12 17v3M17 17v3"/><path d="M9 12.5h6"/></svg>
+            <div class="nav-dropdown-text">
+              <span class="nav-dropdown-title">Anhydritové podlahy</span>
+              <span class="nav-dropdown-desc">Lité potěry pro RD a podlahové topení</span>
+            </div>
+          </a>
+          <a href="/lesteny-beton-olomouc" class="nav-dropdown-item">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 9.5c1-2 3-3 5.5-2.5"/><circle cx="12" cy="12" r="3.5"/></svg>
+            <div class="nav-dropdown-text">
+              <span class="nav-dropdown-title">Leštěný beton</span>
+              <span class="nav-dropdown-desc">Hlazený a broušený beton, RD i showroomy</span>
+            </div>
+          </a>
+          <a href="/prumyslove-podlahy-olomouc" class="nav-dropdown-item">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V10l5 3V10l5 3V10l5 3v8z"/><path d="M3 21h18"/><path d="M8 17h2M13 17h2M18 17h.01"/></svg>
+            <div class="nav-dropdown-text">
+              <span class="nav-dropdown-title">Průmyslové podlahy</span>
+              <span class="nav-dropdown-desc">Drátkobeton, vsypy, pancéřové pro haly</span>
+            </div>
+          </a>
+          <a href="/betonove-podlahy-olomouc" class="nav-dropdown-item">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="14" width="18" height="6" rx="0.5"/><path d="M3 14l3-4h12l3 4"/><path d="M9 10V6h6v4"/><path d="M7 17h.01M11 17h.01M15 17h.01M19 17h.01"/></svg>
+            <div class="nav-dropdown-text">
+              <span class="nav-dropdown-title">Betonové podlahy</span>
+              <span class="nav-dropdown-desc">Hlazený beton, podkladní desky, kompletní řešení</span>
+            </div>
+          </a>
+        </div>
+        <div class="nav-dropdown-footer">
+          <a href="/typy-podlah">
+            Zobrazit všechny typy podlah
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </li>
     <li><a href="/cenik">Ceník</a></li>
+    <li><a href="/vsechny-projekty">Naše realizace</a></li>
+    <li><a href="/o-nas" style="color: var(--orange);">O nás</a></li>
     <li><a href="/blog">Blog <span class="badge-new">Nové</span></a></li>
     <li><a href="/#kontakt">Kontakt</a></li>
   </ul>
 
   <a href="tel:+420774611154" class="btn-call" onclick="return gtag_report_phone_conversion(this.href);">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
     Volejte
   </a>
 
-  <div class="nav-toggle" id="navToggle" aria-label="Menu">
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
 <div class="nav-mobile" id="navMobile">
-  <a href="/typy-podlah">Typy podlah</a>
-  <a href="/#podlahy">Služby</a>
-  <a href="/#proces">Proces</a>
-  <a href="/vsechny-projekty">Reference</a>
+  <div class="nav-mobile-dropdown" id="navMobileDropdown">
+    <button class="nav-mobile-dropdown-toggle" aria-expanded="false">
+      <span>Služby</span>
+      <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="nav-mobile-dropdown-list">
+      <a href="/anhydritove-podlahy-olomouc"><svg viewBox="0 0 24 24"><path d="M3 17l9-12 9 12H3z"/><path d="M7 17v3M12 17v3M17 17v3"/><path d="M9 12.5h6"/></svg>Anhydritové podlahy</a>
+      <a href="/lesteny-beton-olomouc"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 9.5c1-2 3-3 5.5-2.5"/><circle cx="12" cy="12" r="3.5"/></svg>Leštěný beton</a>
+      <a href="/prumyslove-podlahy-olomouc"><svg viewBox="0 0 24 24"><path d="M3 21V10l5 3V10l5 3V10l5 3v8z"/><path d="M3 21h18"/><path d="M8 17h2M13 17h2M18 17h.01"/></svg>Průmyslové podlahy</a>
+      <a href="/betonove-podlahy-olomouc"><svg viewBox="0 0 24 24"><rect x="3" y="14" width="18" height="6" rx="0.5"/><path d="M3 14l3-4h12l3 4"/><path d="M9 10V6h6v4"/></svg>Betonové podlahy</a>
+    </div>
+  </div>
+  <a href="/cenik">Ceník</a>
+  <a href="/vsechny-projekty">Naše realizace</a>
+  <a href="/o-nas" style="color: var(--orange); font-weight: 600;">O nás</a>
   <a href="/blog">Blog <span class="badge-new">Nové</span></a>
   <a href="/#kontakt">Kontakt</a>
-  <a href="tel:+420774611154" style="color: var(--orange); font-weight: 600;" onclick="return gtag_report_phone_conversion(this.href);">Volejte nám: +420 774 611 154</a>
+  <a href="tel:+420774611154" style="color: var(--orange); font-weight: 600;" onclick="return gtag_report_phone_conversion(this.href);">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Volejte nám: +420 774 611 154
+  </a>
 </div>
 
 <!-- ========== BREADCRUMB ========== -->
@@ -725,6 +894,87 @@
   </div>
 </section>
 
+<!-- ========== FOTOGALERIE ========== -->
+<section class="gallery-section">
+  <div class="gallery-inner">
+    <div class="gallery-header fade-in">
+      <div class="section-label">Z našich staveb</div>
+      <h2 class="section-title">Práce v <span>terénu</span></h2>
+      <p class="section-sub">Fotky přímo ze staveb — čerpání betonu, lití anhydritu, leštění, průmyslové haly. Tohle je naše každodenní realita.</p>
+    </div>
+
+    <div class="gallery-grid">
+
+      <!-- Fotka 1 — nahraď src za cestu ke své fotce, např. /img/galerie-cerpani-betonu.jpg -->
+      <div class="gallery-item fade-in">
+        <img src="/img/galerie-01.jpg" alt="Čerpání betonu – MO Betony s.r.o." loading="lazy"
+             onerror="this.style.display='none';this.parentNode.querySelector('.gallery-item-placeholder').style.display='flex';">
+        <div class="gallery-item-caption">Čerpání betonu, Olomouc</div>
+        <div class="gallery-item-placeholder" style="display:none;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          foto 1
+        </div>
+      </div>
+
+      <!-- Fotka 2 -->
+      <div class="gallery-item fade-in">
+        <img src="/img/galerie-02.jpg" alt="Lití anhydritu – MO Betony s.r.o." loading="lazy"
+             onerror="this.style.display='none';this.parentNode.querySelector('.gallery-item-placeholder').style.display='flex';">
+        <div class="gallery-item-caption">Lití anhydritového potěru</div>
+        <div class="gallery-item-placeholder" style="display:none;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          foto 2
+        </div>
+      </div>
+
+      <!-- Fotka 3 -->
+      <div class="gallery-item fade-in">
+        <img src="/img/galerie-03.jpg" alt="Leštěný beton – MO Betony s.r.o." loading="lazy"
+             onerror="this.style.display='none';this.parentNode.querySelector('.gallery-item-placeholder').style.display='flex';">
+        <div class="gallery-item-caption">Leštěný beton – detail povrchu</div>
+        <div class="gallery-item-placeholder" style="display:none;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          foto 3
+        </div>
+      </div>
+
+      <!-- Fotka 4 -->
+      <div class="gallery-item fade-in">
+        <img src="/img/galerie-04.jpg" alt="Průmyslová podlaha – MO Betony s.r.o." loading="lazy"
+             onerror="this.style.display='none';this.parentNode.querySelector('.gallery-item-placeholder').style.display='flex';">
+        <div class="gallery-item-caption">Průmyslová hala – drátkobeton</div>
+        <div class="gallery-item-placeholder" style="display:none;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          foto 4
+        </div>
+      </div>
+
+      <!-- Fotka 5 -->
+      <div class="gallery-item fade-in">
+        <img src="/img/galerie-05.jpg" alt="Strojní hlazení betonu – MO Betony s.r.o." loading="lazy"
+             onerror="this.style.display='none';this.parentNode.querySelector('.gallery-item-placeholder').style.display='flex';">
+        <div class="gallery-item-caption">Strojní hlazení – vrtulník</div>
+        <div class="gallery-item-placeholder" style="display:none;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          foto 5
+        </div>
+      </div>
+
+      <!-- Fotka 6 -->
+      <div class="gallery-item fade-in">
+        <img src="/img/galerie-06.jpg" alt="Hotová betonová podlaha – MO Betony s.r.o." loading="lazy"
+             onerror="this.style.display='none';this.parentNode.querySelector('.gallery-item-placeholder').style.display='flex';">
+        <div class="gallery-item-caption">Hotová zakázka – rodinný dům</div>
+        <div class="gallery-item-placeholder" style="display:none;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          foto 6
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ========== TÝM ========== -->
 <section class="team-section">
   <div class="team-inner">
@@ -738,7 +988,10 @@
 
       <div class="leader-card fade-in">
         <div class="leader-header">
-          <div class="leader-avatar">M</div>
+          <div class="leader-avatar">
+            <img src="/img/team-martin.jpg" alt="Martin Havlíček – jednatel MO Betony s.r.o."
+                 onerror="this.outerHTML='<svg viewBox=\'0 0 24 24\'><path d=\'M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2\'/><circle cx=\'12\' cy=\'7\' r=\'4\'/></svg>';">
+          </div>
           <div>
             <div class="leader-name">Martin Havlíček</div>
             <div class="leader-title">Jednatel · Obchod & realizace</div>
@@ -757,7 +1010,10 @@
 
       <div class="leader-card fade-in">
         <div class="leader-header">
-          <div class="leader-avatar">P</div>
+          <div class="leader-avatar">
+            <img src="/img/team-petr.jpg" alt="Ing. Petr Jeřábek – stavební inženýr MO Betony s.r.o."
+                 onerror="this.outerHTML='<svg viewBox=\'0 0 24 24\'><path d=\'M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2\'/><circle cx=\'12\' cy=\'7\' r=\'4\'/></svg>';">
+          </div>
           <div>
             <div class="leader-name">Ing. Petr Jeřábek</div>
             <div class="leader-title">Stavební inženýr · Technika & instalace</div>
@@ -975,13 +1231,51 @@
 </a>
 
 <script>
-  // Hamburger
-  document.getElementById('navToggle').addEventListener('click', () => {
-    document.getElementById('navMobile').classList.toggle('open');
-  });
-  document.getElementById('navMobile').querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => document.getElementById('navMobile').classList.remove('open'));
-  });
+  // ===== NAV IIFE =====
+  (function() {
+    var navToggle = document.getElementById('navToggle');
+    var navMobile = document.getElementById('navMobile');
+    if (navToggle && navMobile) {
+      navToggle.addEventListener('click', function() {
+        var isOpen = navMobile.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      navMobile.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          navMobile.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+    var mobDropdown = document.getElementById('navMobileDropdown');
+    if (mobDropdown) {
+      var mobToggle = mobDropdown.querySelector('.nav-mobile-dropdown-toggle');
+      if (mobToggle) {
+        mobToggle.addEventListener('click', function() {
+          var isOpen = mobDropdown.classList.toggle('open');
+          mobToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+    }
+    var dropdown = document.getElementById('navDropdown');
+    if (dropdown) {
+      var toggle = dropdown.querySelector('.nav-dropdown-toggle');
+      dropdown.addEventListener('mouseenter', function() { dropdown.classList.add('open'); if (toggle) toggle.setAttribute('aria-expanded', 'true'); });
+      dropdown.addEventListener('mouseleave', function() { dropdown.classList.remove('open'); if (toggle) toggle.setAttribute('aria-expanded', 'false'); });
+      if (toggle) {
+        toggle.addEventListener('click', function() {
+          var isOpen = dropdown.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+      document.addEventListener('click', function(e) {
+        if (!dropdown.contains(e.target)) { dropdown.classList.remove('open'); if (toggle) toggle.setAttribute('aria-expanded', 'false'); }
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') { dropdown.classList.remove('open'); if (toggle) toggle.setAttribute('aria-expanded', 'false'); if (navMobile) { navMobile.classList.remove('open'); if (navToggle) navToggle.setAttribute('aria-expanded', 'false'); } }
+      });
+    }
+  })();
 
   // Fade-in
   const observer = new IntersectionObserver((entries) => {
