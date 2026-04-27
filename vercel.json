@@ -11,7 +11,12 @@
     { "source": "/blog/anhydrit-v-restauraci",           "destination": "/blog/lesteny-beton-restaurace",           "permanent": true },
     { "source": "/blog/lesteny-beton-pruvodce",          "destination": "/blog/lesteny-beton-kompletni-pruvodce-cena", "permanent": true },
 
-    { "source": "/prumyslova-podlaha",                   "destination": "/typy-podlah",                              "permanent": true },
-    { "source": "/blog/prumyslove-podlahy-pruvodce",     "destination": "/blog/cena-prumyslove-podlahy",             "permanent": true }
+    { "source": "/prumyslova-podlaha",                   "destination": "/prumyslove-podlahy-olomouc",               "permanent": true },
+    { "source": "/blog/prumyslove-podlahy-pruvodce",     "destination": "/blog/cena-prumyslove-podlahy",             "permanent": true },
+
+    { "source": "/anhydritove-podlahy-olomouc",          "destination": "/anhydritove-podlahy-olomouc/",            "permanent": true },
+    { "source": "/prumyslove-podlahy-olomouc",           "destination": "/prumyslove-podlahy-olomouc/",             "permanent": true },
+    { "source": "/lesteny-beton-olomouc",                "destination": "/lesteny-beton-olomouc/",                  "permanent": true },
+    { "source": "/betonove-podlahy-olomouc",             "destination": "/betonove-podlahy-olomouc/",               "permanent": true }
   ]
 }
