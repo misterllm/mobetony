@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="cs">
 <head>
     <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -260,6 +260,29 @@
             .comparison-table thead th, .comparison-table tbody td { padding: 0.5rem; }
             .model-box, .toc-box { padding: 1.25rem; }
         }
+            /* === BLOG NAV OVERRIDE === */
+        nav { height: 64px; padding: 0 2rem; }
+        nav .nav-inner { height: 100%; }
+        .blog-nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .blog-nav-badge { width: 36px; height: 36px; background: var(--orange); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 14px; color: white; flex-shrink: 0; }
+        .blog-nav-text { display: flex; flex-direction: column; line-height: 1.15; }
+        .blog-nav-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16px; color: white; }
+        .blog-nav-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 0.5px; }
+        .blog-nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; padding: 0; margin: 0; }
+        .blog-nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 15px; transition: color 0.3s; }
+        .blog-nav-links a:hover { color: var(--orange); }
+        .blog-nav-call { display: flex; align-items: center; gap: 8px; background: var(--orange); color: white !important; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px; padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: background 0.2s; }
+        .blog-nav-call:hover { background: var(--orange-hover); }
+        .blog-nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+        .blog-nav-toggle span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; }
+        .blog-nav-mobile { display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 999; background: rgba(17,17,17,0.98); backdrop-filter: blur(10px); padding: 1.5rem 2rem; flex-direction: column; border-bottom: 1px solid var(--border); }
+        .blog-nav-mobile.open { display: flex; }
+        .blog-nav-mobile a { color: var(--text-secondary); text-decoration: none; font-size: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+        .blog-nav-mobile a:last-child { border-bottom: none; }
+        .blog-nav-mobile a:hover { color: var(--orange); }
+        .article-cta { background: linear-gradient(135deg, var(--card-bg) 0%, rgba(249,115,22,0.07) 100%) !important; border: 1px solid rgba(249,115,22,0.25) !important; border-left: 4px solid var(--orange) !important; border-radius: 12px; padding: 2.5rem; margin: 3rem 0; }
+        .btn-cta { color: #fff !important; display: inline-flex; align-items: center; gap: 8px; }
+        @media (max-width: 860px) { .blog-nav-links, .blog-nav-call { display: none; } .blog-nav-toggle { display: flex; } }
     </style>
 </head>
 <body>
@@ -268,17 +291,17 @@
     <div class="nav-inner">
         <a href="/index.html" class="logo">MO BETONY</a>
         <div class="nav-links">
-            <a href="/index.html">Úvod</a>
-            <a href="/typy-podlah.html">Typy podlah</a>
-            <a href="/blog.html">Blog</a>
-            <a href="/index.html#kontakt">Kontakt</a>
+            <a href="/">Úvod</a>
+            <a href="/typy-podlah">Typy podlah</a>
+            <a href="/blog">Blog</a>
+            <a href="/kontakt">Kontakt</a>
         </div>
     </div>
 </nav>
 
 <div class="breadcrumbs">
-    <a href="/index.html">Úvod</a> <span>›</span>
-    <a href="/blog.html">Blog</a> <span>›</span>
+    <a href="/">Úvod</a> <span>›</span>
+    <a href="/blog">Blog</a> <span>›</span>
     <span>Mikrocement podlaha cena 2026</span>
 </div>
 
@@ -297,11 +320,9 @@
     <p>Mikrocement je v interiérech hvězda poslední dekády. Minimalistický bezespárový povrch, který připomíná pohledový beton, ale na rozdíl od něj se dá aplikovat kamkoliv — na starou dlažbu, sádrokarton, dřevotřísku, schody i na stěny. Cena profesionální realizace ale sahá od 800 po 3 500 Kč za metr čtvereční, a když to rozhodnete špatně, skončíte s popraskaným povrchem po půl roce.</p>
     <p>V tomhle průvodci najdete přesné ceníky roku 2026, srovnání značek, modelové kalkulace pro koupelnu, kuchyň i obývací pokoj — a hlavně praktické tipy, kde se vyplatí utrácet a kde naopak šetřit.</p>
 
-    <div class="image-placeholder">
-        <span class="label">📷 Obrázek 1 — Hero foto</span>
-        Mikrocementová podlaha v moderním obývacím pokoji — šedý odstín, matný lak, bezespárový povrch<br>
-        <em>Doporučený rozměr: 1200×675 px, formát .webp, alt: "Mikrocementová podlaha v obývacím pokoji – MO Betony"</em>
-    </div>
+    <figure style="margin:2rem 0;">
+        <img src="../../img/landing/lesteny-beton-komercni-olomouc.webp" alt="Mikrocementová podlaha v obývacím pokoji – MO Betony" width="1200" height="675" loading="lazy" style="width:100%;height:auto;border-radius:var(--radius-sm);">
+    </figure>
 
     <div class="toc-box">
         <h3>Co najdete v článku</h3>
@@ -571,11 +592,9 @@
         </div>
     </div>
 
-    <div class="image-placeholder">
-        <span class="label">📷 Obrázek 2 — Detail textury</span>
-        Detail textury mikrocementu — viditelná ruční práce, jemné stopy hladítka, matný povrch<br>
-        <em>Doporučený rozměr: 1200×800 px, formát .webp, alt: "Detail mikrocementového povrchu – textura a vzhled"</em>
-    </div>
+    <figure style="margin:2rem 0;">
+        <img src="../../img/landing/lesteny-beton-showroom-olomouc.webp" alt="Detail mikrocementového povrchu – textura a vzhled" width="1200" height="800" loading="lazy" style="width:100%;height:auto;border-radius:var(--radius-sm);">
+    </figure>
 
     <h2 id="co-ovlivnuje">Co nejvíc ovlivňuje konečnou cenu</h2>
 
@@ -843,11 +862,9 @@
 
     </div>
 
-    <div class="image-placeholder">
-        <span class="label">📷 Obrázek 3 — Aplikace</span>
-        Profesionální aplikace mikrocementu — řemeslník s hladítkem, viditelná ruční práce, detail realizace<br>
-        <em>Doporučený rozměr: 1200×800 px, formát .webp, alt: "Aplikace mikrocementu – řemeslné zpracování"</em>
-    </div>
+    <figure style="margin:2rem 0;">
+        <img src="../../img/landing/lesteny-beton-loft-olomouc.webp" alt="Aplikace mikrocementu – řemeslné zpracování" width="1200" height="800" loading="lazy" style="width:100%;height:auto;border-radius:var(--radius-sm);">
+    </figure>
 
     <div class="article-cta">
         <h3>Chcete přesnou kalkulaci pro váš projekt?</h3>
@@ -894,8 +911,18 @@
 </section>
 
 <footer>
-    <p>© 2026 <a href="/index.html">MO Betony s.r.o.</a> | Mikrocement, leštěný beton, lité podlahy — Olomoucký a Jihomoravský kraj</p>
+    <p>© 2026 <a href="/">MO Betony s.r.o.</a> | Mikrocement, leštěný beton, lité podlahy — Olomoucký a Jihomoravský kraj</p>
 </footer>
 
+    <script>
+    (function() {
+        var t = document.getElementById('blogNavToggle');
+        var m = document.getElementById('blogNavMobile');
+        if (t && m) {
+            t.addEventListener('click', function() { m.classList.toggle('open'); });
+            m.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { m.classList.remove('open'); }); });
+        }
+    })();
+    </script>
 </body>
 </html>

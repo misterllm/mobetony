@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="cs">
 <head>
     <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -268,6 +268,29 @@
             .comparison-table thead th, .comparison-table tbody td { padding: 0.5rem; }
             .model-box, .toc-box { padding: 1.25rem; }
         }
+            /* === BLOG NAV OVERRIDE === */
+        nav { height: 64px; padding: 0 2rem; }
+        nav .nav-inner { height: 100%; }
+        .blog-nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .blog-nav-badge { width: 36px; height: 36px; background: var(--orange); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 14px; color: white; flex-shrink: 0; }
+        .blog-nav-text { display: flex; flex-direction: column; line-height: 1.15; }
+        .blog-nav-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16px; color: white; }
+        .blog-nav-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 0.5px; }
+        .blog-nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; padding: 0; margin: 0; }
+        .blog-nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 15px; transition: color 0.3s; }
+        .blog-nav-links a:hover { color: var(--orange); }
+        .blog-nav-call { display: flex; align-items: center; gap: 8px; background: var(--orange); color: white !important; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px; padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: background 0.2s; }
+        .blog-nav-call:hover { background: var(--orange-hover); }
+        .blog-nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+        .blog-nav-toggle span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; }
+        .blog-nav-mobile { display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 999; background: rgba(17,17,17,0.98); backdrop-filter: blur(10px); padding: 1.5rem 2rem; flex-direction: column; border-bottom: 1px solid var(--border); }
+        .blog-nav-mobile.open { display: flex; }
+        .blog-nav-mobile a { color: var(--text-secondary); text-decoration: none; font-size: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+        .blog-nav-mobile a:last-child { border-bottom: none; }
+        .blog-nav-mobile a:hover { color: var(--orange); }
+        .article-cta { background: linear-gradient(135deg, var(--card-bg) 0%, rgba(249,115,22,0.07) 100%) !important; border: 1px solid rgba(249,115,22,0.25) !important; border-left: 4px solid var(--orange) !important; border-radius: 12px; padding: 2.5rem; margin: 3rem 0; }
+        .btn-cta { color: #fff !important; display: inline-flex; align-items: center; gap: 8px; }
+        @media (max-width: 860px) { .blog-nav-links, .blog-nav-call { display: none; } .blog-nav-toggle { display: flex; } }
     </style>
 </head>
 <body>
@@ -276,17 +299,17 @@
     <div class="nav-inner">
         <a href="/index.html" class="logo">MO BETONY</a>
         <div class="nav-links">
-            <a href="/index.html">Úvod</a>
-            <a href="/typy-podlah.html">Typy podlah</a>
-            <a href="/blog.html">Blog</a>
-            <a href="/index.html#kontakt">Kontakt</a>
+            <a href="/">Úvod</a>
+            <a href="/typy-podlah">Typy podlah</a>
+            <a href="/blog">Blog</a>
+            <a href="/kontakt">Kontakt</a>
         </div>
     </div>
 </nav>
 
 <div class="breadcrumbs">
-    <a href="/index.html">Úvod</a> <span>›</span>
-    <a href="/blog.html">Blog</a> <span>›</span>
+    <a href="/">Úvod</a> <span>›</span>
+    <a href="/blog">Blog</a> <span>›</span>
     <span>Pohledový beton v interiéru</span>
 </div>
 
@@ -305,11 +328,9 @@
     <p>Ještě před deseti lety byl pohledový beton výsadou architektonických projektů a galerií. Dnes ho najdete v normálních bytech, rodinných domech a restauracích. Důvod? Jednoduchost, trvanlivost a jedinečná estetika, která se neomrzí. Navíc k němu existuje elegantní rekonstrukční alternativa — dekorativní betonová stěrka, která pravý pohledový beton věrně napodobí za zlomek ceny a bez bourání.</p>
     <p>V tomhle průvodci najdete <strong>všechno, co potřebujete vědět</strong>, než se rozhodnete. Reálné ceny roku 2026, přehled aplikací, srovnání s alternativami (mikrocement, leštěný beton, dlažba s dekorem), inspiraci a praktické tipy od firmy, která ty povrchy léta realizuje.</p>
 
-    <div class="image-placeholder">
-        <span class="label">📷 Obrázek 1 — Hero foto</span>
-        Pohledová betonová stěna v moderním obývacím pokoji — šedý industriální povrch, dřevo, minimalismus<br>
-        <em>Doporučený rozměr: 1200×675 px, formát .webp, alt: "Pohledový beton v obývacím pokoji – industriální interiér"</em>
-    </div>
+    <figure style="margin:2rem 0;">
+        <img src="../../img/landing/lesteny-beton-loft-olomouc.webp" alt="Pohledový beton v obývacím pokoji – industriální interiér" width="1200" height="675" loading="lazy" style="width:100%;height:auto;border-radius:var(--radius-sm);">
+    </figure>
 
     <div class="toc-box">
         <h3>Co najdete v článku</h3>
@@ -446,11 +467,9 @@
     <h3>Nábytek a dekorace</h3>
     <p>Betonové stoly, umyvadla, lavabo, police, barové pulty, pracovní desky kuchyňských linek. Atypická výroba na míru, cena za kus 5 000–30 000 Kč podle velikosti a složitosti.</p>
 
-    <div class="image-placeholder">
-        <span class="label">📷 Obrázek 2 — Inspirace aplikací</span>
-        Pohledový beton v kuchyni / koupelně — designová inspirace, detail kombinace se dřevem a sklem<br>
-        <em>Doporučený rozměr: 1200×800 px, formát .webp, alt: "Pohledový beton v kuchyni – moderní interiér"</em>
-    </div>
+    <figure style="margin:2rem 0;">
+        <img src="../../img/landing/lesteny-beton-komercni-olomouc.webp" alt="Pohledový beton v kuchyni – moderní interiér" width="1200" height="800" loading="lazy" style="width:100%;height:auto;border-radius:var(--radius-sm);">
+    </figure>
 
     <h2 id="srovnani">Pohledový beton vs. mikrocement vs. leštěný beton</h2>
 
@@ -691,11 +710,9 @@
         <li><strong>Minimální zakázka</strong> — pro <15 m² vychází velmi drahá cena za m²</li>
     </ul>
 
-    <div class="image-placeholder">
-        <span class="label">📷 Obrázek 3 — Detail textury</span>
-        Detail textury pohledového betonu / dekorativní stěrky — viditelná ruční práce, autentický vzhled<br>
-        <em>Doporučený rozměr: 1200×800 px, formát .webp, alt: "Pohledový beton – detail textury a zpracování"</em>
-    </div>
+    <figure style="margin:2rem 0;">
+        <img src="../../img/landing/betonova-podlaha-komercni-olomouc.webp" alt="Pohledový beton – detail textury a zpracování" width="1200" height="800" loading="lazy" style="width:100%;height:auto;border-radius:var(--radius-sm);">
+    </figure>
 
     <h2 id="faq">Časté otázky</h2>
     <div class="faq-section">
@@ -827,8 +844,18 @@
 </section>
 
 <footer>
-    <p>© 2026 <a href="/index.html">MO Betony s.r.o.</a> | Pohledový beton, mikrocement, leštěné betonové podlahy — Olomoucký a Jihomoravský kraj</p>
+    <p>© 2026 <a href="/">MO Betony s.r.o.</a> | Pohledový beton, mikrocement, leštěné betonové podlahy — Olomoucký a Jihomoravský kraj</p>
 </footer>
 
+    <script>
+    (function() {
+        var t = document.getElementById('blogNavToggle');
+        var m = document.getElementById('blogNavMobile');
+        if (t && m) {
+            t.addEventListener('click', function() { m.classList.toggle('open'); });
+            m.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { m.classList.remove('open'); }); });
+        }
+    })();
+    </script>
 </body>
 </html>

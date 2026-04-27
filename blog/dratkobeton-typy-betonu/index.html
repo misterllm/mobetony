@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="cs">
 <head>
     <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -162,6 +162,29 @@
             .comparison-table { font-size: 0.85rem; }
             .comparison-table thead th, .comparison-table tbody td { padding: 0.5rem; }
         }
+            /* === BLOG NAV OVERRIDE === */
+        nav { height: 64px; padding: 0 2rem; }
+        nav .nav-inner { height: 100%; }
+        .blog-nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .blog-nav-badge { width: 36px; height: 36px; background: var(--orange); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 14px; color: white; flex-shrink: 0; }
+        .blog-nav-text { display: flex; flex-direction: column; line-height: 1.15; }
+        .blog-nav-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16px; color: white; }
+        .blog-nav-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 0.5px; }
+        .blog-nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; padding: 0; margin: 0; }
+        .blog-nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 15px; transition: color 0.3s; }
+        .blog-nav-links a:hover { color: var(--orange); }
+        .blog-nav-call { display: flex; align-items: center; gap: 8px; background: var(--orange); color: white !important; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px; padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: background 0.2s; }
+        .blog-nav-call:hover { background: var(--orange-hover); }
+        .blog-nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+        .blog-nav-toggle span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; }
+        .blog-nav-mobile { display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 999; background: rgba(17,17,17,0.98); backdrop-filter: blur(10px); padding: 1.5rem 2rem; flex-direction: column; border-bottom: 1px solid var(--border); }
+        .blog-nav-mobile.open { display: flex; }
+        .blog-nav-mobile a { color: var(--text-secondary); text-decoration: none; font-size: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+        .blog-nav-mobile a:last-child { border-bottom: none; }
+        .blog-nav-mobile a:hover { color: var(--orange); }
+        .article-cta { background: linear-gradient(135deg, var(--card-bg) 0%, rgba(249,115,22,0.07) 100%) !important; border: 1px solid rgba(249,115,22,0.25) !important; border-left: 4px solid var(--orange) !important; border-radius: 12px; padding: 2.5rem; margin: 3rem 0; }
+        .btn-cta { color: #fff !important; display: inline-flex; align-items: center; gap: 8px; }
+        @media (max-width: 860px) { .blog-nav-links, .blog-nav-call { display: none; } .blog-nav-toggle { display: flex; } }
     </style>
 </head>
 <body>
@@ -170,17 +193,17 @@
     <div class="nav-inner">
         <a href="/index.html" class="logo">MO BETONY</a>
         <div class="nav-links">
-            <a href="/index.html">Úvod</a>
-            <a href="/typy-podlah.html">Typy podlah</a>
-            <a href="/blog.html">Blog</a>
-            <a href="/index.html#kontakt">Kontakt</a>
+            <a href="/">Úvod</a>
+            <a href="/typy-podlah">Typy podlah</a>
+            <a href="/blog">Blog</a>
+            <a href="/kontakt">Kontakt</a>
         </div>
     </div>
 </nav>
 
 <div class="breadcrumbs">
-    <a href="/index.html">Úvod</a> <span>›</span>
-    <a href="/blog.html">Blog</a> <span>›</span>
+    <a href="/">Úvod</a> <span>›</span>
+    <a href="/blog">Blog</a> <span>›</span>
     <span>Drátkobeton a typy betonu</span>
 </div>
 
@@ -575,8 +598,18 @@
 </section>
 
 <footer>
-    <p>© 2026 <a href="/index.html">MO Betony s.r.o.</a> | Drátkobeton, typy betonu, pevnostní třídy, vsypy, SFRC</p>
+    <p>© 2026 <a href="/">MO Betony s.r.o.</a> | Drátkobeton, typy betonu, pevnostní třídy, vsypy, SFRC</p>
 </footer>
 
+    <script>
+    (function() {
+        var t = document.getElementById('blogNavToggle');
+        var m = document.getElementById('blogNavMobile');
+        if (t && m) {
+            t.addEventListener('click', function() { m.classList.toggle('open'); });
+            m.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { m.classList.remove('open'); }); });
+        }
+    })();
+    </script>
 </body>
 </html>
