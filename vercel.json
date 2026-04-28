@@ -11,6 +11,8 @@
     { "source": "/blog/lesteny-beton-pruvodce",          "destination": "/blog/lesteny-beton-kompletni-pruvodce-cena", "permanent": true },
 
     { "source": "/prumyslova-podlaha",                   "destination": "/typy-podlah",                             "permanent": true },
-    { "source": "/blog/prumyslove-podlahy-pruvodce",     "destination": "/blog/cena-prumyslove-podlahy",             "permanent": true }
+    { "source": "/blog/prumyslove-podlahy-pruvodce",     "destination": "/blog/cena-prumyslove-podlahy",             "permanent": true },
+    { "source": "/blog/cena-podlahy-garaz-sklep",        "destination": "/blog/cena-podlahy-do-garaze-sklepa-2026",  "permanent": true },
+    { "source": "/blog/dratkobeton-podlaha",             "destination": "/blog/dratkobeton-typy-betonu",             "permanent": true }
   ]
 }
