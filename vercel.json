@@ -8,7 +8,6 @@
     { "source": "/blog/lity-poter-cena",                 "destination": "/blog/cena-anhydritove-podlahy",           "permanent": true },
     { "source": "/blog/anhydrit-nebo-cement",            "destination": "/blog/anhydrit-vs-poter",                  "permanent": true },
     { "source": "/blog/podlaha-do-garaze-kompletni-pruvodce", "destination": "/blog/podlaha-do-garaze",             "permanent": true },
-    { "source": "/blog/anhydrit-v-restauraci",           "destination": "/blog/lesteny-beton-restaurace",           "permanent": true },
     { "source": "/blog/lesteny-beton-pruvodce",          "destination": "/blog/lesteny-beton-kompletni-pruvodce-cena", "permanent": true },
 
     { "source": "/prumyslova-podlaha",                   "destination": "/typy-podlah",                             "permanent": true },
