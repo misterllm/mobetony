@@ -193,14 +193,53 @@
     .faq-hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
     .faq-hero-meta svg { width: 14px; height: 14px; fill: none; stroke: var(--orange); stroke-width: 2; }
 
-    /* Search bar */
-    .faq-search { max-width: 720px; margin: 2.5rem auto 0; position: relative; padding: 0 2rem; transition: padding .2s; }
-    .faq-search-inner { position: relative; }
-    .faq-search-input { width: 100%; padding: 18px 110px 18px 56px; background: var(--bg2); border: 2px solid var(--border); border-radius: 14px; color: var(--white); font-family: var(--font-body); font-size: 16px; transition: border-color .2s, box-shadow .2s; outline: none; }
-    .faq-search-input:focus { border-color: var(--orange); box-shadow: 0 0 0 4px rgba(249,115,22,.15); }
+    /* Search bar — FLEX layout (žádné absolute positioning = stabilní alignment) */
+    .faq-search { max-width: 720px; margin: 2.5rem auto 0; padding: 0 2rem; }
+    .faq-search-frame {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 4px 10px 4px 16px;
+      background: var(--bg2);
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .faq-search-frame:focus-within {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 4px rgba(249,115,22,.15);
+    }
+    .faq-search-icon {
+      width: 22px; height: 22px; flex-shrink: 0;
+      fill: none; stroke: var(--gray); stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .faq-search-input {
+      flex: 1; min-width: 0;
+      padding: 14px 0;
+      background: transparent;
+      border: none; outline: none;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+    }
     .faq-search-input::placeholder { color: var(--gray2); }
-    .faq-search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; fill: none; stroke: var(--gray); stroke-width: 2; pointer-events: none; }
-    .faq-search-clear { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: var(--bg3); border: 1px solid var(--border2); border-radius: 8px; padding: 8px 14px; font-size: 13px; font-weight: 500; color: var(--gray); cursor: pointer; display: none; align-items: center; gap: 6px; line-height: 1; transition: all .15s; font-family: inherit; }
+    .faq-search-clear {
+      flex-shrink: 0;
+      display: none;
+      align-items: center; gap: 6px;
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      padding: 7px 12px;
+      font-size: 13px; font-weight: 500;
+      color: var(--gray);
+      cursor: pointer;
+      line-height: 1;
+      font-family: inherit;
+      transition: all .15s;
+    }
+    .faq-search-clear.active { display: inline-flex; }
     .faq-search-clear:hover { color: var(--white); border-color: var(--orange); background: rgba(249,115,22,.1); }
     .faq-search-clear svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; }
     .faq-search-info { text-align: center; margin-top: 1rem; font-size: 13px; color: var(--gray); display: none; }
@@ -402,9 +441,11 @@
 
 <!-- ========== SEARCH ========== -->
 <div class="faq-search">
-  <svg class="faq-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-  <input type="text" id="faqSearch" class="faq-search-input" placeholder="Hledejte odpověď... (např. „jak dlouho schne anhydrit“)" autocomplete="off">
-  <button id="faqSearchClear" class="faq-search-clear" type="button" aria-label="Vymazat hledání"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Vymazat</button>
+  <div class="faq-search-frame">
+    <svg class="faq-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="faqSearch" class="faq-search-input" placeholder="Hledejte odpověď... (např. „jak dlouho schne anhydrit“)" autocomplete="off">
+    <button id="faqSearchClear" class="faq-search-clear" type="button" aria-label="Vymazat hledání"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Vymazat</button>
+  </div>
   <div id="faqSearchInfo" class="faq-search-info"></div>
 </div>
 
@@ -933,23 +974,40 @@
     });
   });
 
+  // ===== Disable browser scroll restoration =====
+  // Když uživatel reloaduje stránku, prohlížeč by jinak skočil na poslední scroll pozici
+  // (typicky na konec stránky pokud tam předtím scrolloval). Tímto donutíme začít nahoře.
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.addEventListener('load', function() {
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  });
+
   // ===== Open accordion on anchor link click =====
-  function openByHash() {
+  function openByHash(isInitialLoad) {
     var hash = window.location.hash;
-    if (!hash) return;
-    var target = document.querySelector(hash);
+    if (!hash || hash === '#') return;
+    var target;
+    try { target = document.querySelector(hash); } catch (e) { return; }
     if (target && target.classList.contains('faq-item')) {
       var btn = target.querySelector('.faq-q');
       if (btn && !target.classList.contains('active')) {
         btn.click();
       }
-      setTimeout(function() {
-        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 100);
+      // Scroll jen při explicitní hashchange (klik na anchor), NE na load
+      // Browser na load sám scrollne k anchor ID nativně.
+      if (!isInitialLoad) {
+        setTimeout(function() {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
     }
   }
-  window.addEventListener('hashchange', openByHash);
-  window.addEventListener('load', openByHash);
+  window.addEventListener('hashchange', function() { openByHash(false); });
+  window.addEventListener('load', function() { openByHash(true); });
 
   // ===== Search filter =====
   var searchInput = document.getElementById('faqSearch');
@@ -981,12 +1039,12 @@
       noResults.classList.remove('active');
       searchInfo.classList.remove('active');
       searchInfo.textContent = '';
-      searchClear.style.display = 'none';
+      searchClear.classList.remove('active');
       return;
     }
     // Aktivní search — schovat popular + TOC, expand matches
     document.body.classList.add('faq-searching');
-    searchClear.style.display = 'inline-flex';
+    searchClear.classList.add('active');
     var matchCount = 0;
     var firstMatch = null;
     faqItems.forEach(function(item) {
