@@ -194,15 +194,30 @@
     .faq-hero-meta svg { width: 14px; height: 14px; fill: none; stroke: var(--orange); stroke-width: 2; }
 
     /* Search bar */
-    .faq-search { max-width: 720px; margin: 2.5rem auto 0; position: relative; padding: 0 2rem; }
-    .faq-search-input { width: 100%; padding: 18px 60px 18px 56px; background: var(--bg2); border: 2px solid var(--border); border-radius: 14px; color: var(--white); font-family: var(--font-body); font-size: 16px; transition: border-color .2s, box-shadow .2s; outline: none; }
+    .faq-search { max-width: 720px; margin: 2.5rem auto 0; position: relative; padding: 0 2rem; transition: padding .2s; }
+    .faq-search-inner { position: relative; }
+    .faq-search-input { width: 100%; padding: 18px 110px 18px 56px; background: var(--bg2); border: 2px solid var(--border); border-radius: 14px; color: var(--white); font-family: var(--font-body); font-size: 16px; transition: border-color .2s, box-shadow .2s; outline: none; }
     .faq-search-input:focus { border-color: var(--orange); box-shadow: 0 0 0 4px rgba(249,115,22,.15); }
     .faq-search-input::placeholder { color: var(--gray2); }
-    .faq-search-icon { position: absolute; left: 3rem; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; fill: none; stroke: var(--gray); stroke-width: 2; pointer-events: none; }
-    .faq-search-clear { position: absolute; right: 3rem; top: 50%; transform: translateY(-50%); background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; font-size: 12px; color: var(--gray); cursor: pointer; display: none; }
-    .faq-search-clear:hover { color: var(--white); border-color: var(--orange); }
+    .faq-search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; fill: none; stroke: var(--gray); stroke-width: 2; pointer-events: none; }
+    .faq-search-clear { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: var(--bg3); border: 1px solid var(--border2); border-radius: 8px; padding: 8px 14px; font-size: 13px; font-weight: 500; color: var(--gray); cursor: pointer; display: none; align-items: center; gap: 6px; line-height: 1; transition: all .15s; font-family: inherit; }
+    .faq-search-clear:hover { color: var(--white); border-color: var(--orange); background: rgba(249,115,22,.1); }
+    .faq-search-clear svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; }
     .faq-search-info { text-align: center; margin-top: 1rem; font-size: 13px; color: var(--gray); display: none; }
     .faq-search-info.active { display: block; }
+
+    /* Sticky search při aktivním filtrování — vždy vidíš co píšeš */
+    body.faq-searching .faq-search {
+      position: sticky;
+      top: 64px;
+      z-index: 90;
+      background: rgba(13, 13, 13, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1rem 2rem;
+      margin-top: 0;
+      border-bottom: 1px solid var(--border);
+    }
 
     /* Popular questions */
     .faq-popular { max-width: 1100px; margin: 4rem auto 2rem; padding: 0 2rem; }
@@ -389,7 +404,7 @@
 <div class="faq-search">
   <svg class="faq-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
   <input type="text" id="faqSearch" class="faq-search-input" placeholder="Hledejte odpověď... (např. „jak dlouho schne anhydrit“)" autocomplete="off">
-  <button id="faqSearchClear" class="faq-search-clear">Vymazat</button>
+  <button id="faqSearchClear" class="faq-search-clear" type="button" aria-label="Vymazat hledání"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Vymazat</button>
   <div id="faqSearchInfo" class="faq-search-info"></div>
 </div>
 
@@ -945,11 +960,15 @@
   var faqSections = Array.from(document.querySelectorAll('.faq-section'));
   var debounce;
 
+  // Track previous query state — scroll only once on transition empty→active
+  var wasSearchActive = false;
+
   function filterFaqs(query) {
     query = (query || '').trim().toLowerCase();
     if (query === '') {
       // Reset state — show vše, zavřít otevřené accordion items
       document.body.classList.remove('faq-searching');
+      wasSearchActive = false;
       faqItems.forEach(function(it) {
         it.classList.remove('hidden');
         if (it.classList.contains('active')) {
@@ -965,9 +984,9 @@
       searchClear.style.display = 'none';
       return;
     }
-    // Aktivní search — schovat popular + TOC, expand matches, scroll to first
+    // Aktivní search — schovat popular + TOC, expand matches
     document.body.classList.add('faq-searching');
-    searchClear.style.display = 'block';
+    searchClear.style.display = 'inline-flex';
     var matchCount = 0;
     var firstMatch = null;
     faqItems.forEach(function(item) {
@@ -1002,15 +1021,18 @@
       noResults.classList.remove('active');
       searchInfo.textContent = 'Nalezeno ' + matchCount + ' ' + (matchCount === 1 ? 'odpověď' : (matchCount < 5 ? 'odpovědi' : 'odpovědí'));
       searchInfo.classList.add('active');
-      // Smooth scroll k prvnímu výsledku (offset 120 pro sticky nav)
-      if (firstMatch) {
+      // Scroll JEN JEDNOU při startu searche (empty → active transition)
+      // Při refinement (každé další písmeno) NESCROLLOVAT — search bar je sticky,
+      // takže uživatel vidí co píše, a výsledky se filtrují pod ním.
+      if (firstMatch && !wasSearchActive) {
         setTimeout(function() {
           var rect = firstMatch.getBoundingClientRect();
-          var offset = window.pageYOffset + rect.top - 120;
+          var offset = window.pageYOffset + rect.top - 180;
           window.scrollTo({ top: offset, behavior: 'smooth' });
         }, 50);
       }
     }
+    wasSearchActive = true;
   }
 
   if (searchInput) {
