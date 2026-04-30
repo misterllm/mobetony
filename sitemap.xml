@@ -119,7 +119,7 @@
 
   <url>
     <loc>https://mobetony.cz/blog/cena-anhydritove-podlahy</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -273,7 +273,7 @@
 
   <url>
     <loc>https://mobetony.cz/blog/cena-prumyslove-podlahy</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -358,7 +358,7 @@
 
   <url>
     <loc>https://mobetony.cz/blog/betonova-podlaha-cena</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -464,6 +464,38 @@
   <url>
     <loc>https://mobetony.cz/blog/epoxidova-vs-betonova-podlaha</loc>
     <lastmod>2026-04-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Missing entry — cena-lite-podlahy (existed but wasn't in sitemap) -->
+  <url>
+    <loc>https://mobetony.cz/blog/cena-lite-podlahy</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- New 29.4.2026 — anhydrit Olomouc local SEO -->
+  <url>
+    <loc>https://mobetony.cz/blog/anhydritova-podlaha-olomouc-a-jihomoravsky-kraj</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- New 29.4.2026 — beton interiér RD pillar -->
+  <url>
+    <loc>https://mobetony.cz/blog/betonova-podlaha-interier-obyvak-kuchyne</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- New 29.4.2026 — leštěný beton koupelna cluster -->
+  <url>
+    <loc>https://mobetony.cz/blog/lesteny-beton-koupelna</loc>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
