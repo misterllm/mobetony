@@ -283,6 +283,10 @@
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .55s, transform .55s; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+    /* When searching: hide popular + TOC, show only filtered FAQ results */
+    body.faq-searching .faq-popular,
+    body.faq-searching .faq-toc { display: none; }
+
     @media (max-width: 768px) {
       nav { padding: 0 1.25rem; }
       .nav-links, .btn-call { display: none; }
@@ -944,7 +948,16 @@
   function filterFaqs(query) {
     query = (query || '').trim().toLowerCase();
     if (query === '') {
-      faqItems.forEach(function(it) { it.classList.remove('hidden'); });
+      // Reset state — show vše, zavřít otevřené accordion items
+      document.body.classList.remove('faq-searching');
+      faqItems.forEach(function(it) {
+        it.classList.remove('hidden');
+        if (it.classList.contains('active')) {
+          it.classList.remove('active');
+          var a = it.querySelector('.faq-a');
+          if (a) a.style.maxHeight = null;
+        }
+      });
       faqSections.forEach(function(s) { s.style.display = ''; });
       noResults.classList.remove('active');
       searchInfo.classList.remove('active');
@@ -952,18 +965,32 @@
       searchClear.style.display = 'none';
       return;
     }
+    // Aktivní search — schovat popular + TOC, expand matches, scroll to first
+    document.body.classList.add('faq-searching');
     searchClear.style.display = 'block';
     var matchCount = 0;
+    var firstMatch = null;
     faqItems.forEach(function(item) {
       var text = item.textContent.toLowerCase();
       if (text.indexOf(query) !== -1) {
         item.classList.remove('hidden');
         matchCount++;
+        if (!firstMatch) firstMatch = item;
+        // Auto-expand matching items
+        if (!item.classList.contains('active')) {
+          item.classList.add('active');
+          var ans = item.querySelector('.faq-a');
+          if (ans) ans.style.maxHeight = ans.scrollHeight + 'px';
+        }
       } else {
         item.classList.add('hidden');
+        if (item.classList.contains('active')) {
+          item.classList.remove('active');
+          var a = item.querySelector('.faq-a');
+          if (a) a.style.maxHeight = null;
+        }
       }
     });
-    // Hide sections with no visible items
     faqSections.forEach(function(section) {
       var visible = section.querySelectorAll('.faq-item:not(.hidden)').length;
       section.style.display = visible > 0 ? '' : 'none';
@@ -975,6 +1002,14 @@
       noResults.classList.remove('active');
       searchInfo.textContent = 'Nalezeno ' + matchCount + ' ' + (matchCount === 1 ? 'odpověď' : (matchCount < 5 ? 'odpovědi' : 'odpovědí'));
       searchInfo.classList.add('active');
+      // Smooth scroll k prvnímu výsledku (offset 120 pro sticky nav)
+      if (firstMatch) {
+        setTimeout(function() {
+          var rect = firstMatch.getBoundingClientRect();
+          var offset = window.pageYOffset + rect.top - 120;
+          window.scrollTo({ top: offset, behavior: 'smooth' });
+        }, 50);
+      }
     }
   }
 
