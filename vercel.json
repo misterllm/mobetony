@@ -2,7 +2,6 @@
   "cleanUrls": true,
   "redirects": [
     { "source": "/blog/kolik-stoji-lita-podlaha",        "destination": "/blog/cena-anhydritove-podlahy",           "permanent": true },
-    { "source": "/blog/cena-lite-podlahy",               "destination": "/blog/cena-anhydritove-podlahy",           "permanent": true },
     { "source": "/blog/anhydritova-podlaha-cena",        "destination": "/blog/cena-anhydritove-podlahy",           "permanent": true },
     { "source": "/blog/anhydritova-podlaha-kalkulace",   "destination": "/blog/cena-anhydritove-podlahy",           "permanent": true },
     { "source": "/blog/lity-poter-cena",                 "destination": "/blog/cena-anhydritove-podlahy",           "permanent": true },
