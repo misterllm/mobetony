@@ -87,63 +87,8 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- LOKÁLNÍ LANDINGY — Prostějov (new 30.4.2026) -->
-  <url>
-    <loc>https://mobetony.cz/anhydritove-podlahy-prostejov/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://mobetony.cz/betonove-podlahy-prostejov/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://mobetony.cz/lesteny-beton-prostejov/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://mobetony.cz/prumyslove-podlahy-prostejov/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- LOKÁLNÍ LANDINGY — Přerov (new 30.4.2026) -->
-  <url>
-    <loc>https://mobetony.cz/anhydritove-podlahy-prerov/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://mobetony.cz/betonove-podlahy-prerov/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://mobetony.cz/lesteny-beton-prerov/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://mobetony.cz/prumyslove-podlahy-prerov/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <!-- Lokální landingy Prostějov + Přerov dočasně VYŘAZENY ze sitemap.
+       Soubory zůstávají na disku, vrátíme je po custom redesignu (Option B). -->
 
   <url>
     <loc>https://mobetony.cz/blog</loc>
