@@ -87,6 +87,9 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Lokální landingy Prostějov + Přerov dočasně VYŘAZENY ze sitemap.
+       Soubory zůstávají na disku, vrátíme je po custom redesignu (Option B). -->
+
   <url>
     <loc>https://mobetony.cz/blog</loc>
     <lastmod>2026-04-26</lastmod>
@@ -98,6 +101,13 @@
     <loc>https://mobetony.cz/cenik</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/faq</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
