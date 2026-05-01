@@ -2670,8 +2670,9 @@
           }
           if (q1 === 'garaz') {
             // Garáž / dílna s vlhkem (solanka, oleje)
-            if (q3 === 'vzhled') return ['cementovy', 'lesteny'];
-            return ['cementovy', 'beton'];
+            if (q3 === 'vzhled')   return ['cementovy', 'lesteny'];
+            if (q3 === 'odolnost') return ['lesteny', 'prumyslove']; // final podlaha pro odolnost
+            return ['cementovy', 'beton']; // cena = cementový potěr (cheapest)
           }
           if (q1 === 'hala') {
             // Vlhká hala (chlazení, mycí linky, prádelny)
