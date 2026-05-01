@@ -3,3 +3,6 @@ node_modules/
 
 # Git worktrees (Claude Code internal)
 .claude/worktrees/
+
+# Git worktrees (Claude Code internal)
+.claude/worktrees/
