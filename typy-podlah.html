@@ -1812,25 +1812,25 @@
 
         <!-- Question 2 -->
         <div class="quiz-step" data-step="2">
-          <h3 class="quiz-q">Bude součástí podlahové topení?</h3>
+          <h3 class="quiz-q">Jaký bude charakter prostoru?</h3>
           <div class="quiz-options quiz-options-2">
-            <button class="quiz-option" data-q="2" data-val="topeni-ano">
+            <button class="quiz-option" data-q="2" data-val="topeni">
               <span class="quiz-option-emoji" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><path d="M9 5l3 3 3-3"/><path d="M5 14h14"/><path d="M5 18h14"/><path d="M5 22h14"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
               </span>
-              <span class="quiz-option-text">Ano, s topením</span>
+              <span class="quiz-option-text">S podlahovým topením</span>
             </button>
-            <button class="quiz-option" data-q="2" data-val="topeni-ne">
+            <button class="quiz-option" data-q="2" data-val="sucho">
               <span class="quiz-option-emoji" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
               </span>
-              <span class="quiz-option-text">Ne, bez topení</span>
+              <span class="quiz-option-text">Suchý prostor</span>
             </button>
-            <button class="quiz-option" data-q="2" data-val="topeni-nevim">
+            <button class="quiz-option" data-q="2" data-val="vlhko">
               <span class="quiz-option-emoji" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 9a3 3 0 1 1 5.5 1.5c-.5 1-2 1.5-2 2.5"/><circle cx="12" cy="17" r=".5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
               </span>
-              <span class="quiz-option-text">Nevím / poradíte</span>
+              <span class="quiz-option-text">Vlhký prostor (koupelna, garáž, sklep)</span>
             </button>
           </div>
         </div>
@@ -2659,36 +2659,60 @@
         cementovy:       { name: 'Cementový potěr',        price: 'od 250 Kč/m²', anchor: '#cementovy-poter' }
       };
 
-      // Decision logic: 1-2 typy podlah na základě 3 odpovědí
+      // Decision logic: 1-2 typy podlah na základě 3 odpovědí (q2 = topeni/sucho/vlhko)
       function decide(q1, q2, q3) {
-        // RD / byt
+        // ⭐ VLHKÝ PROSTOR — cementový potěr je vždy primary (odolnost vůči vlhkosti)
+        if (q2 === 'vlhko') {
+          if (q1 === 'rd') {
+            // Koupelna, prádelna, garáž v RD
+            if (q3 === 'vzhled') return ['cementovy', 'lesteny'];
+            return ['cementovy', 'beton'];
+          }
+          if (q1 === 'garaz') {
+            // Garáž / dílna s vlhkem (solanka, oleje)
+            if (q3 === 'vzhled') return ['cementovy', 'lesteny'];
+            return ['cementovy', 'beton'];
+          }
+          if (q1 === 'hala') {
+            // Vlhká hala (chlazení, mycí linky, prádelny)
+            if (q3 === 'vzhled') return ['cementovy', 'prumyslove'];
+            return ['cementovy', 'prumyslove'];
+          }
+          if (q1 === 'komercni') {
+            // Restaurace, prádelna, vlhké komerční
+            if (q3 === 'vzhled') return ['cementovy', 'lesteny'];
+            return ['cementovy', 'beton'];
+          }
+          return ['cementovy', 'beton']; // fallback
+        }
+
+        // RD / byt — s topením
         if (q1 === 'rd') {
-          if (q2 === 'topeni-ano' || q2 === 'topeni-nevim') {
-            // S topením = anhydrit primary
+          if (q2 === 'topeni') {
             if (q3 === 'vzhled') return ['anhydrit', 'lesteny'];
             return ['anhydrit', 'beton'];
           }
-          // bez topení
+          // sucho
           if (q3 === 'vzhled') return ['lesteny', 'beton'];
-          if (q3 === 'cena')   return ['beton', 'cementovy'];
+          if (q3 === 'cena')   return ['beton', 'cementovy']; // cementový potěr = jedna z nejlevnějších
           return ['beton', 'lesteny']; // odolnost
         }
         // Garáž / dílna
         if (q1 === 'garaz') {
-          if (q3 === 'vzhled')   return ['lesteny', 'beton'];
-          if (q3 === 'cena')     return ['beton', 'cementovy'];
+          if (q3 === 'vzhled') return ['lesteny', 'beton'];
+          if (q3 === 'cena')   return ['beton', 'cementovy']; // cementový potěr v garáži = ekonomické řešení
           return ['lesteny', 'beton']; // odolnost
         }
         // Hala / sklad
         if (q1 === 'hala') {
-          if (q3 === 'cena') return ['prumyslove', 'beton'];
+          if (q3 === 'cena')   return ['prumyslove', 'beton'];
           if (q3 === 'vzhled') return ['lesteny', 'prumyslove'];
           return ['prumyslove', 'lesteny']; // odolnost
         }
         // Komercni
         if (q1 === 'komercni') {
           if (q3 === 'vzhled') return ['lesteny', 'anhydrit'];
-          if (q3 === 'cena') return ['beton', 'anhydrit'];
+          if (q3 === 'cena')   return ['beton', 'anhydrit'];
           return ['lesteny', 'prumyslove']; // odolnost
         }
         return ['anhydrit', 'beton']; // fallback
