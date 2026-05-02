@@ -208,7 +208,7 @@ const PROJECTS = [
     type: 'anhydrit',
     serviceUrl: '/anhydritova-podlaha',
     serviceName: 'Anhydritové podlahy',
-    title: 'Anhydritová podlaha — bytový dům Prostějov 1 400 m² | MO Betony',
+    title: 'Anhydrit bytový dům Prostějov 1 400 m² — reference | MO Betony',
     metaDescription: 'Realizace 1 400 m² anhydritu ANHYLEVEL CA-C25 v novém bytovém domě Prostějov. 24 bytů s podlahovým topením, tloušťka 60 mm, 3 dny realizace, červen 2025.',
     h1Main: 'Anhydritová podlaha',
     h1Highlight: 'bytový dům Prostějov',
@@ -740,7 +740,7 @@ ${NAV_HTML}
         <p class="ref-perex">${p.perex}</p>
         <div class="hero-btns">
           <a href="/kontakt" class="btn-orange">Chci podobnou realizaci →</a>
-          <a href="tel:+420774611154" class="btn-ghost" onclick="return gtag_report_phone_conversion(this.href);">Zavolat přímo</a>
+          <a href="tel:+420774611154" class="btn-ghost" onclick="return gtag_report_phone_conversion(this.href);">+420 774 611 154</a>
         </div>
       </div>
       <div class="ref-hero-image">
