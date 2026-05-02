@@ -392,11 +392,56 @@
       overflow: hidden;
       transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
+      display: block;
+      text-decoration: none;
+      color: inherit;
     }
     .proj-card:hover {
       border-color: rgba(249,115,22,0.5);
       transform: translateY(-6px);
       box-shadow: 0 12px 32px rgba(249,115,22,0.15), 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    /* Featured cards (s detail page) — silnější hover, cyan ribbon, "Zobrazit detail" CTA */
+    .proj-card--featured {
+      border-color: rgba(6,182,212,0.35);
+    }
+    .proj-card--featured:hover {
+      border-color: var(--orange);
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(249,115,22,0.22), 0 6px 16px rgba(0,0,0,0.5);
+    }
+    .proj-ribbon {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: var(--cyan);
+      color: #000;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: 100px;
+      box-shadow: 0 4px 12px rgba(6,182,212,0.4);
+      z-index: 2;
+    }
+    .proj-detail-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 0 1.25rem 1.1rem;
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .proj-detail-cta::after {
+      content: '→';
+      transition: transform 0.25s ease;
+      font-size: 16px;
+    }
+    .proj-card--featured:hover .proj-detail-cta::after {
+      transform: translateX(4px);
     }
 
     .proj-img {
@@ -719,6 +764,73 @@
   <!-- ========== PROJECTS GRID ========== -->
   <section class="projects-section">
     <div class="projects-grid">
+
+      <!-- === FEATURED — případové studie s detailem === -->
+
+      <a href="/reference/anhydrit-bytovy-dum-prostejov/" class="proj-card proj-card--featured" data-type="anhydrit">
+        <div class="proj-img">
+          <img src="/img/reference/anhydrit-bytovy-dum-prostejov/final.webp" alt="Anhydritová podlaha bytový dům Prostějov 1 400 m²" loading="lazy">
+          <span class="proj-badge badge-orange">Anhydrit</span>
+          <span class="proj-ribbon">Případová studie</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Anhydrit · Bytový dům Prostějov</div>
+          <div class="proj-meta">1 400 m² <span class="proj-meta-dot"></span> 24 bytů <span class="proj-meta-dot"></span> Prostějov</div>
+        </div>
+        <div class="proj-detail-cta"><span>Zobrazit detail studie</span></div>
+      </a>
+
+      <a href="/reference/prumyslova-podlaha-cnc-vyrobna-zlin/" class="proj-card proj-card--featured" data-type="prumyslova">
+        <div class="proj-img">
+          <img src="/img/reference/prumyslova-podlaha-cnc-vyrobna-zlin/final.webp" alt="Drátkobetonová průmyslová podlaha CNC výrobna Zlín 830 m²" loading="lazy">
+          <span class="proj-badge badge-cyan">Průmyslová</span>
+          <span class="proj-ribbon">Případová studie</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Drátkobeton · CNC výrobna Zlín</div>
+          <div class="proj-meta">830 m² <span class="proj-meta-dot"></span> 200 mm <span class="proj-meta-dot"></span> Zlín</div>
+        </div>
+        <div class="proj-detail-cta"><span>Zobrazit detail studie</span></div>
+      </a>
+
+      <a href="/reference/lesteny-beton-rodinny-dum-ostrava/" class="proj-card proj-card--featured" data-type="lesteny">
+        <div class="proj-img">
+          <img src="/img/reference/lesteny-beton-rodinny-dum-ostrava/main.webp" alt="Leštěný beton rodinný dům Ostrava 140 m² industriální styl" loading="lazy">
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+          <span class="proj-ribbon">Případová studie</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Leštěný beton · RD Ostrava</div>
+          <div class="proj-meta">140 m² <span class="proj-meta-dot"></span> Level 1-2 <span class="proj-meta-dot"></span> Ostrava</div>
+        </div>
+        <div class="proj-detail-cta"><span>Zobrazit detail studie</span></div>
+      </a>
+
+      <a href="/reference/lesteny-beton-autoservis-prerov/" class="proj-card proj-card--featured" data-type="lesteny">
+        <div class="proj-img">
+          <img src="/img/landing/lesteny-beton-prerov-garaz-rekonstrukce-autoservis.webp" alt="Leštěný beton autoservis Přerov 320 m² C30/37" loading="lazy">
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+          <span class="proj-ribbon">Případová studie</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Leštěný beton · Autoservis Přerov</div>
+          <div class="proj-meta">320 m² <span class="proj-meta-dot"></span> C30/37 <span class="proj-meta-dot"></span> Přerov</div>
+        </div>
+        <div class="proj-detail-cta"><span>Zobrazit detail studie</span></div>
+      </a>
+
+      <a href="/reference/lesteny-beton-zemedelska-hala-prerov/" class="proj-card proj-card--featured" data-type="lesteny">
+        <div class="proj-img">
+          <img src="/img/landing/lesteny-beton-prerov-sklad-agro-objekt.webp" alt="Leštěný beton zemědělská hala Přerov 620 m² + Fortedur" loading="lazy">
+          <span class="proj-badge badge-orange">Leštěný beton</span>
+          <span class="proj-ribbon">Případová studie</span>
+        </div>
+        <div class="proj-info">
+          <div class="proj-name">Leštěný beton · Zemědělská hala Přerov</div>
+          <div class="proj-meta">620 m² <span class="proj-meta-dot"></span> Fortedur <span class="proj-meta-dot"></span> Přerov</div>
+        </div>
+        <div class="proj-detail-cta"><span>Zobrazit detail studie</span></div>
+      </a>
 
       <!-- === REÁLNÉ PROJEKTY (tvoje fotky) === -->
 
