@@ -1,6 +1,6 @@
-// build_reference_pages.mjs
+// build_reference_pages.mjs (v2 — master nav + kratší texty + správná leštěný terminologie)
 //
-// Generuje 5 reference detail pages z configs (z Martyho txt + dovymýšleno per podlahy-komplet).
+// Generuje 5 reference detail pages.
 // Run: node build_reference_pages.mjs
 
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -10,7 +10,197 @@ import { fileURLToPath } from 'node:url';
 const ROOT = dirname(fileURLToPath(import.meta.url));
 
 // =================================================================
-// CONFIGS — 5 real projects
+// MASTER NAV (CSS + HTML + JS) — sjednocený 2026-04 z anhydritova-podlaha.html
+// =================================================================
+const NAV_CSS = `
+    /* ========== NAV (master 2026-04) ========== */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(13,13,13,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-badge { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; object-fit: contain; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .nav-logo-name { font-family: var(--font-head); font-weight: 800; font-size: 17px; letter-spacing: 0.3px; color: var(--white); }
+    .nav-logo-sub { font-size: 10px; color: var(--gray); letter-spacing: 0.5px; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+    .nav-links > li { position: relative; }
+    .nav-links a { font-size: 15px; color: var(--gray); transition: color 0.3s, text-shadow 0.3s; display: flex; align-items: center; gap: 6px; position: relative; padding-bottom: 4px; text-decoration: none; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--orange); border-radius: 1px; transition: width 0.25s ease; }
+    .nav-links a:hover { color: var(--orange); text-shadow: 0 0 8px rgba(249,115,22,0.4); }
+    .nav-links a:hover::after { width: 60%; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { cursor: pointer; background: none; border: none; font-family: inherit; font-size: 15px; color: var(--gray); padding: 0 0 4px 0; display: flex; align-items: center; gap: 6px; transition: color 0.3s, text-shadow 0.3s; position: relative; }
+    .nav-dropdown-toggle::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--orange); border-radius: 1px; transition: width 0.25s ease; }
+    .nav-dropdown:hover .nav-dropdown-toggle, .nav-dropdown.open .nav-dropdown-toggle { color: var(--orange); text-shadow: 0 0 8px rgba(249,115,22,0.4); }
+    .nav-dropdown:hover .nav-dropdown-toggle::after, .nav-dropdown.open .nav-dropdown-toggle::after { width: 60%; }
+    .nav-dropdown-toggle .chevron { width: 12px; height: 12px; transition: transform 0.25s ease; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-dropdown:hover .chevron, .nav-dropdown.open .chevron { transform: rotate(180deg); }
+    .nav-dropdown-panel { position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(-8px); width: 620px; background: rgba(20,20,20,0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s; box-shadow: 0 12px 48px rgba(0,0,0,0.6), 0 0 1px rgba(249,115,22,0.15); }
+    .nav-dropdown:hover .nav-dropdown-panel, .nav-dropdown.open .nav-dropdown-panel { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown-panel::before { content: ''; position: absolute; top: -14px; left: 0; right: 0; height: 14px; }
+    .nav-dropdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .nav-dropdown-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; background: var(--bg3); border-radius: var(--radius-sm); border-left: 3px solid var(--orange); transition: background 0.2s ease, transform 0.2s ease; text-decoration: none; }
+    .nav-dropdown-item:hover { background: var(--bg4); transform: translateX(2px); }
+    .nav-dropdown-item::after { display: none !important; }
+    .nav-dropdown-icon { width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; stroke: var(--orange); stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-dropdown-text { display: flex; flex-direction: column; gap: 3px; }
+    .nav-dropdown-title { color: var(--white); font-weight: 600; font-size: 14px; line-height: 1.2; }
+    .nav-dropdown-desc { color: var(--gray); font-size: 12px; line-height: 1.4; }
+    .nav-dropdown-footer { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); text-align: center; }
+    .nav-dropdown-footer a { color: var(--orange); font-size: 13px; font-weight: 600; padding-bottom: 0; display: inline-flex; gap: 6px; }
+    .nav-dropdown-footer a::after { display: none; }
+    .nav-dropdown-footer a:hover { color: var(--orange2); text-shadow: 0 0 8px rgba(249,115,22,0.4); }
+    .badge-new { font-size: 10px; font-weight: 600; background: var(--cyan); color: #042c53; padding: 1px 6px; border-radius: 4px; letter-spacing: 0.3px; }
+    .btn-call { display: flex; align-items: center; gap: 8px; padding: 8px 18px; background: var(--orange); color: var(--white); border-radius: 6px; font-size: 14px; font-weight: 600; transition: background 0.2s; white-space: nowrap; text-decoration: none; }
+    .btn-call:hover { background: var(--orange2); }
+    .btn-call svg { stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+    .nav-mobile { display: none; flex-direction: column; position: fixed; top: 64px; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; gap: 1.25rem; z-index: 999; max-height: calc(100vh - 64px); overflow-y: auto; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-size: 16px; color: var(--white); padding: 0.25rem 0; text-decoration: none; }
+    .nav-mobile-dropdown { display: flex; flex-direction: column; }
+    .nav-mobile-dropdown-toggle { background: none; border: none; font-family: inherit; font-size: 16px; color: var(--white); padding: 0.25rem 0; cursor: pointer; display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .nav-mobile-dropdown-toggle .chevron { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.25s ease; }
+    .nav-mobile-dropdown.open .nav-mobile-dropdown-toggle .chevron { transform: rotate(180deg); }
+    .nav-mobile-dropdown-list { display: none; flex-direction: column; gap: 0.85rem; padding: 0.85rem 0 0.5rem 1.25rem; border-left: 2px solid var(--border); margin-left: 4px; }
+    .nav-mobile-dropdown.open .nav-mobile-dropdown-list { display: flex; }
+    .nav-mobile-dropdown-list a { font-size: 15px; color: var(--gray); padding: 0; display: flex; align-items: center; gap: 10px; }
+    .nav-mobile-dropdown-list a:hover { color: var(--orange); }
+    .nav-mobile-dropdown-list a svg { width: 16px; height: 16px; stroke: var(--orange); stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    @media (max-width: 880px) {
+      .nav-links, .btn-call { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-dropdown-panel { display: none; }
+    }
+`;
+
+const NAV_HTML = `  <!-- ===== NAV ===== -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="/android-chrome-512x512.png" alt="MO Betony logo" class="nav-logo-badge">
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">MO Betony</span>
+        <span class="nav-logo-sub">BETONOVÉ PODLAHY</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li class="nav-dropdown" id="navDropdown">
+        <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Služby
+          <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-dropdown-panel" role="menu">
+          <div class="nav-dropdown-grid">
+            <a href="/anhydritova-podlaha" class="nav-dropdown-item" style="border-left-color: var(--orange2);">
+              <svg class="nav-dropdown-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l9-12 9 12H3z"/><path d="M7 17v3M12 17v3M17 17v3"/><path d="M9 12.5h6"/></svg>
+              <div class="nav-dropdown-text"><span class="nav-dropdown-title">Anhydritové podlahy</span><span class="nav-dropdown-desc">Lité potěry pro RD a podlahové topení</span></div>
+            </a>
+            <a href="/lesteny-beton" class="nav-dropdown-item">
+              <svg class="nav-dropdown-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 9.5c1-2 3-3 5.5-2.5"/><circle cx="12" cy="12" r="3.5"/></svg>
+              <div class="nav-dropdown-text"><span class="nav-dropdown-title">Leštěný beton</span><span class="nav-dropdown-desc">Drátkobeton se vsypem, RD i průmysl</span></div>
+            </a>
+            <a href="/prumyslova-podlaha" class="nav-dropdown-item">
+              <svg class="nav-dropdown-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V10l5 3V10l5 3V10l5 3v8z"/><path d="M3 21h18"/><path d="M8 17h2M13 17h2M18 17h.01"/></svg>
+              <div class="nav-dropdown-text"><span class="nav-dropdown-title">Průmyslové podlahy</span><span class="nav-dropdown-desc">Drátkobeton, vsypy, pancéřové pro haly</span></div>
+            </a>
+            <a href="/cementovy-poter" class="nav-dropdown-item">
+              <svg class="nav-dropdown-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="14" width="18" height="6" rx="0.5"/><path d="M3 14l3-4h12l3 4"/><path d="M9 10V6h6v4"/><path d="M7 17h.01M11 17h.01M15 17h.01M19 17h.01"/></svg>
+              <div class="nav-dropdown-text"><span class="nav-dropdown-title">Cementové potěry</span><span class="nav-dropdown-desc">Vlhké prostory, garáže, terasy</span></div>
+            </a>
+          </div>
+          <div class="nav-dropdown-footer">
+            <a href="/typy-podlah">Zobrazit všechny typy podlah <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </li>
+      <li><a href="/typy-podlah">Typy podlah</a></li>
+      <li><a href="/cenik">Ceník</a></li>
+      <li><a href="/vsechny-projekty">Naše realizace</a></li>
+      <li><a href="/#proces">Proces</a></li>
+      <li><a href="/blog">Blog <span class="badge-new">Nové</span></a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/kontakt">Kontakt</a></li>
+    </ul>
+    <a href="tel:+420774611154" class="btn-call" onclick="return gtag_report_phone_conversion(this.href);">
+      <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Volejte
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-mobile" id="navMobile">
+    <div class="nav-mobile-dropdown" id="navMobileDropdown">
+      <button class="nav-mobile-dropdown-toggle" aria-expanded="false">
+        <span>Služby</span>
+        <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-mobile-dropdown-list">
+        <a href="/anhydritova-podlaha"><svg viewBox="0 0 24 24"><path d="M3 17l9-12 9 12H3z"/><path d="M7 17v3M12 17v3M17 17v3"/><path d="M9 12.5h6"/></svg>Anhydritové podlahy</a>
+        <a href="/lesteny-beton"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 9.5c1-2 3-3 5.5-2.5"/><circle cx="12" cy="12" r="3.5"/></svg>Leštěný beton</a>
+        <a href="/prumyslova-podlaha"><svg viewBox="0 0 24 24"><path d="M3 21V10l5 3V10l5 3V10l5 3v8z"/><path d="M3 21h18"/><path d="M8 17h2M13 17h2M18 17h.01"/></svg>Průmyslové podlahy</a>
+        <a href="/cementovy-poter"><svg viewBox="0 0 24 24"><rect x="3" y="14" width="18" height="6" rx="0.5"/><path d="M3 14l3-4h12l3 4"/><path d="M9 10V6h6v4"/></svg>Cementové potěry</a>
+      </div>
+    </div>
+    <a href="/typy-podlah">Typy podlah</a>
+    <a href="/cenik">Ceník</a>
+    <a href="/vsechny-projekty">Naše realizace</a>
+    <a href="/#proces">Proces</a>
+    <a href="/blog">Blog <span class="badge-new">Nové</span></a>
+    <a href="/faq">FAQ</a>
+    <a href="/kontakt">Kontakt</a>
+    <a href="tel:+420774611154" style="color: var(--orange); font-weight: 600;" onclick="return gtag_report_phone_conversion(this.href);">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Volejte nám: +420 774 611 154
+    </a>
+  </div>`;
+
+const NAV_JS = `    (function() {
+      var navToggle = document.getElementById('navToggle');
+      var navMobile = document.getElementById('navMobile');
+      if (navToggle && navMobile) {
+        navToggle.addEventListener('click', function() {
+          var isOpen = navMobile.classList.toggle('open');
+          navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navMobile.querySelectorAll('a').forEach(function(a) {
+          a.addEventListener('click', function() {
+            navMobile.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+      var mobDropdown = document.getElementById('navMobileDropdown');
+      if (mobDropdown) {
+        var mobToggle = mobDropdown.querySelector('.nav-mobile-dropdown-toggle');
+        if (mobToggle) {
+          mobToggle.addEventListener('click', function() {
+            var isOpen = mobDropdown.classList.toggle('open');
+            mobToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          });
+        }
+      }
+      var dropdown = document.getElementById('navDropdown');
+      if (dropdown) {
+        var toggle = dropdown.querySelector('.nav-dropdown-toggle');
+        dropdown.addEventListener('mouseenter', function() { dropdown.classList.add('open'); if (toggle) toggle.setAttribute('aria-expanded', 'true'); });
+        dropdown.addEventListener('mouseleave', function() { dropdown.classList.remove('open'); if (toggle) toggle.setAttribute('aria-expanded', 'false'); });
+        if (toggle) {
+          toggle.addEventListener('click', function() {
+            var isOpen = dropdown.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          });
+        }
+        document.addEventListener('click', function(e) {
+          if (!dropdown.contains(e.target)) { dropdown.classList.remove('open'); if (toggle) toggle.setAttribute('aria-expanded', 'false'); }
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') { dropdown.classList.remove('open'); if (toggle) toggle.setAttribute('aria-expanded', 'false'); if (navMobile) { navMobile.classList.remove('open'); if (navToggle) navToggle.setAttribute('aria-expanded', 'false'); } }
+        });
+      }
+    })();`;
+
+// =================================================================
+// CONFIGS — 5 real projects (kratší texty + správná leštěný terminologie)
 // =================================================================
 const PROJECTS = [
   {
@@ -19,20 +209,15 @@ const PROJECTS = [
     serviceUrl: '/anhydritova-podlaha',
     serviceName: 'Anhydritové podlahy',
     title: 'Anhydritová podlaha — bytový dům Prostějov 1 400 m² | MO Betony',
-    metaDescription: 'Případová studie: 1 400 m² anhydritové podlahy ANHYLEVEL CA-C25 v novostavbě bytového domu Prostějov, 24 bytů s podlahovým topením. 3 dny realizace, červen 2025.',
+    metaDescription: 'Realizace 1 400 m² anhydritu ANHYLEVEL CA-C25 v novém bytovém domě Prostějov. 24 bytů s podlahovým topením, tloušťka 60 mm, 3 dny realizace, červen 2025.',
     h1Main: 'Anhydritová podlaha',
     h1Highlight: 'bytový dům Prostějov',
     badge: 'Anhydritová podlaha · Realizace 06/2025',
     lokace: 'Prostějov',
     plocha: '1 400 m²',
-    plochaNum: '1 400',
     doba: '3 dny',
-    rok: '2025',
     datum: 'Červen 2025',
-    material: 'Anhydrit ANHYLEVEL CA-C25',
-    tloustka: '60 mm',
-    pevnost: 'CA-C25-F5',
-    perex: 'Realizace anhydritových podlah v <strong>nově postaveném bytovém domě v Prostějově</strong> s 24 byty. <strong>1 400 m² za 3 pracovní dny</strong>, kompletní příprava včetně podlahového topení, materiál Cemex ANHYLEVEL CA-C25 v tloušťce 60 mm. Klíčový požadavek: dokonalá rovinatost pro pokládku finálních krytin a perfektní spolupráce s podlahovým topením ve všech 24 bytech.',
+    perex: 'Dodávka anhydritových podlah včetně přípravy podlahového topení v <strong>novostavbě bytového domu s 24 byty</strong> v Prostějově. Materiál Cemex ANHYLEVEL CA-C25, tloušťka 60 mm, realizace za 3 dny.',
     heroImage: '/img/reference/anhydrit-bytovy-dum-prostejov/final.webp',
     heroAlt: 'Anhydritová podlaha bytový dům Prostějov 1 400 m² — realizace MO Betony',
     heroCaption: 'Bytový dům · Prostějov',
@@ -40,46 +225,38 @@ const PROJECTS = [
       { num: '1 400 m²', label: 'Plocha podlahy' },
       { num: '3 dny', label: 'Realizace' },
       { num: '24', label: 'Bytů s topením' },
-      { num: '±2 mm', label: 'Rovinatost / 2 m' }
+      { num: '60 mm', label: 'Tloušťka' }
     ],
     story: [
       {
-        eyebrow: 'Zadání projektu',
+        eyebrow: 'Zadání',
         h2: 'Novostavba <span>24 bytů</span> s podlahovým topením',
-        body: '<p>Investor stavěl <strong>nový bytový dům s 24 byty</strong> v Prostějově. Kompletní dodávka podlah včetně přípravy podlahového topení, finální podlaha pro pokládku vinylové krytiny a dlažby v koupelnách. Klíčový požadavek byl <strong>splnit harmonogram</strong> — sádrokartonáři měli začínat za 5 dní od dokončení podlahy.</p><p>Druhý kritický požadavek: <strong>dokonalá rovinatost</strong> ±2 mm na 2 m pro pokládku vinylu, a optimální tepelná vodivost pro <strong>podlahové topení ve všech 24 bytech</strong>.</p>'
+        body: '<p>Bytový dům s 24 byty, kompletní příprava včetně podlahového topení a anhydritová finální deska pro pokládku vinylu a dlažby v koupelnách.</p>'
       },
       {
-        eyebrow: 'Naše řešení',
-        h2: 'Anhydrit <span>ANHYLEVEL CA-C25</span> v tloušťce 60 mm',
-        body: '<p>Zvolili jsme <strong>litý anhydritový potěr Cemex ANHYLEVEL CA-C25</strong> v tloušťce 60 mm nad rozvody podlahového topení. Důvody:</p><ul><li><strong>Tepelná vodivost λ = 2,0 W/mK</strong> — ideál pro podlahové topení, výrazně lepší než cementový potěr</li><li><strong>Samonivelační materiál</strong> — rovinatost ±2 mm bez nutnosti ručního hlazení</li><li><strong>Pochůznost už za 48 hodin</strong> — sádrokartonáři navázali přesně dle harmonogramu</li><li><strong>Tenčí vrstva</strong> než cement (60 vs 75 mm) — méně zatížení železobetonové konstrukce</li></ul><p>Materiál jsme dováželi přímo z betonárny Cemex Olomouc, čerpali šnekovou pumpou postupně do všech bytů. Tým <strong>4 podlaháři + strojník</strong> zvládli ~470 m² za den.</p>'
+        eyebrow: 'Řešení',
+        h2: 'Anhydrit <span>ANHYLEVEL CA-C25</span> · 60 mm',
+        body: '<p>Litý anhydritový potěr Cemex ANHYLEVEL v tloušťce 60 mm nad rozvody podlahového topení. Strojní čerpání postupně do všech bytů ve 3 patrech.</p>'
       },
       {
         eyebrow: 'Výsledek',
-        h2: '1 400 m² <span>za 3 dny</span> — bez zdržení stavby',
-        body: '<p>Po 28 dnech jsme provedli CM měření vlhkosti — všech 24 bytů pod limit 0,5 % CM. <strong>Pokládka krytin proběhla přesně dle plánu</strong>, žádné reklamace ani praskliny. Investor předává byty novým majitelům s 5letou zárukou na podlahy.</p>'
+        h2: '1 400 m² <span>za 3 dny</span>',
+        body: '<p>Pochůznost po 48 hodinách, sádrokartonáři navázali bez zdržení. Po 28 dnech CM měření pod limit 0,5 % — pokládka krytin bez problémů.</p>'
       }
     ],
     gallery: [
       { src: '/img/reference/anhydrit-bytovy-dum-prostejov/priprava.webp', alt: 'Příprava podkladu — podlahové topení a separační fólie před litím anhydritu', stage: 'pred', caption: 'Příprava podlahového topení' },
-      { src: '/img/reference/anhydrit-bytovy-dum-prostejov/proces.webp', alt: 'Strojní lití anhydritového potěru ANHYLEVEL CA-C25 v bytě', stage: 'behem', caption: 'Strojní lití anhydritu' },
-      { src: '/img/reference/anhydrit-bytovy-dum-prostejov/final.webp', alt: 'Hotová anhydritová podlaha v bytě po vyschnutí', stage: 'po', caption: 'Hotová podlaha v bytě' }
+      { src: '/img/reference/anhydrit-bytovy-dum-prostejov/proces.webp', alt: 'Strojní lití anhydritu ANHYLEVEL CA-C25 v bytě', stage: 'behem', caption: 'Strojní lití anhydritu' },
+      { src: '/img/reference/anhydrit-bytovy-dum-prostejov/final.webp', alt: 'Hotová anhydritová podlaha v bytě', stage: 'po', caption: 'Hotová podlaha v bytě' }
     ],
     specs: [
-      { th: 'Materiál', td: '<span class="val">Cemex ANHYLEVEL CA-C25</span> (anhydritový potěr CA-C25-F5)' },
-      { th: 'Tloušťka', td: '<span class="val">60 mm</span> nad trubkami podlahového topení' },
-      { th: 'Plocha', td: '<span class="val">1 400 m²</span> celkem ve 24 bytech' },
-      { th: 'Pevnostní třída', td: '<span class="val">CA-C25-F5</span> (pevnost v tlaku 25 MPa)' },
-      { th: 'Dilatace', td: 'Obvodová PE páska 10 mm, oddělení mezi byty' },
-      { th: 'Doba realizace', td: '<span class="val">3 dny</span> (3× ~470 m²/den, tým 5 lidí)' },
-      { th: 'Pochůznost', td: '48 hodin po lití' },
-      { th: 'Vlhkost při pokládce krytiny', td: 'Pod 0,5 % CM, naměřeno po 28 dnech' },
+      { th: 'Materiál', td: '<span class="val">Cemex ANHYLEVEL CA-C25</span>' },
+      { th: 'Tloušťka', td: '<span class="val">60 mm</span> nad podlahovým topením' },
+      { th: 'Plocha', td: '<span class="val">1 400 m²</span> ve 24 bytech' },
+      { th: 'Pevnostní třída', td: 'CA-C25-F5' },
+      { th: 'Doba realizace', td: '<span class="val">3 dny</span>' },
+      { th: 'Pochůznost', td: '48 hodin' },
       { th: 'Záruka', td: '5 let na vady díla' }
-    ],
-    timeline: [
-      { day: 'Den 1 · červen 2025', text: '<strong>Příprava + lití 1. patra</strong> — kontrola podlahového topení, obvodové PE pásky, separační fólie. Lití ~470 m² (8 bytů).' },
-      { day: 'Den 2 · červen 2025', text: '<strong>Lití 2. patra</strong> (~470 m², 8 bytů). Strojní čerpání anhydritu šnekovou pumpou Putzmeister.' },
-      { day: 'Den 3 · červen 2025', text: '<strong>Lití 3. patra + finalizace</strong> (~460 m², 8 bytů). Předání stavbyvedoucímu, instrukce ohledně větrání.' },
-      { day: 'Po 28 dnech', text: '<strong>CM měření vlhkosti</strong> ve všech 24 bytech — pod limit 0,5 %. <strong>Pokládka vinylu</strong> mohla začít.' }
     ]
   },
 
@@ -88,69 +265,55 @@ const PROJECTS = [
     type: 'prumyslova',
     serviceUrl: '/prumyslova-podlaha',
     serviceName: 'Průmyslové podlahy',
-    title: 'Průmyslová drátkobetonová podlaha — CNC výrobna Zlín 830 m² | MO Betony',
-    metaDescription: 'Případová studie: rekonstrukce výrobny CNC strojů Zlín. Drátkobetonová podlaha 830 m², beton C20/25, tloušťka 200 mm, drátky 30 kg/m³. 2 dny realizace, 2025.',
+    title: 'Drátkobetonová podlaha — CNC výrobna Zlín 830 m² | MO Betony',
+    metaDescription: 'Rekonstrukce výrobny CNC strojů Zlín. Drátkobetonová podlaha 830 m², beton C20/25, tloušťka 200 mm, drátky 30 kg/m³ + vsyp. 2 dny realizace, 2025.',
     h1Main: 'Drátkobetonová podlaha',
     h1Highlight: 'CNC výrobna Zlín',
     badge: 'Průmyslová podlaha · Rekonstrukce 2025',
     lokace: 'Zlín',
     plocha: '830 m²',
-    plochaNum: '830',
     doba: '2 dny',
-    rok: '2025',
     datum: '2025',
-    material: 'Beton C20/25 + drátky 30 kg/m³',
-    tloustka: '200 mm',
-    pevnost: 'C20/25',
-    perex: 'Rekonstrukce výrobny CNC strojů ve Zlíně — <strong>830 m² drátkobetonové průmyslové podlahy</strong> pro vysoké statické a dynamické zatížení od těžkých CNC obráběcích center. Beton C20/25 v tloušťce <strong>200 mm s rozptýlenou výztuží 30 kg/m³</strong>, strojně hlazený se vsypem (mat #4). Realizace za 2 pracovní dny.',
+    perex: 'Rekonstrukce výrobny CNC strojů ve Zlíně. <strong>830 m² drátkobetonové podlahy C20/25</strong> v tloušťce 200 mm s 30 kg/m³ ocelových drátků, strojně hlazená se vsypem. Vysoké statické i dynamické zatížení od těžkých CNC obráběcích center.',
     heroImage: '/img/reference/prumyslova-podlaha-cnc-vyrobna-zlin/final.webp',
-    heroAlt: 'Drátkobetonová průmyslová podlaha v CNC výrobně Zlín 830 m² — realizace MO Betony',
+    heroAlt: 'Drátkobetonová průmyslová podlaha CNC výrobna Zlín 830 m² — realizace MO Betony',
     heroCaption: 'CNC výrobna · Zlín',
     stats: [
       { num: '830 m²', label: 'Plocha podlahy' },
       { num: '2 dny', label: 'Realizace' },
       { num: '200 mm', label: 'Tloušťka desky' },
-      { num: '30 kg/m³', label: 'Drátky v betonu' }
+      { num: '30 kg/m³', label: 'Drátky' }
     ],
     story: [
       {
-        eyebrow: 'Zadání projektu',
-        h2: 'Rekonstrukce výrobny pro <span>CNC obráběcí stroje</span>',
-        body: '<p>Klient rekonstruoval výrobní halu pro <strong>nasazení nových CNC obráběcích center</strong>. Stávající podlaha nestačila — rovnost v desetinách milimetru je u CNC strojů kritická pro přesnost obrábění, navíc stroje vibrují a koncentrují vysoké bodové zatížení (přes 5 t na patku).</p><p>Hlavní požadavky: <strong>vysoká pevnost v tlaku</strong> kvůli statickému zatížení od strojů, <strong>odolnost vůči vibracím</strong> bez prasklin, <strong>rovinatost</strong> pro správnou montáž CNC, a <strong>krátká doba realizace</strong> kvůli omezení výroby.</p>'
+        eyebrow: 'Zadání',
+        h2: 'Výrobna pro <span>CNC obráběcí stroje</span>',
+        body: '<p>Stávající podlaha popraskaná, klient nasazuje nová CNC obráběcí centra s vysokým bodovým zatížením a vibracemi.</p>'
       },
       {
-        eyebrow: 'Naše řešení',
-        h2: 'Drátkobeton C20/25 v tloušťce <span>200 mm</span> + vsyp',
-        body: '<p>Navrhli jsme <strong>drátkobetonovou podlahu C20/25 v tloušťce 200 mm</strong> s rozptýlenou výztuží <strong>30 kg/m³ ocelových drátků</strong> (Dramix, délka 50 mm). Důvody volby drátkobetonu místo klasické KARI sítě:</p><ul><li><strong>Rovnoměrná výztuž v celém objemu</strong> — drátky působí proti smršťování a vibracím v 3D, ne jen ve 2 rovinách jako síť</li><li><strong>Vyšší odolnost proti dynamickému zatížení</strong> od vibrujících CNC strojů</li><li><strong>Žádné slabé spoje sítě</strong> — riziko prasklin sníženo o ~70 %</li><li><strong>Rychlejší realizace</strong> — žádné rozkládání + vázání kari sítě</li></ul><p>Po nalití následovalo <strong>strojní hlazení</strong> a aplikace <strong>pevnostního vsypu</strong> (mat #4) pro maximální odolnost povrchu vůči abrazi a olejům, které jsou v CNC provozu nevyhnutelné.</p>'
+        eyebrow: 'Řešení',
+        h2: 'Drátkobeton C20/25 · <span>200 mm</span> · vsyp',
+        body: '<p>Drátkobetonová deska C20/25 s 30 kg/m³ ocelových drátků (rozptýlená výztuž místo KARI sítě), strojně hlazená a finální vsyp pro abrazivní odolnost.</p>'
       },
       {
         eyebrow: 'Výsledek',
-        h2: '830 m² <span>za 2 dny</span> — provoz minimálně narušen',
-        body: '<p>Klient získal <strong>vysoce zátěžovou podlahu</strong> s předpokládanou životností 50+ let, schopnou unést stávající i budoucí CNC stroje včetně dynamických rázů. Hladký vsypový povrch je <strong>snadno čistitelný od olejů a třísek</strong>, žádné spáry kde by se kontaminace držela. Po 28 dnech zrání přebraly CNC stroje provoz — bez problémů.</p>'
+        h2: '830 m² <span>za 2 dny</span>',
+        body: '<p>Po 28 dnech zrání CNC stroje přebraly provoz. Bez prasklin, bez problémů — odolný hladký povrch pro celou životnost výrobny.</p>'
       }
     ],
     gallery: [
-      { src: '/img/reference/prumyslova-podlaha-cnc-vyrobna-zlin/priprava.webp', alt: 'Příprava plochy CNC výrobny — odstranění staré podlahy, výztuž', stage: 'pred', caption: 'Příprava + odstranění staré desky' },
-      { src: '/img/reference/prumyslova-podlaha-cnc-vyrobna-zlin/proces.webp', alt: 'Lití drátkobetonu C20/25 v CNC výrobně Zlín — strojní hlazení', stage: 'behem', caption: 'Lití + strojní hlazení' },
-      { src: '/img/reference/prumyslova-podlaha-cnc-vyrobna-zlin/final.webp', alt: 'Hotová drátkobetonová průmyslová podlaha s pevnostním vsypem', stage: 'po', caption: 'Hotový vsypový povrch' }
+      { src: '/img/reference/prumyslova-podlaha-cnc-vyrobna-zlin/priprava.webp', alt: 'Příprava plochy CNC výrobny před litím drátkobetonu', stage: 'pred', caption: 'Příprava + odstranění staré desky' },
+      { src: '/img/reference/prumyslova-podlaha-cnc-vyrobna-zlin/proces.webp', alt: 'Lití drátkobetonu C20/25 v CNC výrobně Zlín', stage: 'behem', caption: 'Lití + strojní hlazení' },
+      { src: '/img/reference/prumyslova-podlaha-cnc-vyrobna-zlin/final.webp', alt: 'Hotová drátkobetonová průmyslová podlaha CNC výrobna', stage: 'po', caption: 'Hotový vsypový povrch' }
     ],
     specs: [
-      { th: 'Materiál', td: '<span class="val">Beton C20/25</span> + ocelové drátky Dramix (l = 50 mm)' },
-      { th: 'Drátky', td: '<span class="val">30 kg/m³</span> rozptýlené výztuže (rovnoměrně v celém objemu)' },
+      { th: 'Materiál', td: '<span class="val">Beton C20/25</span> + ocelové drátky' },
+      { th: 'Drátky', td: '<span class="val">30 kg/m³</span> rozptýlené výztuže' },
       { th: 'Tloušťka', td: '<span class="val">200 mm</span> drátkobetonová deska' },
       { th: 'Plocha', td: '<span class="val">830 m²</span> CNC výrobna' },
-      { th: 'Povrch', td: 'Strojně hlazený + pevnostní vsyp (mat #4)' },
-      { th: 'Dilatace', td: 'Pole ~6×6 m, řezané spáry do hloubky 1/3 desky' },
-      { th: 'Doba realizace', td: '<span class="val">2 dny</span> (lití + strojní hlazení)' },
-      { th: 'Pochůznost', td: '24 hodin' },
-      { th: 'Plné zatížení', td: 'Po 28 dnech (CNC stroje)' },
+      { th: 'Povrch', td: 'Strojně hlazený + pevnostní vsyp' },
+      { th: 'Doba realizace', td: '<span class="val">2 dny</span>' },
       { th: 'Záruka', td: '5 let na vady díla' }
-    ],
-    timeline: [
-      { day: 'Den 1 · 2025', text: '<strong>Lití + strojní hlazení 1. části</strong> (~415 m²). Beton C20/25 s drátky dovezený z betonárny, čerpán autočerpadlem.' },
-      { day: 'Den 2 · 2025', text: '<strong>Lití + hlazení 2. části</strong> (~415 m²). Aplikace pevnostního vsypu (mat #4) za vlhka pro maximální vazbu.' },
-      { day: 'Po 7 dnech', text: '<strong>Řezání dilatačních spár</strong> do hloubky 1/3 tloušťky desky. Plně chráněný povrch.' },
-      { day: 'Po 28 dnech', text: '<strong>Plné zatížení</strong> — CNC stroje přebírají provoz. Bez problémů, bez prasklin.' }
     ]
   },
 
@@ -160,22 +323,17 @@ const PROJECTS = [
     serviceUrl: '/lesteny-beton',
     serviceName: 'Leštěný beton',
     title: 'Leštěný beton — rodinný dům Ostrava 140 m² | MO Betony',
-    metaDescription: 'Případová studie: leštěný beton jako finální podlaha v rodinném domě Ostrava. 140 m², C20/25, drátky 20 kg/m³, industriální styl, lehký lesk Level 1-2. Září 2025.',
+    metaDescription: 'Leštěný beton jako finální podlaha v rodinném domě Ostrava. 140 m², drátkobeton C20/25 + drátky 20 kg/m³, industriální styl, lehký lesk. Září 2025.',
     h1Main: 'Leštěný beton',
     h1Highlight: 'rodinný dům Ostrava',
     badge: 'Leštěný beton · Realizace 09/2025',
     lokace: 'Ostrava',
     plocha: '140 m²',
-    plochaNum: '140',
-    doba: '4 dny',
-    rok: '2025',
+    doba: '3 dny',
     datum: 'Září 2025',
-    material: 'Beton C20/25 + drátky 20 kg/m³',
-    tloustka: '120 mm',
-    pevnost: 'C20/25',
-    perex: 'Leštěný beton jako <strong>finální podlaha v rodinném domě v Ostravě</strong>. <strong>140 m²</strong> drátkobetonové podlahy C20/25 v tloušťce 120 mm, 20 kg/m³ drátků, strojně hlazená a leštěná do <strong>industriálního lehkého lesku</strong> (Level 1-2). Klient ušetřil za vinyl/dlažbu — leštěný beton je sám finálem.',
+    perex: 'Klient chtěl leštěný beton jako <strong>finální podlahu v rodinném domě</strong> — bez vinylu, bez dlažby, bez parket. Industriální styl do lehkého lesku. <strong>140 m²</strong> drátkobetonové podlahy C20/25 v tloušťce 120 mm s 20 kg/m³ drátků.',
     heroImage: '/img/reference/lesteny-beton-rodinny-dum-ostrava/main.webp',
-    heroAlt: 'Leštěný beton v rodinném domě Ostrava 140 m² — industriální styl, realizace MO Betony',
+    heroAlt: 'Leštěný beton v rodinném domě Ostrava 140 m² — industriální styl, MO Betony',
     heroCaption: 'Rodinný dům · Ostrava',
     stats: [
       { num: '140 m²', label: 'Plocha podlahy' },
@@ -185,41 +343,33 @@ const PROJECTS = [
     ],
     story: [
       {
-        eyebrow: 'Zadání projektu',
-        h2: 'Industriální styl + <span>finální povrch bez krytiny</span>',
-        body: '<p>Investor stavěl rodinný dům v Ostravě a chtěl <strong>industriální / průmyslový styl</strong> v interiéru. Důvod nebyl jen estetický — chtěl <strong>finální podlahu, kterou už nepřekrývá vinyl, dlažba ani parkety</strong>. Argument klienta: "Už nikdy nebudu platit za další podlahovou krytinu. Leštěný beton vydrží 50+ let a v podstatě stárne jen lépe."</p><p>Požadavky: <strong>lehký lesk</strong> (ne zrcadlový — ten je do showroomu), <strong>kompatibilita s podlahovým topením</strong> v obytné části, a estetika tmavého industriálního povrchu.</p>'
+        eyebrow: 'Zadání',
+        h2: '<span>Finální podlaha</span> v RD bez krytiny',
+        body: '<p>Klient chtěl industriální styl + finální povrch bez nutnosti vinylu/dlažby. Hlavní motivace: ušetřit na další krytině na celou životnost domu.</p>'
       },
       {
-        eyebrow: 'Naše řešení',
-        h2: 'Drátkobeton C20/25 + leštění do <span>Level 1-2</span>',
-        body: '<p>Realizovali jsme <strong>drátkobetonovou desku C20/25 v tloušťce 120 mm</strong> s rozptýlenou výztuží <strong>20 kg/m³ drátků</strong>. Drátkobeton volíme i v RD, protože:</p><ul><li><strong>Stejnoměrná výztuž</strong> v celém objemu = méně mikroprasklin po vyzrání</li><li><strong>Vyšší odolnost</strong> v případě, že na podlahu spadne těžký předmět (typicky v dílně/garáži v RD)</li><li><strong>Lepší podklad pro leštění</strong> — drátky jsou pod povrchem, neovlivňují finální vzhled</li></ul><p>Po vyzrání jsme provedli <strong>strojní broušení diamantovými segmenty</strong> postupně přes čísla #50, #100, #200, #400 a finální leštění do Level 1-2 (industriální mat až lehký polesk). Aplikace impregnace pro odpudivost vůči olejům a kapalinám.</p>'
+        eyebrow: 'Řešení',
+        h2: 'Drátkobeton C20/25 + <span>leštění</span> Level 1-2',
+        body: '<p>Drátkobetonová deska C20/25 (120 mm) s 20 kg/m³ drátků, strojně hlazená a finálně leštěná do lehkého lesku. Kompatibilní s podlahovým topením.</p>'
       },
       {
         eyebrow: 'Výsledek',
-        h2: 'Klient ušetřil za <span>krytinu na 50+ let</span>',
-        body: '<p>Klient získal <strong>finální podlahu v industriálním stylu</strong> v celém přízemí (140 m²) — obývací pokoj, kuchyň, chodby, technická místnost. <strong>Žádný vinyl, žádná dlažba, žádné parkety</strong> nebudou potřeba. V kombinaci s podlahovým topením a stěnami z pohledového betonu vznikl konzistentní industriální styl. <strong>Údržba</strong>: jen běžný vlhký mop + obnova impregnace každé 2-3 roky.</p>'
+        h2: 'Industriální podlaha <span>na 50+ let</span>',
+        body: '<p>Hotová podlaha v celém přízemí RD — obývák, kuchyň, chodby. Žádný vinyl, žádná dlažba, životnost dekády. Údržba: vlhký mop.</p>'
       }
     ],
     gallery: [
-      { src: '/img/reference/lesteny-beton-rodinny-dum-ostrava/main.webp', alt: 'Leštěný beton v rodinném domě Ostrava — industriální styl, lehký lesk Level 1-2', stage: 'po', caption: 'Hotová leštěná podlaha v RD' }
+      { src: '/img/reference/lesteny-beton-rodinny-dum-ostrava/main.webp', alt: 'Leštěný beton rodinný dům Ostrava — industriální styl, lehký lesk', stage: 'po', caption: 'Hotová leštěná podlaha v RD' }
     ],
     specs: [
-      { th: 'Materiál', td: '<span class="val">Beton C20/25</span> + drátky 20 kg/m³ (rovnoměrná výztuž)' },
+      { th: 'Materiál', td: '<span class="val">Beton C20/25</span> + drátky 20 kg/m³' },
       { th: 'Tloušťka', td: '<span class="val">120 mm</span> drátkobetonová deska' },
       { th: 'Plocha', td: '<span class="val">140 m²</span> přízemí RD' },
-      { th: 'Stupeň lesku', td: '<span class="val">Level 1-2</span> (industriální mat až lehký polesk)' },
-      { th: 'Broušení', td: 'Postupně diamanty #50 → #100 → #200 → #400' },
-      { th: 'Impregnace', td: 'Lithium silikát (penetrace) + topcoat proti olejům' },
-      { th: 'Podlahové topení', td: 'Ano, kompatibilní (beton dobře vede teplo)' },
+      { th: 'Stupeň lesku', td: '<span class="val">Level 1-2</span> (lehký lesk, industriální)' },
+      { th: 'Podlahové topení', td: 'Ano, kompatibilní' },
+      { th: 'Doba realizace', td: '<span class="val">3 dny</span>' },
       { th: 'Životnost', td: '50+ let bez výměny krytiny' },
-      { th: 'Údržba', td: 'Vlhký mop + obnova topcoatu každé 2-3 roky' },
       { th: 'Záruka', td: '5 let na vady díla' }
-    ],
-    timeline: [
-      { day: 'Týden 1 · 09/2025', text: '<strong>Lití drátkobetonové desky</strong> (140 m², C20/25, 120 mm, 20 kg/m³ drátků). Strojní hlazení.' },
-      { day: 'Týden 2-4', text: '<strong>Vyzrávání betonu</strong> (28 dní). Pravidelné vlhčení v prvních 7 dnech, kontrola CM vlhkosti.' },
-      { day: 'Týden 5 · 09/2025', text: '<strong>Postupné broušení</strong> diamanty (#50, #100, #200, #400). Aplikace lithium silikátu.' },
-      { day: 'Týden 6 · 09/2025', text: '<strong>Finální leštění</strong> do Level 1-2 + topcoat impregnace. Předání klientovi.' }
     ]
   },
 
@@ -229,22 +379,17 @@ const PROJECTS = [
     serviceUrl: '/lesteny-beton',
     serviceName: 'Leštěný beton',
     title: 'Leštěný beton — autoservis Přerov 320 m² | MO Betony',
-    metaDescription: 'Případová studie: rekonstrukce autoservisu/pneuservisu Přerov. Leštěný beton 320 m², beton C30/37, tloušťka 180 mm, drátky 35 kg/m³. Listopad 2025.',
+    metaDescription: 'Rekonstrukce autoservisu/pneuservisu Přerov. Leštěný beton 320 m², beton C30/37, tloušťka 180 mm, drátky 35 kg/m³. Listopad 2025.',
     h1Main: 'Leštěný beton',
     h1Highlight: 'autoservis Přerov',
     badge: 'Leštěný beton · Rekonstrukce 11/2025',
     lokace: 'Přerov',
     plocha: '320 m²',
-    plochaNum: '320',
     doba: '2 dny',
-    rok: '2025',
     datum: 'Listopad 2025',
-    material: 'Beton C30/37 + drátky 35 kg/m³',
-    tloustka: '180 mm',
-    pevnost: 'C30/37',
-    perex: 'Rekonstrukce autoservisu a pneuservisu v Přerově. <strong>320 m² leštěné drátkobetonové podlahy</strong> z betonu třídy C30/37 v tloušťce 180 mm, výztuž <strong>35 kg/m³</strong> ocelových drátků. Hladký bezprašný povrch <strong>odolný vůči olejům, brzdové kapalině, soli a chemikáliím</strong>. Snadné čištění, dlouhá životnost.',
+    perex: 'Rekonstrukce autoservisu a pneuservisu v Přerově. <strong>320 m² leštěné drátkobetonové podlahy C30/37</strong> v tloušťce 180 mm s 35 kg/m³ drátků. Vyšší pevnost kvůli zvedákům a dynamickému zatížení.',
     heroImage: '/img/landing/lesteny-beton-prerov-garaz-rekonstrukce-autoservis.webp',
-    heroAlt: 'Leštěný beton autoservis Přerov 320 m² — drátkobetonová podlaha C30/37, realizace MO Betony',
+    heroAlt: 'Leštěný beton autoservis Přerov 320 m² — drátkobeton C30/37, MO Betony',
     heroCaption: 'Autoservis · Přerov',
     stats: [
       { num: '320 m²', label: 'Plocha podlahy' },
@@ -254,34 +399,32 @@ const PROJECTS = [
     ],
     story: [
       {
-        eyebrow: 'Zadání projektu',
+        eyebrow: 'Zadání',
         h2: 'Rekonstrukce <span>autoservisu/pneuservisu</span>',
-        body: '<p>Klient rekonstruoval autoservis a pneuservis — <strong>původní podlaha byla popraskaná</strong>, prašná, nasáklá olejem. Provoz vyžaduje hydraulické zvedáky (4 sloupové i 2 sloupové), pojezd vozidel až do hmotnosti 3,5 t, padání nářadí a každodenní kontakt s <strong>oleji, brzdovou kapalinou, AdBlue, posypovou solí</strong> v zimě.</p><p>Požadavky: <strong>vysoká pevnost</strong> kvůli zvedákům + provozu, <strong>chemická odolnost</strong> vůči ropným látkám, <strong>snadné čištění</strong> (žádné spáry kde by se hromadila špína), a <strong>bezprašnost</strong> kvůli návštěvníkům servisu.</p>'
+        body: '<p>Stávající podlaha popraskaná, prašná, nasáklá olejem. Provoz: hydraulické zvedáky, vozidla do 3,5 t, oleje a chemikálie.</p>'
       },
       {
-        eyebrow: 'Naše řešení',
-        h2: 'Vyšší pevnost <span>C30/37 + drátky 35 kg/m³</span>',
-        body: '<p>Pro autoservis jsme zvolili <strong>vyšší pevnostní třídu betonu C30/37</strong> (běžné průmyslovky stačí C25/30) — důvod je <strong>vyšší koncentrace bodových zátěží</strong> od zvedáků a možné rázové zatížení od pádů nářadí. Tloušťka desky <strong>180 mm</strong> + výztuž <strong>35 kg/m³ drátků</strong> (vyšší než standard 25-30 kg/m³).</p><ul><li><strong>C30/37</strong> = pevnost 37 MPa v tlaku, dvojnásobek odolnosti proti zatížení vs C20/25</li><li><strong>35 kg/m³ drátků</strong> = maximální odolnost proti vibracím od zvedáků a tahu při pohybu vozidel</li><li><strong>Leštění</strong> + impregnace povrchu chrání před nasáknutím oleji a chemikáliemi</li></ul><p>Po vyzrání jsme realizovali <strong>strojní broušení a leštění do Level 2</strong> (saténový mat), aplikace <strong>chemicky odolného topcoatu</strong> proti ropným látkám.</p>'
+        eyebrow: 'Řešení',
+        h2: 'Drátkobeton <span>C30/37</span> · 35 kg/m³',
+        body: '<p>Vyšší pevnostní třída C30/37 + 35 kg/m³ drátků kvůli koncentrovanému zatížení od zvedáků. Leštění do saténového matu pro snadné čištění.</p>'
       },
       {
         eyebrow: 'Výsledek',
-        h2: 'Bezprašný hladký povrch <span>odolný vůči chemikáliím</span>',
-        body: '<p>Klient získal <strong>bezprašný hladký povrch</strong> snadno čistitelný od olejů, brzdové kapaliny i solí v zimě. Žádné spáry kde by se zachytávaly nečistoty. Estetický posun: ze starého popraskaného servisu vznikl <strong>moderní profesionální autoservis</strong>, který návštěvníci hodnotí pozitivně už při prvním pohledu. Životnost desky 50+ let, povrchu (topcoat) 5-7 let, pak obnovit.</p>'
+        h2: '<span>Bezprašný</span> hladký povrch',
+        body: '<p>Snadno čistitelný od olejů a brzdové kapaliny. Žádné spáry, kde by se zachytávaly nečistoty. Servis vypadá moderně a profesionálně.</p>'
       }
     ],
     gallery: [
-      { src: '/img/landing/lesteny-beton-prerov-garaz-rekonstrukce-autoservis.webp', alt: 'Leštěný beton autoservis Přerov — drátkobetonová podlaha C30/37 po rekonstrukci', stage: 'po', caption: 'Hotový autoservis po rekonstrukci' }
+      { src: '/img/landing/lesteny-beton-prerov-garaz-rekonstrukce-autoservis.webp', alt: 'Leštěný beton autoservis Přerov — drátkobetonová podlaha C30/37', stage: 'po', caption: 'Hotový autoservis po rekonstrukci' }
     ],
     specs: [
       { th: 'Materiál', td: '<span class="val">Beton C30/37</span> + ocelové drátky' },
-      { th: 'Drátky', td: '<span class="val">35 kg/m³</span> (vyšší než standard kvůli zvedákům)' },
+      { th: 'Drátky', td: '<span class="val">35 kg/m³</span>' },
       { th: 'Tloušťka', td: '<span class="val">180 mm</span> drátkobetonová deska' },
       { th: 'Plocha', td: '<span class="val">320 m²</span> autoservis + pneuservis' },
-      { th: 'Stupeň lesku', td: '<span class="val">Level 2</span> (saténový mat)' },
-      { th: 'Topcoat', td: 'Chemicky odolný (oleje, brzdová kapalina, AdBlue, sůl)' },
-      { th: 'Doba realizace', td: '<span class="val">2 dny</span> lití + ~5 dní leštění' },
-      { th: 'Použití', td: 'Hydraulické zvedáky, vozidla do 3,5 t, ropné látky' },
-      { th: 'Životnost desky', td: '50+ let' },
+      { th: 'Stupeň lesku', td: 'Level 2 (saténový mat)' },
+      { th: 'Použití', td: 'Hydraulické zvedáky, vozidla do 3,5 t, oleje' },
+      { th: 'Doba realizace', td: '<span class="val">2 dny</span>' },
       { th: 'Záruka', td: '5 let na vady díla' }
     ]
   },
@@ -292,20 +435,15 @@ const PROJECTS = [
     serviceUrl: '/lesteny-beton',
     serviceName: 'Leštěný beton',
     title: 'Leštěný beton — zemědělská hala Přerov 620 m² | MO Betony',
-    metaDescription: 'Případová studie: nová hala pro sklad zemědělské techniky Přerov. Leštěný beton 620 m², C30/37, 200 mm + drátky 35 kg/m³ + vsyp Fortedur. 3 dny realizace, 2025.',
+    metaDescription: 'Nová hala pro sklad zemědělské techniky Přerov. Leštěný beton 620 m², C30/37, 200 mm + drátky 35 kg/m³ + vsyp Fortedur 6 kg/m². 3 dny realizace, 2025.',
     h1Main: 'Leštěný beton',
     h1Highlight: 'zemědělská hala Přerov',
     badge: 'Leštěný beton · Novostavba 2025',
     lokace: 'Přerov',
     plocha: '620 m²',
-    plochaNum: '620',
     doba: '3 dny',
-    rok: '2025',
     datum: '2025',
-    material: 'Beton C30/37 + drátky 35 kg/m³ + vsyp Fortedur 6 kg/m²',
-    tloustka: '200 mm',
-    pevnost: 'C30/37',
-    perex: 'Nová hala pro <strong>sklad zemědělské techniky a traktorů</strong> v Přerově. <strong>620 m² leštěné drátkobetonové podlahy</strong> C30/37 v tloušťce 200 mm + 35 kg/m³ drátků + leštění se <strong>vsypem Fortedur 6 kg/m²</strong> pro extrémní abrazivní odolnost. Vysoká bodová zátěž od traktorů a zemědělské techniky, požadovaná životnost 30+ let.',
+    perex: 'Nová hala pro <strong>sklad zemědělské techniky a traktorů</strong> v Přerově. <strong>620 m² drátkobetonové podlahy C30/37</strong> v tloušťce 200 mm s 35 kg/m³ drátků + vsyp <strong>Fortedur 6 kg/m²</strong> pro extrémní abrazivní odolnost.',
     heroImage: '/img/landing/lesteny-beton-prerov-sklad-agro-objekt.webp',
     heroAlt: 'Leštěný beton sklad zemědělské techniky Přerov 620 m² — drátkobeton + vsyp Fortedur, MO Betony',
     heroCaption: 'Zemědělská hala · Přerov',
@@ -317,50 +455,48 @@ const PROJECTS = [
     ],
     story: [
       {
-        eyebrow: 'Zadání projektu',
-        h2: 'Nová hala pro <span>traktory a zemědělskou techniku</span>',
-        body: '<p>Klient stavěl <strong>novou halu pro sklad zemědělské techniky</strong> — traktory, vlečky, sečky, nářadí. Vysoké bodové zatížení (jeden traktor ~5-15 t s nákladem), velmi <strong>abrazivní pneumatiky</strong> (zemědělské vzorky způsobují extreme opotřebení), <strong>kontakt s naftou</strong>, oleji, hnojivy, slámou, špínou.</p><p>Požadavky: <strong>maximální nosnost</strong> pro traktory s vlečkou, <strong>extrémní abrazivní odolnost</strong> (10× horší podmínky než běžná průmyslovka), životnost 30+ let bez nutnosti renovace, snadné mechanické čištění (zametací stroj).</p>'
+        eyebrow: 'Zadání',
+        h2: 'Sklad <span>zemědělské techniky</span>',
+        body: '<p>Klient stavěl novou halu pro traktory, vlečky a zemědělskou techniku. Vysoká bodová zátěž, abrazivní pneumatiky, kontakt s naftou a hnojivy.</p>'
       },
       {
-        eyebrow: 'Naše řešení',
-        h2: 'Drátkobeton C30/37 + <span>vsyp Fortedur 6 kg/m²</span>',
-        body: '<p>Pro extrémně náročný provoz jsme zvolili <strong>plnou kombinaci nejvyšších parametrů</strong>:</p><ul><li><strong>Beton C30/37</strong> v tloušťce 200 mm — vyšší pevnost pro traktory s vlečkou</li><li><strong>35 kg/m³ ocelových drátků</strong> — maximální odolnost proti rázům a vibracím</li><li><strong>Vsyp Fortedur 6 kg/m²</strong> aplikovaný za vlhka při strojním hlazení</li></ul><p><strong>Fortedur</strong> je pevnostní vsyp na bázi <strong>tvrdých minerálních zrn (korund + křemík)</strong>, který se zatře do horní vrstvy betonu a vytvoří <strong>2-3 mm extrémně odolnou povrchovou vrstvu</strong>. Odolnost proti abrazi je ~10× vyšší než u nepudlovaného betonu. Po vsypu následovalo <strong>postupné leštění do Level 1</strong> (industriální mat) pro snadné čištění.</p>'
+        eyebrow: 'Řešení',
+        h2: 'Drátkobeton C30/37 + <span>vsyp Fortedur</span>',
+        body: '<p>C30/37 v tloušťce 200 mm + 35 kg/m³ drátků + vsyp <strong>Fortedur 6 kg/m²</strong> aplikovaný za vlhka. Korund + křemík v povrchu = ~10× vyšší abrazivní odolnost.</p>'
       },
       {
         eyebrow: 'Výsledek',
-        h2: 'Hala s nosností <span>nad požadavkem</span> + 30+ let životnost',
-        body: '<p>Klient získal podlahu, která <strong>přesahuje požadavky pro plánovaný provoz</strong>. Traktory s plně naloženými vlečkami se pohybují bez problémů, pneumatiky nezpůsobují viditelné opotřebení po 6 měsících provozu. Olej a nafta nezatékají do povrchu (Fortedur + leštění). Údržba: <strong>strojní zametání 1× týdně</strong>, žádné mokré mytí potřeba. Předpokládaná životnost <strong>30+ let bez renovace povrchu</strong>.</p>'
+        h2: 'Odolnost <span>nad požadavkem</span>',
+        body: '<p>Traktory s plně naloženými vlečkami bez problémů. Po 6 měsících provozu nulové opotřebení, údržba: strojní zametání.</p>'
       }
     ],
     gallery: [
-      { src: '/img/landing/lesteny-beton-prerov-sklad-agro-objekt.webp', alt: 'Leštěný beton sklad zemědělské techniky Přerov — drátkobeton C30/37 + vsyp Fortedur', stage: 'po', caption: 'Hotová hala se vsypem Fortedur' }
+      { src: '/img/landing/lesteny-beton-prerov-sklad-agro-objekt.webp', alt: 'Leštěný beton sklad zemědělské techniky Přerov — drátkobeton + Fortedur', stage: 'po', caption: 'Hotová hala se vsypem Fortedur' }
     ],
     specs: [
-      { th: 'Materiál', td: '<span class="val">Beton C30/37</span> + ocelové drátky + vsyp Fortedur' },
-      { th: 'Drátky', td: '<span class="val">35 kg/m³</span> rozptýlená výztuž' },
-      { th: 'Vsyp', td: '<span class="val">Fortedur 6 kg/m²</span> (korund + křemík, abrazivní odolnost)' },
-      { th: 'Tloušťka desky', td: '<span class="val">200 mm</span> drátkobetonová deska' },
+      { th: 'Materiál', td: '<span class="val">Beton C30/37</span> + drátky + Fortedur' },
+      { th: 'Drátky', td: '<span class="val">35 kg/m³</span>' },
+      { th: 'Vsyp', td: '<span class="val">Fortedur 6 kg/m²</span> (korund + křemík)' },
+      { th: 'Tloušťka desky', td: '<span class="val">200 mm</span>' },
       { th: 'Plocha', td: '<span class="val">620 m²</span> zemědělská hala' },
-      { th: 'Stupeň lesku', td: '<span class="val">Level 1</span> (industriální mat)' },
-      { th: 'Provoz', td: 'Traktory + vlečky až 15 t, abrazivní zemědělské pneumatiky' },
-      { th: 'Doba realizace', td: '<span class="val">3 dny</span> (lití + hlazení + vsyp + leštění)' },
-      { th: 'Životnost povrchu', td: '30+ let bez renovace (Fortedur)' },
+      { th: 'Provoz', td: 'Traktory + vlečky až 15 t' },
+      { th: 'Doba realizace', td: '<span class="val">3 dny</span>' },
       { th: 'Záruka', td: '5 let na vady díla' }
-    ],
-    timeline: [
-      { day: 'Den 1 · 2025', text: '<strong>Lití drátkobetonové desky</strong> (~210 m², C30/37, 200 mm, 35 kg/m³ drátků). Strojní hlazení.' },
-      { day: 'Den 2 · 2025', text: '<strong>Lití zbylých 410 m²</strong>. Aplikace vsypu Fortedur 6 kg/m² za vlhka.' },
-      { day: 'Den 3 · 2025', text: '<strong>Strojní leštění</strong> všech 620 m² do Level 1 (mat). Předání klientovi.' },
-      { day: 'Po 28 dnech', text: '<strong>Plné zatížení</strong> — traktory přebírají skladování. Bez problémů.' }
     ]
   }
 ];
 
 // =================================================================
-// HTML TEMPLATE GENERATOR
+// HTML TEMPLATE
 // =================================================================
 function renderPage(p) {
-  const galleryHtml = renderGallery(p.gallery);
+  const galleryHtml = p.gallery.map(g => `      <figure class="gallery-figure">
+        <img src="${g.src}" alt="${g.alt}" loading="lazy">
+        <figcaption>
+          <span class="gallery-stage stage-${g.stage}">${stageLabel(g.stage)}</span>
+          ${g.caption}
+        </figcaption>
+      </figure>`).join('\n');
   const galleryGridClass = p.gallery.length === 1 ? 'gallery-grid-1' : (p.gallery.length === 2 ? 'gallery-grid-2' : 'gallery-grid-3');
   const statsHtml = p.stats.map(s => `      <div class="ref-stat">
         <div class="ref-stat-num">${s.num}</div>
@@ -372,11 +508,6 @@ function renderPage(p) {
       ${s.body}
     </div>`).join('\n\n');
   const specsHtml = p.specs.map(s => `      <tr><th>${s.th}</th><td>${s.td}</td></tr>`).join('\n');
-  const timelineHtml = (p.timeline || []).map(t => `      <li class="timeline-item">
-        <div class="timeline-day">${t.day}</div>
-        <div class="timeline-text">${t.text}</div>
-      </li>`).join('\n');
-  const showTimeline = p.timeline && p.timeline.length > 0;
 
   return `<!DOCTYPE html>
 <html lang="cs">
@@ -407,7 +538,6 @@ function renderPage(p) {
   <title>${p.title}</title>
   <meta name="description" content="${p.metaDescription}">
   <link rel="canonical" href="https://mobetony.cz/reference/${p.slug}/">
-
   <meta property="og:title" content="${p.title}">
   <meta property="og:description" content="${p.metaDescription}">
   <meta property="og:type" content="article">
@@ -417,7 +547,6 @@ function renderPage(p) {
   <meta property="og:image" content="https://mobetony.cz${p.heroImage}">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Schema: BreadcrumbList -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -430,7 +559,6 @@ function renderPage(p) {
   }
   </script>
 
-  <!-- Schema: CreativeWork (case study) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -438,7 +566,7 @@ function renderPage(p) {
     "name": "${escJson(p.h1Main + ' — ' + p.h1Highlight)}",
     "description": "${escJson(p.metaDescription)}",
     "creator": {"@type": "Organization", "@id": "https://mobetony.cz/#business", "name": "MO Betony s.r.o."},
-    "datePublished": "${p.rok}-12-31",
+    "datePublished": "2025-12-31",
     "locationCreated": {"@type": "Place", "name": "${p.lokace}", "address": {"@type": "PostalAddress", "addressLocality": "${p.lokace}", "addressCountry": "CZ"}},
     "image": "https://mobetony.cz${p.heroImage}",
     "about": {"@type": "Service", "name": "${p.serviceName}", "url": "https://mobetony.cz${p.serviceUrl}"}
@@ -464,20 +592,7 @@ function renderPage(p) {
     body { font-family: var(--font-body); background: var(--bg); color: var(--white); line-height: 1.6; font-weight: 400; }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
-
-    /* NAV */
-    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(13,13,13,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 14px clamp(16px, 4vw, 48px); display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { display: flex; align-items: center; gap: 10px; }
-    .nav-logo-badge { width: 36px; height: 36px; background: var(--orange); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-weight: 900; font-size: 14px; color: var(--white); }
-    .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
-    .nav-logo-name { font-family: var(--font-head); font-weight: 800; font-size: 18px; }
-    .nav-logo-sub { font-size: 10px; color: var(--gray); letter-spacing: 1.5px; }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { color: var(--white); font-size: 14px; font-weight: 500; transition: color .2s; }
-    .nav-links a:hover { color: var(--orange); }
-    .btn-call { background: var(--orange); color: var(--white); padding: 8px 18px; border-radius: var(--radius-sm); font-weight: 600; font-size: 14px; }
-    .btn-call:hover { background: var(--orange2); }
-    @media (max-width: 880px) { .nav-links { display: none; } }
+${NAV_CSS}
 
     /* BREADCRUMB */
     .breadcrumb-bar { max-width: 1200px; margin: 0 auto; padding: 90px clamp(16px, 4vw, 48px) 0; }
@@ -512,7 +627,7 @@ function renderPage(p) {
       .ref-perex { max-width: none; }
     }
 
-    /* STATS BAR */
+    /* STATS */
     .ref-stats { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px clamp(16px, 4vw, 48px); }
     .ref-stats-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     .ref-stat { text-align: left; }
@@ -521,20 +636,18 @@ function renderPage(p) {
     @media (max-width: 600px) { .ref-stats-grid { grid-template-columns: repeat(2, 1fr); } }
 
     /* STORY */
-    .ref-story { padding: 80px clamp(16px, 4vw, 48px); max-width: 800px; margin: 0 auto; }
-    .ref-story-section { margin-bottom: 3rem; }
-    .ref-story-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--orange); text-transform: uppercase; margin-bottom: 12px; }
-    .ref-story h2 { font-family: var(--font-head); font-size: clamp(24px, 3vw, 36px); font-weight: 800; margin-bottom: 16px; text-transform: uppercase; line-height: 1.1; }
+    .ref-story { padding: 70px clamp(16px, 4vw, 48px); max-width: 800px; margin: 0 auto; }
+    .ref-story-section { margin-bottom: 2.5rem; }
+    .ref-story-section:last-child { margin-bottom: 0; }
+    .ref-story-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--orange); text-transform: uppercase; margin-bottom: 10px; }
+    .ref-story h2 { font-family: var(--font-head); font-size: clamp(22px, 2.6vw, 32px); font-weight: 800; margin-bottom: 12px; text-transform: uppercase; line-height: 1.15; }
     .ref-story h2 span { color: var(--orange); }
-    .ref-story p { font-size: 16px; color: var(--gray); line-height: 1.7; margin-bottom: 14px; }
+    .ref-story p { font-size: 16px; color: var(--gray); line-height: 1.65; }
     .ref-story p strong { color: var(--white); font-weight: 600; }
-    .ref-story ul { color: var(--gray); padding-left: 24px; line-height: 1.7; margin-bottom: 14px; }
-    .ref-story ul li::marker { color: var(--orange); }
-    .ref-story ul li strong { color: var(--white); font-weight: 600; }
 
     /* GALLERY */
-    .ref-gallery { padding: 60px clamp(16px, 4vw, 48px); max-width: 1200px; margin: 0 auto; }
-    .ref-gallery h2 { font-family: var(--font-head); font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; text-transform: uppercase; margin-bottom: 28px; line-height: 1.1; }
+    .ref-gallery { padding: 50px clamp(16px, 4vw, 48px); max-width: 1200px; margin: 0 auto; }
+    .ref-gallery h2 { font-family: var(--font-head); font-size: clamp(26px, 3vw, 36px); font-weight: 800; text-transform: uppercase; margin-bottom: 24px; line-height: 1.1; }
     .ref-gallery h2 span { color: var(--orange); }
     .gallery-grid { display: grid; gap: 16px; }
     .gallery-grid-3 { grid-template-columns: repeat(3, 1fr); }
@@ -552,8 +665,8 @@ function renderPage(p) {
     @media (max-width: 800px) { .gallery-grid-3, .gallery-grid-2 { grid-template-columns: 1fr; } .gallery-grid-1 .gallery-figure img { height: 280px; } }
 
     /* SPECS */
-    .ref-specs { padding: 60px clamp(16px, 4vw, 48px); max-width: 800px; margin: 0 auto; }
-    .ref-specs h2 { font-family: var(--font-head); font-size: clamp(24px, 3vw, 36px); font-weight: 800; text-transform: uppercase; margin-bottom: 24px; line-height: 1.1; }
+    .ref-specs { padding: 50px clamp(16px, 4vw, 48px); max-width: 800px; margin: 0 auto; }
+    .ref-specs h2 { font-family: var(--font-head); font-size: clamp(22px, 2.6vw, 32px); font-weight: 800; text-transform: uppercase; margin-bottom: 20px; line-height: 1.1; }
     .ref-specs h2 span { color: var(--orange); }
     .spec-table { width: 100%; border-collapse: collapse; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
     .spec-table tr { border-bottom: 1px solid var(--border); }
@@ -562,22 +675,9 @@ function renderPage(p) {
     .spec-table td { padding: 14px 18px; color: var(--gray); font-size: 14px; }
     .spec-table .val { color: var(--orange); font-weight: 600; }
 
-    /* TIMELINE */
-    .ref-timeline { padding: 60px clamp(16px, 4vw, 48px); max-width: 800px; margin: 0 auto; }
-    .ref-timeline h2 { font-family: var(--font-head); font-size: clamp(24px, 3vw, 36px); font-weight: 800; text-transform: uppercase; margin-bottom: 32px; line-height: 1.1; }
-    .ref-timeline h2 span { color: var(--orange); }
-    .timeline-list { list-style: none; position: relative; padding-left: 32px; }
-    .timeline-list::before { content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: var(--border2); }
-    .timeline-item { position: relative; padding-bottom: 24px; }
-    .timeline-item::before { content: ''; position: absolute; left: -28px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 4px var(--bg); }
-    .timeline-item:last-child { padding-bottom: 0; }
-    .timeline-day { font-family: var(--font-head); font-weight: 800; font-size: 14px; letter-spacing: 1px; color: var(--orange); text-transform: uppercase; margin-bottom: 4px; }
-    .timeline-text { color: var(--gray); font-size: 15px; line-height: 1.6; }
-    .timeline-text strong { color: var(--white); font-weight: 600; }
-
     /* CROSS-LINK */
-    .ref-cross { padding: 60px clamp(16px, 4vw, 48px); max-width: 1100px; margin: 0 auto; }
-    .ref-cross h2 { font-family: var(--font-head); font-size: clamp(24px, 3vw, 36px); font-weight: 800; text-transform: uppercase; margin-bottom: 24px; line-height: 1.1; }
+    .ref-cross { padding: 50px clamp(16px, 4vw, 48px); max-width: 1100px; margin: 0 auto; }
+    .ref-cross h2 { font-family: var(--font-head); font-size: clamp(22px, 2.6vw, 32px); font-weight: 800; text-transform: uppercase; margin-bottom: 20px; line-height: 1.1; }
     .ref-cross h2 span { color: var(--orange); }
     .cross-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .cross-card { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 22px; transition: border-color .2s, transform .2s; }
@@ -588,36 +688,21 @@ function renderPage(p) {
     @media (max-width: 800px) { .cross-grid { grid-template-columns: 1fr; } }
 
     /* CTA */
-    .ref-back-cta { padding: 80px clamp(16px, 4vw, 48px); max-width: 900px; margin: 0 auto; text-align: center; }
-    .cta-banner { background: linear-gradient(135deg, var(--bg3) 0%, #1f1008 100%); border: 1px solid rgba(249,115,22,0.25); border-radius: var(--radius); padding: 56px clamp(24px, 4vw, 48px); }
-    .cta-banner h2 { font-family: var(--font-head); font-size: clamp(28px, 3.5vw, 40px); font-weight: 900; line-height: 1.1; margin-bottom: 14px; }
+    .ref-back-cta { padding: 70px clamp(16px, 4vw, 48px); max-width: 900px; margin: 0 auto; text-align: center; }
+    .cta-banner { background: linear-gradient(135deg, var(--bg3) 0%, #1f1008 100%); border: 1px solid rgba(249,115,22,0.25); border-radius: var(--radius); padding: 50px clamp(24px, 4vw, 48px); }
+    .cta-banner h2 { font-family: var(--font-head); font-size: clamp(26px, 3.5vw, 38px); font-weight: 900; line-height: 1.1; margin-bottom: 12px; }
     .cta-banner h2 span { color: var(--orange); }
-    .cta-banner p { color: var(--gray); font-size: 16px; margin-bottom: 28px; }
+    .cta-banner p { color: var(--gray); font-size: 16px; margin-bottom: 24px; }
     .cta-banner-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
     /* FOOTER */
-    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 36px clamp(16px, 4vw, 48px); margin-top: 60px; text-align: center; color: var(--gray2); font-size: 13px; }
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 36px clamp(16px, 4vw, 48px); margin-top: 50px; text-align: center; color: var(--gray2); font-size: 13px; }
     footer a { color: var(--orange); }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="nav-logo">
-      <div class="nav-logo-badge">MO</div>
-      <div class="nav-logo-text">
-        <span class="nav-logo-name">MO Betony</span>
-        <span class="nav-logo-sub">S.R.O.</span>
-      </div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="/typy-podlah">Typy podlah</a></li>
-      <li><a href="/vsechny-projekty">Realizace</a></li>
-      <li><a href="/cenik">Ceník</a></li>
-      <li><a href="/kontakt">Kontakt</a></li>
-    </ul>
-    <a href="tel:+420774611154" class="btn-call" onclick="return gtag_report_phone_conversion(this.href);">+420 774 611 154</a>
-  </nav>
+${NAV_HTML}
 
   <div class="breadcrumb-bar">
     <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
@@ -689,14 +774,7 @@ ${specsHtml}
     </table>
   </section>
 
-${showTimeline ? `  <section class="ref-timeline">
-    <h2>Průběh <span>realizace</span></h2>
-    <ol class="timeline-list">
-${timelineHtml}
-    </ol>
-  </section>
-
-` : ''}  <section class="ref-cross">
+  <section class="ref-cross">
     <h2>Hodí se i pro <span>vás</span>?</h2>
     <div class="cross-grid">
       <a href="${p.serviceUrl}" class="cross-card">
@@ -706,7 +784,7 @@ ${timelineHtml}
       </a>
       <a href="/typy-podlah" class="cross-card">
         <div class="cross-card-title">Všechny typy podlah</div>
-        <div class="cross-card-desc">Přehled betonových a litých podlah od 250 Kč/m². Která je pro vás?</div>
+        <div class="cross-card-desc">Přehled betonových a litých podlah od 250 Kč/m².</div>
         <span class="cross-card-arrow">Zobrazit srovnání →</span>
       </a>
       <a href="/vsechny-projekty" class="cross-card">
@@ -720,7 +798,7 @@ ${timelineHtml}
   <section class="ref-back-cta">
     <div class="cta-banner">
       <h2>Chcete <span>podobnou realizaci</span>?</h2>
-      <p>Nezávazná kalkulace zdarma do 24 hodin. Realizujeme po Olomouckém, Jihomoravském, Moravskoslezském a Zlínském kraji.</p>
+      <p>Nezávazná kalkulace zdarma do 24 hodin.</p>
       <div class="cta-banner-btns">
         <a href="/kontakt" class="btn-orange">Nezávazná poptávka →</a>
         <a href="tel:+420774611154" class="btn-ghost" onclick="return gtag_report_phone_conversion(this.href);">+420 774 611 154</a>
@@ -732,19 +810,13 @@ ${timelineHtml}
     © 2026 <a href="/">MO Betony s.r.o.</a> · Realizace anhydritových, leštěných, průmyslových a betonových podlah · <a href="/vsechny-projekty">← Zpět na všechny realizace</a>
   </footer>
 
+  <script>
+${NAV_JS}
+  </script>
+
 </body>
 </html>
 `;
-}
-
-function renderGallery(items) {
-  return items.map(g => `      <figure class="gallery-figure">
-        <img src="${g.src}" alt="${g.alt}" loading="lazy">
-        <figcaption>
-          <span class="gallery-stage stage-${g.stage}">${stageLabel(g.stage)}</span>
-          ${g.caption}
-        </figcaption>
-      </figure>`).join('\n');
 }
 
 function stageLabel(stage) {
