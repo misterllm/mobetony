@@ -46,7 +46,7 @@ const CSS_BLOCK = `
 function buildHtmlBlock(title, indent = '') {
   return `${indent}<!-- ===== QUIZ TEASER (10s) ===== -->
 ${indent}<div class="quiz-teaser-wrap">
-${indent}  <a href="/typy-podlah#quiz" class="quiz-teaser" aria-label="Spustit 10sekundový kviz na výběr podlahy">
+${indent}  <a href="/typy-podlah#quiz" class="quiz-teaser" aria-label="Spustit krátký kviz na výběr podlahy">
 ${indent}    <div class="quiz-teaser-icon" aria-hidden="true">
 ${indent}      <svg viewBox="0 0 24 24"><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/><circle cx="12" cy="12" r="10"/></svg>
 ${indent}    </div>
@@ -54,12 +54,12 @@ ${indent}    <div class="quiz-teaser-content">
 ${indent}      <div class="quiz-teaser-eyebrow">
 ${indent}        <span class="quiz-teaser-badge">
 ${indent}          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 15 14"/></svg>
-${indent}          10 s · 3 otázky
+${indent}          10 s · 5 otázek
 ${indent}        </span>
 ${indent}        <span class="quiz-teaser-label">Interaktivní průvodce</span>
 ${indent}      </div>
 ${indent}      <h3 class="quiz-teaser-title">${title}</h3>
-${indent}      <p class="quiz-teaser-sub">Odpovězte na <strong>3 rychlé otázky</strong> a doporučíme vám <strong>1–2 typy podlah</strong> ideální pro váš projekt.</p>
+${indent}      <p class="quiz-teaser-sub">Odpovězte na <strong>5 otázek</strong> (lze přeskočit) a doporučíme vám <strong>nejvhodnější typ podlahy</strong> pro váš projekt.</p>
 ${indent}    </div>
 ${indent}    <div class="quiz-teaser-cta">
 ${indent}      <span class="quiz-teaser-btn">Spustit kviz</span>
