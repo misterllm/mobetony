@@ -143,7 +143,8 @@
     .quiz-teaser-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(20px, 2.4vw, 26px); color: var(--text-primary, #e5e5e5); text-transform: uppercase; margin: 0 0 .35rem; line-height: 1.15; letter-spacing: -.3px; }
     .quiz-teaser-sub { font-size: 14px; color: var(--text-secondary, #a3a3a3); margin: 0; line-height: 1.5; }
     .quiz-teaser-sub strong { color: var(--text-primary, #e5e5e5); font-weight: 700; }
-    .quiz-teaser-cta { display: flex; align-items: center; gap: .55rem; padding-left: 1rem; position: relative; z-index: 1; flex-shrink: 0; }
+    .quiz-teaser-cta { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; background: var(--orange); border-radius: 100px; box-shadow: 0 4px 16px rgba(249,115,22,0.40); transition: background .25s ease, transform .25s ease, box-shadow .25s ease; flex-shrink: 0; position: relative; z-index: 1; }
+    .quiz-teaser:hover .quiz-teaser-cta { background: #fb923c; box-shadow: 0 6px 22px rgba(249,115,22,0.55); transform: scale(1.03); }
     .quiz-teaser-btn { font-weight: 700; font-size: 15px; color: var(--orange, #f97316); white-space: nowrap; }
     .quiz-teaser-arrow { width: 22px; height: 22px; fill: none; stroke: var(--orange, #f97316); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: transform .3s ease; }
     .quiz-teaser:hover .quiz-teaser-arrow { transform: translateX(5px); }
@@ -151,7 +152,7 @@
       .quiz-teaser { grid-template-columns: auto 1fr; gap: 1rem; padding: 1.1rem 1.1rem 1.25rem; }
       .quiz-teaser-icon { width: 48px; height: 48px; border-radius: 12px; }
       .quiz-teaser-icon svg { width: 24px; height: 24px; }
-      .quiz-teaser-cta { grid-column: 1 / -1; padding-left: 0; padding-top: .35rem; justify-content: flex-end; border-top: 1px dashed rgba(249,115,22,0.25); margin-top: .5rem; }
+      .quiz-teaser-cta { grid-column: 1 / -1; justify-content: center; padding: 11px 18px; margin-top: .5rem; }
       .quiz-teaser-title { font-size: 18px; }
       .quiz-teaser-sub { font-size: 13px; }
     }
@@ -314,7 +315,7 @@
       <p class="quiz-teaser-sub">Odpovězte na <strong>5 otázek</strong> (lze přeskočit) a doporučíme vám <strong>nejvhodnější typ podlahy</strong> pro váš projekt.</p>
     </div>
     <div class="quiz-teaser-cta">
-      <span class="quiz-teaser-btn">Spustit kviz</span>
+      <span class="quiz-teaser-btn">Spustit kvíz</span>
       <svg class="quiz-teaser-arrow" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </div>
   </a>
