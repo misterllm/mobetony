@@ -251,13 +251,60 @@
     #navMobile a { padding: 14px clamp(16px,4vw,48px); border-bottom: 1px solid var(--border); font-size: 16px; color: var(--gray); }
     #navMobile a:hover { color: var(--orange); }
 
-    /* HERO */
-    .page-hero { padding: 40px clamp(16px, 4vw, 48px) 80px; max-width: 900px; margin: 0 auto; text-align: center; }
+    /* HERO — split layout (text + image) */
+    .page-hero { padding: 40px clamp(16px, 4vw, 48px) 60px; max-width: 1200px; margin: 0 auto; position: relative; }
+    .page-hero::before {
+      content: ''; position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 90%; max-width: 1000px; height: 400px;
+      background: radial-gradient(circle at 30% 40%, rgba(249,115,22,0.12), transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    .page-hero-grid {
+      display: grid; grid-template-columns: 1.05fr 1fr;
+      gap: 3.5rem; align-items: center;
+      position: relative; z-index: 1;
+    }
     .hero-badge { display: inline-block; font-size: 13px; font-weight: 600; color: var(--orange); background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.25); border-radius: 20px; padding: 5px 14px; margin-bottom: 20px; letter-spacing: 0.04em; text-transform: uppercase; }
     .page-hero h1 { font-family: var(--font-head); font-size: clamp(36px, 6vw, 68px); font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: var(--white); }
     .page-hero h1 span { color: var(--orange); }
-    .page-hero p { font-size: clamp(16px, 2vw, 20px); color: var(--gray); max-width: 660px; margin: 0 auto 36px; }
-    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .page-hero p { font-size: clamp(16px, 2vw, 19px); color: var(--gray); max-width: 540px; margin: 0 0 32px; line-height: 1.55; }
+    .page-hero p strong { color: var(--white); font-weight: 600; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .page-hero-trust {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+      padding-top: 1.75rem; border-top: 1px solid var(--border);
+    }
+    .trust-item { text-align: left; }
+    .trust-num {
+      font-family: var(--font-head); font-weight: 900;
+      font-size: clamp(22px, 2.5vw, 32px);
+      color: var(--orange); line-height: 1;
+    }
+    .trust-label {
+      font-size: 11px; color: var(--gray);
+      text-transform: uppercase; letter-spacing: 1.2px; margin-top: 4px;
+    }
+    .page-hero-image {
+      position: relative;
+      border-radius: var(--radius); overflow: hidden;
+      aspect-ratio: 4/3;
+      border: 1px solid var(--border);
+    }
+    .page-hero-image img { width: 100%; height: 100%; object-fit: cover; }
+    .page-hero-image-caption {
+      position: absolute; bottom: 14px; left: 14px;
+      background: rgba(13,13,13,0.88);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      padding: 8px 14px; border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 500;
+      border: 1px solid var(--border2);
+    }
+    @media (max-width: 880px) {
+      .page-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .page-hero p { max-width: none; }
+      .page-hero-trust { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    }
     .btn-orange { background: var(--orange); color: var(--white); padding: 14px 28px; border-radius: var(--radius-sm); font-weight: 700; font-size: 16px; transition: background 0.2s, transform 0.15s; }
     .btn-orange:hover { background: var(--orange2); transform: translateY(-1px); }
     .btn-ghost { border: 1px solid var(--border2); color: var(--white); padding: 14px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 16px; transition: border-color 0.2s, color 0.2s; }
@@ -656,33 +703,27 @@
 
   <!-- HERO -->
   <div class="page-hero">
-    <span class="hero-badge">Průmyslové podlahy</span>
-    <h1>Drátkobeton pro haly, sklady<br>a <span>těžký provoz</span></h1>
-    <p>Průmyslové drátkobetonové podlahy s nosností až 50 t/m² — pro výrobní haly, sklady, logistická centra, autoservisy a zemědělské objekty. Realizujeme po celé Moravě a ČR.</p>
-    <div class="hero-btns">
-      <a href="/kontakt" class="btn-orange">Nezávazná poptávka →</a>
-      <a href="tel:+420774611154" class="btn-ghost" onclick="return gtag_report_phone_conversion(this.href);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Zavolat přímo</a>
-    </div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats-bar">
-    <div class="stats-inner">
-      <div>
-        <div class="stat-val">50 t</div>
-        <div class="stat-lbl">nosnost / m²</div>
+    <div class="page-hero-grid">
+      <div class="page-hero-content">
+        <span class="hero-badge">Průmyslové podlahy</span>
+        <h1>Drátkobeton pro haly, sklady<br>a <span>těžký provoz</span></h1>
+        <p>Průmyslové drátkobetonové podlahy s <strong>nosností až 50 t/m²</strong> — pro výrobní haly, sklady, logistická centra, autoservisy a zemědělské objekty. <strong>Realizujeme po celé Moravě a ČR</strong>, materiály z Cemexu, 500+ projektů.</p>
+        <div class="hero-btns">
+          <a href="/kontakt" class="btn-orange">Nezávazná poptávka →</a>
+          <a href="tel:+420774611154" class="btn-ghost" onclick="return gtag_report_phone_conversion(this.href);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Zavolat přímo</a>
+        </div>
+        <div class="page-hero-trust">
+          <div class="trust-item"><div class="trust-num">50&nbsp;t</div><div class="trust-label">nosnost / m²</div></div>
+          <div class="trust-item"><div class="trust-num">1&nbsp;000+</div><div class="trust-label">m² za den</div></div>
+          <div class="trust-item"><div class="trust-num">500+</div><div class="trust-label">realizací</div></div>
+          <div class="trust-item"><div class="trust-num">5&nbsp;let</div><div class="trust-label">záruka</div></div>
+        </div>
       </div>
-      <div>
-        <div class="stat-val">1 000+</div>
-        <div class="stat-lbl">m² za 2–3 dny</div>
-      </div>
-      <div>
-        <div class="stat-val">30+</div>
-        <div class="stat-lbl">let životnosti</div>
-      </div>
-      <div>
-        <div class="stat-val">5 let</div>
-        <div class="stat-lbl">záruka na práci</div>
+      <div class="page-hero-image">
+        <img src="/img/landing/prumyslova-podlaha-prerov-dratkobeton.webp"
+             alt="Drátkobetonová průmyslová podlaha 800 m² ve výrobní hale — realizace MO Betony"
+             width="1280" height="960" fetchpriority="high">
+        <div class="page-hero-image-caption">Drátkobeton se vsypem · výrobní hala</div>
       </div>
     </div>
   </div>

@@ -255,10 +255,22 @@
     .nav-mobile-dropdown-list a:hover { color: var(--orange); }
     .nav-mobile-dropdown-list a svg { width: 16px; height: 16px; stroke: var(--orange); stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 
-    /* ===== HERO ===== */
+    /* ===== HERO — split layout (text + image) ===== */
     .page-hero {
-      padding: 40px clamp(16px, 4vw, 48px) 80px;
-      max-width: 900px; margin: 0 auto; text-align: center;
+      padding: 40px clamp(16px, 4vw, 48px) 60px;
+      max-width: 1200px; margin: 0 auto; position: relative;
+    }
+    .page-hero::before {
+      content: ''; position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 90%; max-width: 1000px; height: 400px;
+      background: radial-gradient(circle at 30% 40%, rgba(249,115,22,0.12), transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    .page-hero-grid {
+      display: grid; grid-template-columns: 1.05fr 1fr;
+      gap: 3.5rem; align-items: center;
+      position: relative; z-index: 1;
     }
     .hero-badge {
       display: inline-block; font-size: 13px; font-weight: 600;
@@ -273,10 +285,45 @@
     }
     .page-hero h1 span { color: var(--orange); }
     .page-hero p {
-      font-size: clamp(16px, 2vw, 20px); color: var(--gray);
-      max-width: 660px; margin: 0 auto 36px;
+      font-size: clamp(16px, 2vw, 19px); color: var(--gray);
+      max-width: 540px; margin: 0 0 32px; line-height: 1.55;
     }
-    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .page-hero p strong { color: var(--white); font-weight: 600; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .page-hero-trust {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+      padding-top: 1.75rem; border-top: 1px solid var(--border);
+    }
+    .trust-item { text-align: left; }
+    .trust-num {
+      font-family: var(--font-head); font-weight: 900;
+      font-size: clamp(22px, 2.5vw, 32px);
+      color: var(--orange); line-height: 1;
+    }
+    .trust-label {
+      font-size: 11px; color: var(--gray);
+      text-transform: uppercase; letter-spacing: 1.2px; margin-top: 4px;
+    }
+    .page-hero-image {
+      position: relative;
+      border-radius: var(--radius); overflow: hidden;
+      aspect-ratio: 4/3;
+      border: 1px solid var(--border);
+    }
+    .page-hero-image img { width: 100%; height: 100%; object-fit: cover; }
+    .page-hero-image-caption {
+      position: absolute; bottom: 14px; left: 14px;
+      background: rgba(13,13,13,0.88);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      padding: 8px 14px; border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 500;
+      border: 1px solid var(--border2);
+    }
+    @media (max-width: 880px) {
+      .page-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .page-hero p { max-width: none; }
+      .page-hero-trust { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    }
     .btn-orange {
       background: var(--orange); color: var(--white); padding: 14px 28px;
       border-radius: var(--radius-sm); font-weight: 700; font-size: 16px;
@@ -656,33 +703,27 @@
 
   <!-- ===== HERO ===== -->
   <div class="page-hero">
-    <span class="hero-badge">Anhydritová podlaha</span>
-    <h1>Litý potěr pro <span>rodinné domy</span><br>i komerční stavby</h1>
-    <p>Samonivelační anhydritová podlaha — dokonale rovná, ideální pro podlahové topení, pochůzná do 48 hodin. Realizujeme Olomouc a celou Moravu.</p>
-    <div class="hero-btns">
-      <a href="/kontakt" class="btn-orange">Nezávazná poptávka →</a>
-      <a href="tel:+420774611154" class="btn-ghost" onclick="return gtag_report_phone_conversion(this.href);"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Zavolat přímo</a>
-    </div>
-  </div>
-
-  <!-- ===== STATS ===== -->
-  <div class="stats-bar">
-    <div class="stats-inner">
-      <div>
-        <div class="stat-val">15+</div>
-        <div class="stat-lbl">let zkušeností</div>
+    <div class="page-hero-grid">
+      <div class="page-hero-content">
+        <span class="hero-badge">Anhydritová podlaha</span>
+        <h1>Litý potěr pro <span>rodinné domy</span><br>i komerční stavby</h1>
+        <p>Samonivelační anhydritová podlaha — <strong>dokonale rovná</strong> (±2 mm na 2 m), ideální pro podlahové topení, <strong>pochůzná do 48 hodin</strong>. Realizujeme po Olomouckém a Jihomoravském kraji, materiály Cemex ANHYLEVEL.</p>
+        <div class="hero-btns">
+          <a href="/kontakt" class="btn-orange">Nezávazná poptávka →</a>
+          <a href="tel:+420774611154" class="btn-ghost" onclick="return gtag_report_phone_conversion(this.href);"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Zavolat přímo</a>
+        </div>
+        <div class="page-hero-trust">
+          <div class="trust-item"><div class="trust-num">±2&nbsp;mm</div><div class="trust-label">rovinatost / 2 m</div></div>
+          <div class="trust-item"><div class="trust-num">48&nbsp;h</div><div class="trust-label">pochůznost</div></div>
+          <div class="trust-item"><div class="trust-num">500+</div><div class="trust-label">realizací</div></div>
+          <div class="trust-item"><div class="trust-num">5&nbsp;let</div><div class="trust-label">záruka</div></div>
+        </div>
       </div>
-      <div>
-        <div class="stat-val">500+</div>
-        <div class="stat-lbl">realizovaných projektů</div>
-      </div>
-      <div>
-        <div class="stat-val">48 h</div>
-        <div class="stat-lbl">pochůznost po lití</div>
-      </div>
-      <div>
-        <div class="stat-val">5 let</div>
-        <div class="stat-lbl">záruka na práci</div>
+      <div class="page-hero-image">
+        <img src="/img/landing/anhydritova-podlaha-bytovy-dum-olomouc.webp"
+             alt="Anhydritová podlaha v rodinném domě — samonivelační lité potěry MO Betony"
+             width="1280" height="960" fetchpriority="high">
+        <div class="page-hero-image-caption">Anhydrit ANHYLEVEL · rodinný dům</div>
       </div>
     </div>
   </div>
