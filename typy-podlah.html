@@ -15,14 +15,15 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>7 typů podlah 2026: srovnání, ceny, použití od 250 Kč/m² | MO Betony</title>
-  <meta name="description" content="Srovnání 7 typů betonových a litých podlah 2026: anhydrit (od 320), leštěný beton (od 800), průmyslová (od 550), cementový potěr (od 250 Kč/m²). Která je pro vás? Kalkulace zdarma do 48 h." />
+  <title>Typy podlah 2026: srovnání + ceny od 250 Kč/m² | MO Betony</title>
+  <meta name="description" content="Srovnání 7 typů podlah 2026: anhydrit, leštěný beton, průmyslová, cementový potěr od 250 Kč/m². Která je pro vás? Kalkulace zdarma do 48 h." />
   <link rel="canonical" href="https://mobetony.cz/typy-podlah" />
-  <meta property="og:title" content="7 typů podlah 2026: srovnání, ceny, použití | MO Betony" />
-  <meta property="og:description" content="Srovnání 7 typů betonových a litých podlah: anhydrit (od 320), leštěný beton (od 800), průmyslová (od 550), cementový potěr (od 250 Kč/m²). Kalkulace zdarma do 48 h." />
-  <meta property="og:image" content="https://mobetony.cz/img/typy-podlah/1.jpg" />
+  <meta property="og:title" content="Typy podlah 2026: srovnání + ceny od 250 Kč/m² | MO Betony" />
+  <meta property="og:description" content="Srovnání 7 typů podlah 2026: anhydrit, leštěný beton, průmyslová, cementový potěr od 250 Kč/m². Kalkulace zdarma do 48 h." />
+  <meta property="og:image" content="https://mobetony.cz/img/typy-podlah/1.webp" />
   <meta property="og:url" content="https://mobetony.cz/typy-podlah" />
   <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
@@ -47,6 +48,51 @@
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Úvod", "item": "https://mobetony.cz/" },
       { "@type": "ListItem", "position": 2, "name": "Typy podlah", "item": "https://mobetony.cz/typy-podlah" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "@id": "https://mobetony.cz/#business",
+    "name": "MO Betony s.r.o.",
+    "image": "https://mobetony.cz/logo_mobetony_final.webp",
+    "url": "https://mobetony.cz",
+    "telephone": "+420774611154",
+    "email": "mobetony@gmail.com",
+    "priceRange": "250 Kč/m² – 1800 Kč/m²",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kaštanová 1055/14",
+      "addressLocality": "Olomouc",
+      "postalCode": "779 00",
+      "addressCountry": "CZ"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 49.5938,
+      "longitude": 17.2509
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "20:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "07:00", "closes": "12:00" }
+    ],
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Olomoucký kraj" },
+      { "@type": "AdministrativeArea", "name": "Jihomoravský kraj" },
+      { "@type": "AdministrativeArea", "name": "Moravskoslezský kraj" },
+      { "@type": "AdministrativeArea", "name": "Zlínský kraj" }
+    ],
+    "serviceType": [
+      "Anhydritové podlahy",
+      "Leštěný beton",
+      "Průmyslové podlahy",
+      "Cementové potěry",
+      "Drátkobetonové podlahy",
+      "Lité podlahy",
+      "Betonové podlahy"
     ]
   }
   </script>
@@ -1330,11 +1376,288 @@
       color: var(--white);
     }
 
+    /* Skip button */
+    .quiz-skip-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;
+    }
+    .quiz-skip-btn {
+      background: transparent;
+      border: none;
+      color: var(--gray2);
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 8px 14px;
+      letter-spacing: 0.3px;
+      transition: color 0.2s ease;
+      text-decoration: underline;
+      text-decoration-color: rgba(156, 163, 175, 0.3);
+      text-underline-offset: 4px;
+    }
+    .quiz-skip-btn:hover {
+      color: var(--white);
+      text-decoration-color: var(--white);
+    }
+
+    /* Loading state */
+    .quiz-loading {
+      display: none;
+      text-align: center;
+      padding: 3rem 1rem;
+      animation: quizFadeIn 0.4s ease;
+    }
+    .quiz-loading.active { display: block; }
+    .quiz-loading-spinner {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      border: 3px solid rgba(249,115,22,0.15);
+      border-top-color: var(--orange);
+      animation: quizSpin 0.9s linear infinite;
+    }
+    @keyframes quizSpin {
+      to { transform: rotate(360deg); }
+    }
+    .quiz-loading-text {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--white);
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+    .quiz-loading-sub {
+      font-size: 14px;
+      color: var(--gray);
+      margin: 0;
+    }
+    .quiz-loading-dots::after {
+      content: '';
+      display: inline-block;
+      width: 1em;
+      text-align: left;
+      animation: quizDots 1.4s steps(4, end) infinite;
+    }
+    @keyframes quizDots {
+      0%   { content: ''; }
+      25%  { content: '.'; }
+      50%  { content: '..'; }
+      75%  { content: '...'; }
+      100% { content: ''; }
+    }
+
+    /* Result HERO card (Top 1) */
+    .quiz-result-hero {
+      background: linear-gradient(135deg, rgba(249,115,22,0.18) 0%, rgba(249,115,22,0.04) 100%);
+      border: 1.5px solid var(--orange);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.75rem 1.5rem;
+      margin: 1.5rem 0 1rem;
+      position: relative;
+      overflow: hidden;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .quiz-result-hero:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(249,115,22,0.25);
+    }
+    .quiz-result-hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .quiz-result-hero-rank {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--orange);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .quiz-result-hero-rank svg {
+      width: 12px;
+      height: 12px;
+      fill: white;
+    }
+    .quiz-match-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(34, 197, 94, 0.12);
+      color: #22c55e;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .quiz-match-badge svg {
+      width: 11px;
+      height: 11px;
+    }
+    .quiz-result-hero-name {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(26px, 4vw, 34px);
+      color: var(--white);
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin: 0 0 8px;
+    }
+    .quiz-result-hero-price {
+      font-size: 15px;
+      color: var(--gray);
+      margin: 0 0 14px;
+    }
+    .quiz-result-hero-price strong {
+      color: var(--orange);
+      font-weight: 800;
+      font-size: 17px;
+    }
+    .quiz-result-hero-desc {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.55;
+      margin: 0 0 18px;
+    }
+    .quiz-result-hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .quiz-result-hero-cta svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: var(--orange);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.3s ease;
+    }
+    .quiz-result-hero:hover .quiz-result-hero-cta svg {
+      transform: translateX(4px);
+    }
+
+    /* Result ALT card (Top 2) */
+    .quiz-result-alt-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin: 1.25rem 0 0.6rem;
+    }
+    .quiz-result-alt {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      margin-bottom: 1.25rem;
+    }
+    .quiz-result-alt:hover {
+      border-color: var(--orange);
+      transform: translateY(-1px);
+    }
+    .quiz-result-alt-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .quiz-result-alt-name {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      letter-spacing: -0.2px;
+      margin: 0 0 3px;
+    }
+    .quiz-result-alt-price {
+      font-size: 13px;
+      color: var(--gray);
+      margin: 0;
+    }
+    .quiz-result-alt-price strong {
+      color: var(--orange);
+      font-weight: 600;
+    }
+    .quiz-result-alt-arrow {
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Insight box */
+    .quiz-result-insight {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      background: rgba(6, 182, 212, 0.08);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.5rem;
+    }
+    .quiz-result-insight-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      color: var(--cyan);
+      margin-top: 1px;
+    }
+    .quiz-result-insight-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .quiz-result-insight-text {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--gray);
+      margin: 0;
+    }
+    .quiz-result-insight-text strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
     @media (max-width: 768px) {
       .quiz-section { padding: 60px 1.25rem 30px; }
       .quiz-card { padding: 2rem 1.5rem; }
       .quiz-options,
       .quiz-options-2 { grid-template-columns: 1fr; }
+      .quiz-result-hero { padding: 1.4rem 1.25rem 1.25rem; }
+      .quiz-result-hero-top { flex-direction: column-reverse; align-items: flex-start; gap: 8px; }
     }
 
     /* ========== FEATURED REFERENCES ========== */
@@ -1770,14 +2093,14 @@
     <div class="quiz-wrap fade-in">
       <div class="section-label">Pomocník</div>
       <h2 class="section-title">Která podlaha je <span class="orange">pro vás</span>?</h2>
-      <p class="section-desc">Odpovězte na 3 otázky a doporučíme vám 1–2 typy podlah pro váš projekt. <strong>Trvá 10 sekund.</strong></p>
+      <p class="section-desc">Odpovězte na 5 rychlých otázek a doporučíme vám podlahu na míru. <strong>Trvá 10–15 sekund</strong> · otázky lze přeskočit.</p>
 
       <div class="quiz-card" id="quizCard">
         <!-- Progress bar -->
         <div class="quiz-progress">
-          <div class="quiz-progress-bar" id="quizProgress" style="width: 33%;"></div>
+          <div class="quiz-progress-bar" id="quizProgress" style="width: 20%;"></div>
         </div>
-        <div class="quiz-step-indicator" id="quizStepIndicator">Otázka 1 ze 3</div>
+        <div class="quiz-step-indicator" id="quizStepIndicator">Otázka 1 z 5</div>
 
         <!-- Question 1 -->
         <div class="quiz-step active" data-step="1">
@@ -1808,6 +2131,9 @@
               <span class="quiz-option-text">Kancelář / prodejna</span>
             </button>
           </div>
+          <div class="quiz-skip-wrap">
+            <button type="button" class="quiz-skip-btn" data-skip="1">Přeskočit otázku →</button>
+          </div>
         </div>
 
         <!-- Question 2 -->
@@ -1832,6 +2158,9 @@
               </span>
               <span class="quiz-option-text">Vlhký prostor (koupelna, garáž, sklep)</span>
             </button>
+          </div>
+          <div class="quiz-skip-wrap">
+            <button type="button" class="quiz-skip-btn" data-skip="2">Přeskočit otázku →</button>
           </div>
         </div>
 
@@ -1858,17 +2187,96 @@
               <span class="quiz-option-text">Odolnost a životnost</span>
             </button>
           </div>
+          <div class="quiz-skip-wrap">
+            <button type="button" class="quiz-skip-btn" data-skip="3">Přeskočit otázku →</button>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="quiz-step" data-step="4">
+          <h3 class="quiz-q">Jak velká bude plocha?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-q="4" data-val="small">
+              <span class="quiz-option-emoji" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12"/></svg>
+              </span>
+              <span class="quiz-option-text">Do 50 m²</span>
+            </button>
+            <button class="quiz-option" data-q="4" data-val="medium">
+              <span class="quiz-option-emoji" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16"/></svg>
+              </span>
+              <span class="quiz-option-text">50–150 m²</span>
+            </button>
+            <button class="quiz-option" data-q="4" data-val="large">
+              <span class="quiz-option-emoji" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20"/><path d="M8 8v8M16 8v8M2 8h20M2 16h20"/></svg>
+              </span>
+              <span class="quiz-option-text">150–500 m²</span>
+            </button>
+            <button class="quiz-option" data-q="4" data-val="xlarge">
+              <span class="quiz-option-emoji" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20"/><path d="M2 8h20M2 14h20M8 2v20M14 2v20"/></svg>
+              </span>
+              <span class="quiz-option-text">500+ m² (haly, sklady)</span>
+            </button>
+          </div>
+          <div class="quiz-skip-wrap">
+            <button type="button" class="quiz-skip-btn" data-skip="4">Přeskočit otázku →</button>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="quiz-step" data-step="5">
+          <h3 class="quiz-q">Bude podlaha finální vrstva, nebo pod krytinu?</h3>
+          <div class="quiz-options quiz-options-2">
+            <button class="quiz-option" data-q="5" data-val="final">
+              <span class="quiz-option-emoji" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg>
+              </span>
+              <span class="quiz-option-text">Finální povrch (bez krytiny)</span>
+            </button>
+            <button class="quiz-option" data-q="5" data-val="krytina">
+              <span class="quiz-option-emoji" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+              </span>
+              <span class="quiz-option-text">Pod dlažbu / vinyl / parkety</span>
+            </button>
+            <button class="quiz-option" data-q="5" data-val="nevim">
+              <span class="quiz-option-emoji" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </span>
+              <span class="quiz-option-text">Ještě nevím / poradíte</span>
+            </button>
+          </div>
+          <div class="quiz-skip-wrap">
+            <button type="button" class="quiz-skip-btn" data-skip="5">Přeskočit otázku →</button>
+          </div>
+        </div>
+
+        <!-- Loading state -->
+        <div class="quiz-loading" id="quizLoading">
+          <div class="quiz-loading-spinner" aria-hidden="true"></div>
+          <div class="quiz-loading-text">Analyzujeme vaše odpovědi<span class="quiz-loading-dots"></span></div>
+          <p class="quiz-loading-sub">Hledáme nejlepší typ podlahy pro váš projekt.</p>
         </div>
 
         <!-- Result -->
         <div class="quiz-step quiz-result" data-step="result">
-          <div class="quiz-result-label">✦ Doporučení pro váš projekt</div>
-          <h3 class="quiz-q" id="quizResultTitle">Doporučujeme tyto typy</h3>
-          <div class="quiz-result-cards" id="quizResultCards">
-            <!-- Generováno JS -->
-          </div>
+          <div class="quiz-result-label">✦ Doporučení na míru vašeho projektu</div>
+          <h3 class="quiz-q" id="quizResultTitle">Nejlepší volba pro vás</h3>
+
+          <!-- HERO card (Top 1) — generováno JS do #quizResultHero -->
+          <div id="quizResultHero"></div>
+
+          <!-- Insight box — generováno JS do #quizResultInsight -->
+          <div id="quizResultInsight"></div>
+
+          <!-- ALT card (Top 2) — generováno JS do #quizResultAlt -->
+          <div id="quizResultAlt"></div>
+
           <div class="quiz-result-actions">
-            <a href="/kontakt" class="btn-primary">Nezávazná poptávka →</a>
+            <a href="/kontakt" class="btn-primary" id="quizCtaPrimary">Nezávazná poptávka →</a>
             <button type="button" class="btn-secondary" id="quizRestart">Vyplnit znovu</button>
           </div>
         </div>
@@ -2649,147 +3057,314 @@
       });
     }
 
-    // ========== QUIZ LOGIC ==========
+    // ========== QUIZ LOGIC (v2 — 5 questions, scoring, loading, tracking) ==========
     (function() {
+      const TOTAL_Q = 5;
+      const LOADING_DELAY = 1500; // ms — psychologický trick "Analyzujeme..."
+
       const FLOORS = {
-        anhydrit:        { name: 'Anhydritové podlahy',    price: 'od 320 Kč/m²', anchor: '#anhydrit' },
-        beton:           { name: 'Betonové podlahy',       price: 'od 260 Kč/m²', anchor: '#beton' },
-        lesteny:         { name: 'Leštěné betonové podlahy', price: 'od 800 Kč/m²', anchor: '#lesteny' },
-        prumyslove:      { name: 'Průmyslové podlahy',     price: 'od 550 Kč/m²', anchor: '#prumyslove' },
-        cementovy:       { name: 'Cementový potěr',        price: 'od 250 Kč/m²', anchor: '#cementovy-poter' }
+        anhydrit:   {
+          name: 'Anhydritové podlahy',
+          price: 'od 320 Kč/m²',
+          anchor: '/anhydritova-podlaha',
+          desc: 'Samonivelační lité potěry — ideální pro rodinné domy a byty s podlahovým topením. Hladký povrch ±2 mm na 2 m, pochůzný do 48 hodin.',
+          insight: 'Lidé jako vy nejčastěji volí anhydrit pro jeho ideální spolupráci s podlahovým topením a perfektní rovinnost pro pokládku finální krytiny.'
+        },
+        beton:      {
+          name: 'Betonové podlahy',
+          price: 'od 260 Kč/m²',
+          anchor: '/blog/betonova-podlaha-cena/',
+          desc: 'Klasické betonové podlahy pro novostavby, garáže a komerční objekty. Univerzální pevnost, životnost 50+ let, minimální údržba.',
+          insight: 'Lidé jako vy nejčastěji volí beton pro nejlepší poměr cena/výkon a univerzální použití bez kompromisu na životnosti.'
+        },
+        lesteny:    {
+          name: 'Leštěný beton',
+          price: 'od 800 Kč/m²',
+          anchor: '/lesteny-beton',
+          desc: 'Drátkobetonová podlaha se vsypem (Fortedur) leštěná do mata, podlesku nebo zrcadla. Bez spár, mimořádná odolnost, designový vzhled.',
+          insight: 'Lidé jako vy nejčastěji volí leštěný beton pro kombinaci průmyslové odolnosti a finálního designového povrchu — bez nutnosti další krytiny.'
+        },
+        prumyslove: {
+          name: 'Průmyslové podlahy',
+          price: 'od 550 Kč/m²',
+          anchor: '/prumyslova-podlaha',
+          desc: 'Drátkobetonové průmyslové podlahy s nosností až 50 t/m² pro výrobní haly, sklady, logistiku. Strojně hlazené, dlouhá životnost.',
+          insight: 'Lidé jako vy s velkými plochami a vysokým provozem nejčastěji volí drátkobetonovou průmyslovou podlahu pro nosnost a rychlost realizace.'
+        },
+        cementovy:  {
+          name: 'Cementový potěr',
+          price: 'od 250 Kč/m²',
+          anchor: '/cementovy-poter',
+          desc: 'Litý nebo klasický cementový potěr — nejekonomičtější řešení do vlhkých prostor (koupelny, garáže, sklepy, terasy). Odolný vůči vodě.',
+          insight: 'Lidé jako vy s vlhkými prostory nebo omezeným rozpočtem nejčastěji volí cementový potěr pro jeho odolnost vůči vodě a nízkou cenu.'
+        }
       };
 
-      // Decision logic: 1-2 typy podlah na základě 3 odpovědí (q2 = topeni/sucho/vlhko)
-      function decide(q1, q2, q3) {
-        // ⭐ VLHKÝ PROSTOR — cementový potěr je vždy primary (odolnost vůči vlhkosti)
-        if (q2 === 'vlhko') {
-          if (q1 === 'rd') {
-            // Koupelna, prádelna, garáž v RD
-            if (q3 === 'vzhled') return ['cementovy', 'lesteny'];
-            return ['cementovy', 'beton'];
-          }
-          if (q1 === 'garaz') {
-            // Garáž / dílna s vlhkem (solanka, oleje)
-            if (q3 === 'vzhled')   return ['cementovy', 'lesteny'];
-            if (q3 === 'odolnost') return ['lesteny', 'prumyslove']; // final podlaha pro odolnost
-            return ['cementovy', 'beton']; // cena = cementový potěr (cheapest)
-          }
-          if (q1 === 'hala') {
-            // Vlhká hala (chlazení, mycí linky, prádelny)
-            if (q3 === 'vzhled') return ['cementovy', 'prumyslove'];
-            return ['cementovy', 'prumyslove'];
-          }
-          if (q1 === 'komercni') {
-            // Restaurace, prádelna, vlhké komerční
-            if (q3 === 'vzhled') return ['cementovy', 'lesteny'];
-            return ['cementovy', 'beton'];
-          }
-          return ['cementovy', 'beton']; // fallback
+      // Scoring matrix — pro každou odpověď body (0–3) za každý floor type
+      const SCORES = {
+        1: { // Q1: kde
+          rd:       { anhydrit: 3, beton: 2, lesteny: 2, cementovy: 1, prumyslove: 0 },
+          garaz:    { lesteny: 3, beton: 3, cementovy: 2, prumyslove: 1, anhydrit: 0 },
+          hala:     { prumyslove: 3, lesteny: 2, beton: 2, cementovy: 0, anhydrit: 0 },
+          komercni: { lesteny: 3, anhydrit: 2, beton: 1, cementovy: 1, prumyslove: 0 }
+        },
+        2: { // Q2: charakter
+          topeni: { anhydrit: 3, cementovy: 1, beton: 1, lesteny: 0, prumyslove: 0 },
+          sucho:  { lesteny: 2, beton: 2, prumyslove: 2, anhydrit: 1, cementovy: 1 },
+          vlhko:  { cementovy: 3, beton: 1, lesteny: 1, prumyslove: 1, anhydrit: 0 }
+        },
+        3: { // Q3: priorita
+          cena:     { beton: 3, cementovy: 3, anhydrit: 1, lesteny: 0, prumyslove: 0 },
+          vzhled:   { lesteny: 3, anhydrit: 1, beton: 1, cementovy: 0, prumyslove: 0 },
+          odolnost: { prumyslove: 3, lesteny: 2, beton: 2, cementovy: 1, anhydrit: 0 }
+        },
+        4: { // Q4: velikost
+          small:  { lesteny: 2, anhydrit: 2, beton: 1, cementovy: 1, prumyslove: 0 },
+          medium: { anhydrit: 2, lesteny: 2, beton: 2, cementovy: 1, prumyslove: 1 },
+          large:  { prumyslove: 2, beton: 2, lesteny: 1, cementovy: 1, anhydrit: 0 },
+          xlarge: { prumyslove: 3, beton: 2, lesteny: 1, cementovy: 0, anhydrit: 0 }
+        },
+        5: { // Q5: finální vs krytina
+          final:   { lesteny: 3, prumyslove: 2, beton: 1, cementovy: 0, anhydrit: 0 },
+          krytina: { anhydrit: 3, cementovy: 2, beton: 1, lesteny: 0, prumyslove: 0 },
+          nevim:   { lesteny: 1, anhydrit: 1, beton: 1, cementovy: 1, prumyslove: 1 }
+        }
+      };
+
+      // Compute scores → return { picks: [top1, top2], match: {top1: 90, top2: 70} }
+      function computeRecommendation(answers) {
+        const totals = { anhydrit: 0, beton: 0, lesteny: 0, prumyslove: 0, cementovy: 0 };
+        let answeredCount = 0;
+        for (let q = 1; q <= TOTAL_Q; q++) {
+          const val = answers[q];
+          if (!val) continue; // skip
+          const tableForQ = SCORES[q];
+          const tableForVal = tableForQ && tableForQ[val];
+          if (!tableForVal) continue;
+          answeredCount++;
+          for (const f in tableForVal) totals[f] += tableForVal[f];
         }
 
-        // RD / byt — s topením
-        if (q1 === 'rd') {
-          if (q2 === 'topeni') {
-            if (q3 === 'vzhled') return ['anhydrit', 'lesteny'];
-            return ['anhydrit', 'beton'];
-          }
-          // sucho
-          if (q3 === 'vzhled') return ['lesteny', 'beton'];
-          if (q3 === 'cena')   return ['beton', 'cementovy']; // cementový potěr = jedna z nejlevnějších
-          return ['beton', 'lesteny']; // odolnost
+        // Sort floors by score desc
+        const sorted = Object.entries(totals).sort((a, b) => b[1] - a[1]);
+        const top1 = sorted[0];
+        const top2 = sorted[1];
+
+        // Match % — vůči maximu (15 = 5 q × 3 max bodů)
+        const MAX_POSSIBLE = TOTAL_Q * 3;
+        const top1Pct = Math.max(60, Math.min(95, Math.round((top1[1] / MAX_POSSIBLE) * 100)));
+        const top2Pct = Math.max(40, Math.min(top1Pct - 10, Math.round((top2[1] / MAX_POSSIBLE) * 100)));
+
+        // Fallback pokud uživatel přeskočil všechno — defaultní doporučení
+        if (answeredCount === 0) {
+          return { picks: ['anhydrit', 'beton'], match: { anhydrit: 75, beton: 60 }, answeredCount: 0 };
         }
-        // Garáž / dílna
-        if (q1 === 'garaz') {
-          if (q3 === 'vzhled') return ['lesteny', 'beton'];
-          if (q3 === 'cena')   return ['beton', 'cementovy']; // cementový potěr v garáži = ekonomické řešení
-          return ['lesteny', 'beton']; // odolnost
-        }
-        // Hala / sklad
-        if (q1 === 'hala') {
-          if (q3 === 'cena')   return ['prumyslove', 'beton'];
-          if (q3 === 'vzhled') return ['lesteny', 'prumyslove'];
-          return ['prumyslove', 'lesteny']; // odolnost
-        }
-        // Komercni
-        if (q1 === 'komercni') {
-          if (q3 === 'vzhled') return ['lesteny', 'anhydrit'];
-          if (q3 === 'cena')   return ['beton', 'anhydrit'];
-          return ['lesteny', 'prumyslove']; // odolnost
-        }
-        return ['anhydrit', 'beton']; // fallback
+
+        return {
+          picks: [top1[0], top2[0]],
+          match: { [top1[0]]: top1Pct, [top2[0]]: top2Pct },
+          answeredCount: answeredCount
+        };
+      }
+
+      // gtag tracking helper (silent fallback when gtag not loaded)
+      function trackEvent(eventName, params) {
+        if (typeof window.gtag !== 'function') return;
+        try { window.gtag('event', eventName, params || {}); } catch (e) { /* silent */ }
       }
 
       const quizCard = document.getElementById('quizCard');
       if (!quizCard) return;
-      const progressBar = document.getElementById('quizProgress');
+      const progressBar  = document.getElementById('quizProgress');
       const stepIndicator = document.getElementById('quizStepIndicator');
-      const resultCards = document.getElementById('quizResultCards');
-      const restartBtn = document.getElementById('quizRestart');
-      const steps = quizCard.querySelectorAll('.quiz-step');
-      const answers = { 1: null, 2: null, 3: null };
+      const resultHero    = document.getElementById('quizResultHero');
+      const resultAlt     = document.getElementById('quizResultAlt');
+      const resultInsight = document.getElementById('quizResultInsight');
+      const restartBtn    = document.getElementById('quizRestart');
+      const ctaPrimary    = document.getElementById('quizCtaPrimary');
+      const loading       = document.getElementById('quizLoading');
+      const steps         = quizCard.querySelectorAll('.quiz-step');
+      const answers = { 1: null, 2: null, 3: null, 4: null, 5: null };
+      let quizStartTracked = false;
 
       function showStep(stepNum) {
         steps.forEach(s => s.classList.remove('active'));
+        if (loading) loading.classList.remove('active');
         const target = quizCard.querySelector(`.quiz-step[data-step="${stepNum}"]`);
         if (target) target.classList.add('active');
         if (stepNum === 'result') {
           progressBar.style.width = '100%';
           stepIndicator.textContent = '✓ Hotovo';
         } else {
-          const pct = (parseInt(stepNum, 10) / 3) * 100;
+          const pct = (parseInt(stepNum, 10) / TOTAL_Q) * 100;
           progressBar.style.width = pct + '%';
-          stepIndicator.textContent = 'Otázka ' + stepNum + ' ze 3';
+          stepIndicator.textContent = 'Otázka ' + stepNum + ' z ' + TOTAL_Q;
         }
       }
 
-      function buildResultCards(picks) {
-        resultCards.innerHTML = '';
-        picks.forEach((key, idx) => {
-          const f = FLOORS[key];
-          if (!f) return;
-          const card = document.createElement('a');
-          card.className = 'quiz-result-card';
-          card.href = f.anchor;
-          card.innerHTML = `
-            <div class="quiz-result-card-rank">${idx === 0 ? '★ Nejlepší volba' : 'Druhá možnost'}</div>
-            <div class="quiz-result-card-name">${f.name}</div>
-            <div class="quiz-result-card-price"><strong>${f.price}</strong> bez DPH</div>
-            <div class="quiz-result-card-arrow">Zobrazit detail →</div>
-          `;
-          resultCards.appendChild(card);
+      function showLoading() {
+        steps.forEach(s => s.classList.remove('active'));
+        if (loading) loading.classList.add('active');
+        progressBar.style.width = '100%';
+        stepIndicator.textContent = 'Analyzujeme...';
+      }
+
+      function buildResult(rec) {
+        const top1Key = rec.picks[0];
+        const top2Key = rec.picks[1];
+        const top1 = FLOORS[top1Key];
+        const top2 = FLOORS[top2Key];
+        const top1Match = rec.match[top1Key];
+
+        // HERO card
+        if (top1) {
+          resultHero.innerHTML = `
+            <a href="${top1.anchor}" class="quiz-result-hero" data-floor="${top1Key}" data-rank="1">
+              <div class="quiz-result-hero-top">
+                <span class="quiz-result-hero-rank">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+                  Nejlepší volba
+                </span>
+                <span class="quiz-match-badge" aria-label="Shoda ${top1Match} %">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  ${top1Match}% shoda
+                </span>
+              </div>
+              <h4 class="quiz-result-hero-name">${top1.name}</h4>
+              <p class="quiz-result-hero-price"><strong>${top1.price}</strong> bez DPH</p>
+              <p class="quiz-result-hero-desc">${top1.desc}</p>
+              <span class="quiz-result-hero-cta">
+                Zobrazit detail a cenu
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            </a>`;
+        } else {
+          resultHero.innerHTML = '';
+        }
+
+        // INSIGHT box
+        if (top1) {
+          resultInsight.innerHTML = `
+            <div class="quiz-result-insight">
+              <span class="quiz-result-insight-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              </span>
+              <p class="quiz-result-insight-text">${top1.insight}</p>
+            </div>`;
+        } else {
+          resultInsight.innerHTML = '';
+        }
+
+        // ALT card (Top 2) — jen pokud má smysluplné score (jiná podlaha než top 1)
+        if (top2 && top2Key !== top1Key) {
+          resultAlt.innerHTML = `
+            <p class="quiz-result-alt-label">Také zvažte (alternativa)</p>
+            <a href="${top2.anchor}" class="quiz-result-alt" data-floor="${top2Key}" data-rank="2">
+              <div class="quiz-result-alt-info">
+                <h5 class="quiz-result-alt-name">${top2.name}</h5>
+                <p class="quiz-result-alt-price"><strong>${top2.price}</strong> bez DPH · ${rec.match[top2Key]}% shoda</p>
+              </div>
+              <span class="quiz-result-alt-arrow">Detail →</span>
+            </a>`;
+        } else {
+          resultAlt.innerHTML = '';
+        }
+
+        // Update primary CTA href s context (pre-fill quiz answers do query string for Petr)
+        if (ctaPrimary) {
+          const q = encodeURIComponent(top1Key);
+          ctaPrimary.setAttribute('href', '/kontakt?zajem=' + q);
+        }
+
+        // Result click tracking
+        resultHero.querySelectorAll('a[data-floor]').forEach(a => {
+          a.addEventListener('click', () => {
+            trackEvent('quiz_recommendation_clicked', {
+              floor_type: a.getAttribute('data-floor'),
+              rank: parseInt(a.getAttribute('data-rank'), 10),
+              match_pct: top1Match
+            });
+          }, { once: true });
+        });
+        resultAlt.querySelectorAll('a[data-floor]').forEach(a => {
+          a.addEventListener('click', () => {
+            trackEvent('quiz_recommendation_clicked', {
+              floor_type: a.getAttribute('data-floor'),
+              rank: parseInt(a.getAttribute('data-rank'), 10),
+              match_pct: rec.match[a.getAttribute('data-floor')]
+            });
+          }, { once: true });
         });
       }
 
-      // Click handlers pro options
+      function finalizeQuiz() {
+        const rec = computeRecommendation(answers);
+        buildResult(rec);
+        // Show loading first, then result after delay
+        showLoading();
+        setTimeout(() => {
+          showStep('result');
+          trackEvent('quiz_completed', {
+            top1: rec.picks[0],
+            top2: rec.picks[1],
+            top1_match: rec.match[rec.picks[0]],
+            answered_count: rec.answeredCount,
+            skipped_count: TOTAL_Q - rec.answeredCount
+          });
+        }, LOADING_DELAY);
+      }
+
+      function advance(q) {
+        const next = parseInt(q, 10) + 1;
+        if (next <= TOTAL_Q) {
+          showStep(String(next));
+        } else {
+          finalizeQuiz();
+        }
+      }
+
+      function trackQuizStartIfNeeded() {
+        if (quizStartTracked) return;
+        quizStartTracked = true;
+        trackEvent('quiz_started', {});
+      }
+
+      // Click handlers pro options (answer)
       quizCard.querySelectorAll('.quiz-option').forEach(btn => {
         btn.addEventListener('click', () => {
           const q = btn.getAttribute('data-q');
           const val = btn.getAttribute('data-val');
-          // Highlight selected option in current step
           quizCard.querySelectorAll(`.quiz-option[data-q="${q}"]`).forEach(b => b.classList.remove('selected'));
           btn.classList.add('selected');
           answers[q] = val;
 
-          // Auto-advance after 250ms (UX feel)
-          setTimeout(() => {
-            const next = parseInt(q, 10) + 1;
-            if (next <= 3) {
-              showStep(String(next));
-            } else {
-              // Done — show result
-              const picks = decide(answers[1], answers[2], answers[3]);
-              buildResultCards(picks);
-              showStep('result');
-            }
-          }, 250);
+          trackQuizStartIfNeeded();
+          trackEvent('quiz_answered', { step: parseInt(q, 10), answer: val });
+
+          setTimeout(() => advance(q), 280);
+        });
+      });
+
+      // Skip handlers
+      quizCard.querySelectorAll('.quiz-skip-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const q = btn.getAttribute('data-skip');
+          answers[q] = null;
+          trackQuizStartIfNeeded();
+          trackEvent('quiz_skipped', { step: parseInt(q, 10) });
+          advance(q);
         });
       });
 
       // Restart
       if (restartBtn) {
         restartBtn.addEventListener('click', () => {
-          answers[1] = answers[2] = answers[3] = null;
+          for (let i = 1; i <= TOTAL_Q; i++) answers[i] = null;
           quizCard.querySelectorAll('.quiz-option.selected').forEach(b => b.classList.remove('selected'));
+          if (resultHero)    resultHero.innerHTML = '';
+          if (resultAlt)     resultAlt.innerHTML = '';
+          if (resultInsight) resultInsight.innerHTML = '';
+          trackEvent('quiz_restarted', {});
           showStep('1');
         });
       }
