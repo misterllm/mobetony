@@ -714,13 +714,19 @@ nav {
       bottom: 0; left: 0;
       width: 100%;
       z-index: 9;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.55);
       backdrop-filter: blur(12px);
       border-top: 1px solid rgba(255,255,255,0.08);
       display: flex;
-      justify-content: flex-start;
-      padding: 24px 8%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 8%;
+      gap: 36px;
+    }
+    .hero-stats-group {
+      display: flex;
       gap: 48px;
+      flex-shrink: 0;
     }
 
     .stat { text-align: left; }
@@ -739,6 +745,190 @@ nav {
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-top: 4px;
+    }
+
+    /* Hero quiz teaser — inline variant pro hero stats bar */
+    .hero-quiz-teaser {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 26px 18px 18px;
+      background: linear-gradient(135deg, rgba(249,115,22,0.22) 0%, rgba(249,115,22,0.06) 100%);
+      border: 1px solid rgba(249,115,22,0.42);
+      border-radius: 16px;
+      text-decoration: none;
+      color: white;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      flex: 1 1 auto;
+      min-width: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-quiz-teaser::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(249,115,22,0.10) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity .35s ease;
+      pointer-events: none;
+    }
+    .hero-quiz-teaser:hover {
+      border-color: var(--orange);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(249,115,22,0.28);
+    }
+    .hero-quiz-teaser:hover::before { opacity: 1; }
+    .hero-quiz-teaser-icon {
+      flex-shrink: 0;
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--orange) 0%, #ea6b0e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(249,115,22,0.40);
+      position: relative;
+      z-index: 1;
+    }
+    .hero-quiz-teaser-icon svg {
+      width: 30px;
+      height: 30px;
+      fill: none;
+      stroke: white;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      animation: heroQuizTeaserPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes heroQuizTeaserPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.10); }
+    }
+    .hero-quiz-teaser-text {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-quiz-teaser-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .hero-quiz-teaser-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 11px;
+      background: var(--orange);
+      color: white;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .hero-quiz-teaser-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .hero-quiz-teaser-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(20px, 1.9vw, 26px);
+      color: white;
+      letter-spacing: -0.3px;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+    .hero-quiz-teaser-sub {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.45;
+      margin: 0;
+    }
+    .hero-quiz-teaser-sub strong {
+      color: white;
+      font-weight: 600;
+    }
+    .hero-quiz-teaser-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      padding: 13px 22px;
+      background: var(--orange);
+      border-radius: 100px;
+      box-shadow: 0 4px 16px rgba(249,115,22,0.42);
+      transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-quiz-teaser:hover .hero-quiz-teaser-cta {
+      background: #fb923c;
+      box-shadow: 0 6px 22px rgba(249,115,22,0.58);
+      transform: scale(1.03);
+    }
+    .hero-quiz-teaser-cta-text {
+      font-size: 15px;
+      font-weight: 800;
+      color: white;
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    .hero-quiz-teaser-arrow {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: white;
+      stroke-width: 2.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+    .hero-quiz-teaser:hover .hero-quiz-teaser-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Mobile/tablet: stack stats and quiz teaser vertically */
+    @media (max-width: 880px) {
+      .hero-stats {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        padding: 16px 5%;
+      }
+      .hero-stats-group {
+        gap: 24px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .hero-quiz-teaser {
+        flex: 1 1 100%;
+        grid-template-columns: auto 1fr auto;
+        gap: 12px;
+        padding: 14px 16px;
+        border-radius: 14px;
+      }
+      .hero-quiz-teaser-icon { width: 44px; height: 44px; border-radius: 12px; }
+      .hero-quiz-teaser-icon svg { width: 24px; height: 24px; }
+      .hero-quiz-teaser-title { font-size: 17px; }
+      .hero-quiz-teaser-sub { display: none; }
+      .hero-quiz-teaser-cta-text { display: none; }
+      .hero-quiz-teaser-cta { padding-left: 4px; }
     }
 
     /* Hint animation */
@@ -2082,162 +2272,6 @@ a.ref-card-link:hover .ref-img-overlay span {
   margin-top: 4px;
 }
 
-    /* ========== QUIZ TEASER (10s) ========== */
-    .quiz-teaser-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: clamp(1.5rem, 3vw, 2.5rem) clamp(16px, 4vw, 48px);
-    }
-    .quiz-teaser {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 1.5rem;
-      align-items: center;
-      padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.25rem, 3vw, 2.25rem);
-      background: linear-gradient(135deg, rgba(249,115,22,0.14) 0%, rgba(249,115,22,0.04) 100%);
-      border: 1px solid rgba(249,115,22,0.3);
-      border-radius: 16px;
-      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-      position: relative;
-      overflow: hidden;
-      color: inherit;
-      text-decoration: none;
-    }
-    .quiz-teaser::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent 0%, rgba(249,115,22,0.10) 50%, transparent 100%);
-      opacity: 0;
-      transition: opacity .35s ease;
-      pointer-events: none;
-    }
-    .quiz-teaser:hover {
-      border-color: var(--orange);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(249,115,22,0.18);
-    }
-    .quiz-teaser:hover::before { opacity: 1; }
-    .quiz-teaser-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--orange) 0%, var(--orange2, #ea6b0e) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      position: relative;
-      z-index: 1;
-      box-shadow: 0 6px 18px rgba(249,115,22,0.35);
-    }
-    .quiz-teaser-icon svg {
-      width: 28px;
-      height: 28px;
-      fill: none;
-      stroke: white;
-      stroke-width: 2.2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      animation: quizTeaserPulse 2.4s ease-in-out infinite;
-    }
-    @keyframes quizTeaserPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.10); }
-    }
-    .quiz-teaser-content { position: relative; z-index: 1; min-width: 0; }
-    .quiz-teaser-eyebrow {
-      display: flex;
-      gap: .65rem;
-      align-items: center;
-      margin-bottom: .4rem;
-      flex-wrap: wrap;
-    }
-    .quiz-teaser-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 11px;
-      background: var(--orange);
-      color: white;
-      border-radius: 100px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .6px;
-      text-transform: uppercase;
-      line-height: 1;
-    }
-    .quiz-teaser-badge svg { width: 11px; height: 11px; fill: none; stroke: white; stroke-width: 2.5; }
-    .quiz-teaser-label {
-      font-size: 11px;
-      color: var(--gray, #9ca3af);
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      font-weight: 600;
-    }
-    .quiz-teaser-title {
-      font-family: var(--font-head, 'Barlow Condensed', sans-serif);
-      font-weight: 800;
-      font-size: clamp(20px, 2.4vw, 26px);
-      color: var(--white, #fff);
-      text-transform: uppercase;
-      margin: 0 0 .35rem;
-      line-height: 1.15;
-      letter-spacing: -.3px;
-    }
-    .quiz-teaser-sub {
-      font-size: 14px;
-      color: var(--gray, #9ca3af);
-      margin: 0;
-      line-height: 1.5;
-    }
-    .quiz-teaser-sub strong { color: var(--white, #fff); font-weight: 700; }
-    .quiz-teaser-cta {
-      display: flex;
-      align-items: center;
-      gap: .55rem;
-      padding-left: 1rem;
-      position: relative;
-      z-index: 1;
-      flex-shrink: 0;
-    }
-    .quiz-teaser-btn {
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--orange);
-      white-space: nowrap;
-    }
-    .quiz-teaser-arrow {
-      width: 22px;
-      height: 22px;
-      fill: none;
-      stroke: var(--orange);
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      transition: transform .3s ease;
-    }
-    .quiz-teaser:hover .quiz-teaser-arrow { transform: translateX(5px); }
-    @media (max-width: 768px) {
-      .quiz-teaser {
-        grid-template-columns: auto 1fr;
-        gap: 1rem;
-        padding: 1.1rem 1.1rem 1.25rem;
-      }
-      .quiz-teaser-icon { width: 48px; height: 48px; border-radius: 12px; }
-      .quiz-teaser-icon svg { width: 24px; height: 24px; }
-      .quiz-teaser-cta {
-        grid-column: 1 / -1;
-        padding-left: 0;
-        padding-top: .35rem;
-        justify-content: flex-end;
-        border-top: 1px dashed rgba(249,115,22,0.25);
-        margin-top: .5rem;
-      }
-      .quiz-teaser-title { font-size: 18px; }
-      .quiz-teaser-sub { font-size: 13px; }
-    }
-
   </style>
 <script type="application/ld+json">
 {
@@ -2691,49 +2725,45 @@ a.ref-card-link:hover .ref-img-overlay span {
       </div>
     </div>
 
-    <!-- Stats bar -->
+    <!-- Stats bar + inline quiz teaser -->
     <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">500+</div>
-        <div class="stat-label">Projektů</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">50k</div>
-        <div class="stat-label">m² podlah</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">15+</div>
-        <div class="stat-label">Let zkušeností</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">5</div>
-        <div class="stat-label">Let záruka</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========== QUIZ TEASER (10s) ========== -->
-  <div class="quiz-teaser-wrap">
-    <a href="/typy-podlah#quiz" class="quiz-teaser" aria-label="Spustit krátký kviz na výběr podlahy">
-      <div class="quiz-teaser-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/><circle cx="12" cy="12" r="10"/></svg>
-      </div>
-      <div class="quiz-teaser-content">
-        <div class="quiz-teaser-eyebrow">
-          <span class="quiz-teaser-badge">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 15 14"/></svg>
-            10 s · 5 otázek
-          </span>
-          <span class="quiz-teaser-label">Interaktivní průvodce</span>
+      <div class="hero-stats-group">
+        <div class="stat">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Projektů</div>
         </div>
-        <h3 class="quiz-teaser-title">Nevíte jaký typ podlahy zvolit?</h3>
-        <p class="quiz-teaser-sub">Odpovězte na <strong>5 otázek</strong> (lze přeskočit) a doporučíme vám <strong>nejvhodnější typ podlahy</strong> pro váš projekt.</p>
+        <div class="stat">
+          <div class="stat-num">50k</div>
+          <div class="stat-label">m² podlah</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Let zkušeností</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Let záruka</div>
+        </div>
       </div>
-      <div class="quiz-teaser-cta">
-        <span class="quiz-teaser-btn">Spustit kviz</span>
-        <svg class="quiz-teaser-arrow" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </div>
-    </a>
+
+      <a href="/typy-podlah#quiz" class="hero-quiz-teaser" aria-label="Spustit krátký kviz na výběr podlahy">
+        <div class="hero-quiz-teaser-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <div class="hero-quiz-teaser-text">
+          <div class="hero-quiz-teaser-eyebrow">
+            <span class="hero-quiz-teaser-badge">10 s · 5 otázek</span>
+            <span class="hero-quiz-teaser-label">Interaktivní průvodce</span>
+          </div>
+          <span class="hero-quiz-teaser-title">Nevíte jaký typ podlahy zvolit?</span>
+          <p class="hero-quiz-teaser-sub">Odpovězte na <strong>5 otázek</strong> a doporučíme vám <strong>nejvhodnější typ podlahy</strong> pro váš projekt.</p>
+        </div>
+        <div class="hero-quiz-teaser-cta">
+          <span class="hero-quiz-teaser-cta-text">SPUSTIT KVÍZ</span>
+          <svg class="hero-quiz-teaser-arrow" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+    </div>
   </div>
 
   <!-- ========== TYPY PODLAH ========== -->
