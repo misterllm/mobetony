@@ -2275,44 +2275,20 @@ a.ref-card-link:hover .ref-img-overlay span {
 }
 
   </style>
+<!-- ① HomeAndConstructionBusiness (LocalBusiness subtype) — primary entity -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "MO Betony s.r.o.",
-  "url": "https://mobetony.cz",
-  "telephone": "+420774611154",
-  "email": "info@mobetony.cz",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Kaštanová 1055/14",
-    "addressLocality": "Olomouc",
-    "postalCode": "779 00",
-    "addressCountry": "CZ"
-  },
-  "areaServed": [
-    "Olomouc", "Olomoucký kraj", "Brno", "Jihomoravský kraj"
-  ],
-  "openingHours": "Mo-Fr 07:00-17:00",
-  "description": "Profesionální realizace anhydritových, leštěných a průmyslových betonových podlah. 15+ let zkušeností, 500+ projektů.",
-  "priceRange": "Kč Kč",
-  "image": "https://mobetony.cz/android-chrome-512x512.png"
-}
-</script>
-
-<!-- ① LocalBusiness + HomeAndConstructionBusiness -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-  "@id": "https://mobetony.cz/#organization",
+  "@type": "HomeAndConstructionBusiness",
+  "@id": "https://mobetony.cz/#business",
   "name": "MO Betony s.r.o.",
   "legalName": "MO Betony s.r.o.",
-  "description": "Specializujeme se na anhydritové lité potěry, leštěný beton a průmyslové podlahy v Olomouckém a Jihomoravském kraji. 15+ let zkušeností, 500+ spokojených zákazníků, záruka 5 let.",
+  "description": "Specializujeme se na anhydritové lité potěry, leštěný beton, průmyslové podlahy a cementové potěry v Olomouckém a Jihomoravském kraji. 15+ let zkušeností, 500+ spokojených zákazníků, záruka 5 let.",
   "url": "https://mobetony.cz",
   "telephone": "+420774611154",
-  "email": "info@mobetony.cz",
-  "image": "https://mobetony.cz/img/blog/28.webp",
+  "email": "mobetony@gmail.com",
+  "image": "https://mobetony.cz/logo_mobetony_final.webp",
+  "logo": "https://mobetony.cz/logo_mobetony_final.webp",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Kaštanová 1055/14",
@@ -2326,20 +2302,25 @@ a.ref-card-link:hover .ref-img-overlay span {
     "longitude": 17.2509
   },
   "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "07:00",
-      "closes": "17:00"
-    }
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "20:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "07:00", "closes": "12:00" }
   ],
   "areaServed": [
-    { "@type": "City", "name": "Olomouc" },
     { "@type": "AdministrativeArea", "name": "Olomoucký kraj" },
-    { "@type": "City", "name": "Brno" },
-    { "@type": "AdministrativeArea", "name": "Jihomoravský kraj" }
+    { "@type": "AdministrativeArea", "name": "Jihomoravský kraj" },
+    { "@type": "AdministrativeArea", "name": "Moravskoslezský kraj" },
+    { "@type": "AdministrativeArea", "name": "Zlínský kraj" }
   ],
-  "priceRange": "Kč Kč",
+  "serviceType": [
+    "Anhydritové podlahy",
+    "Leštěný beton",
+    "Průmyslové podlahy",
+    "Cementové potěry",
+    "Drátkobetonové podlahy",
+    "Lité podlahy",
+    "Betonové podlahy"
+  ],
+  "priceRange": "250 Kč/m² – 1800 Kč/m²",
   "currenciesAccepted": "CZK",
   "paymentAccepted": "Hotovost, Bankovní převod",
   "hasMap": "https://www.google.com/maps/place/MO+betony+s.r.o./@49.6461303,16.4667279,8z/data=!3m1!4b1!4m6!3m5!1s0xd91a082f98ebe31:0x27be28dcbe4d531f!8m2!3d49.6518422!4d17.7856462!16s%2Fg%2F11v5vz80qp",
@@ -2356,75 +2337,116 @@ a.ref-card-link:hover .ref-img-overlay span {
   ]
 }
 </script>
- 
+
 <!-- ② Service: Anhydritová podlaha -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "serviceType": "Anhydritová lití podlaha",
-  "name": "Anhydritové podlahy Olomouc",
-  "description": "Profesionální lití anhydritu a litých potěrů. Ideální pro novostavby s podlahovým topením. Rychlost až 1000 m²/den, férové ceny a záruka 5 let.",
-  "provider": {
-    "@type": "LocalBusiness",
-    "@id": "https://mobetony.cz/#organization"
-  },
+  "serviceType": "Anhydritová litá podlaha",
+  "name": "Anhydritové podlahy",
+  "description": "Profesionální realizace anhydritových samonivelačních potěrů. Ideální pro rodinné domy, byty a komerční prostory s podlahovým topením. Rychlost až 1 000 m²/den, materiály Cemex ANHYLEVEL, záruka 5 let.",
+  "provider": { "@id": "https://mobetony.cz/#business" },
   "areaServed": [
-    { "@type": "City", "name": "Olomouc" },
     { "@type": "AdministrativeArea", "name": "Olomoucký kraj" },
-    { "@type": "City", "name": "Brno" }
+    { "@type": "AdministrativeArea", "name": "Jihomoravský kraj" },
+    { "@type": "AdministrativeArea", "name": "Moravskoslezský kraj" },
+    { "@type": "AdministrativeArea", "name": "Zlínský kraj" }
   ],
   "offers": {
     "@type": "Offer",
-    "priceCurrency": "CZK",
     "priceSpecification": {
-      "@type": "UnitPriceSpecification",
-      "priceCurrency": "CZK",
-      "unitCode": "MTK",
-      "description": "Cena anhydritové podlahy od 360 Kč/m² (materiál + práce + čerpání, bez DPH)"
+      "@type": "PriceSpecification",
+      "minPrice": "320",
+      "maxPrice": "580",
+      "priceCurrency": "CZK"
     }
   },
-  "url": "https://mobetony.cz/typy-podlah"
+  "url": "https://mobetony.cz/anhydritova-podlaha"
 }
 </script>
- 
+
 <!-- ③ Service: Leštěný beton -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "serviceType": "Leštěný beton",
-  "name": "Leštěný beton Olomouc",
-  "description": "Strojně hlazené a leštěné betonové podlahy. Design pro interiéry, showroomy, kanceláře, průmysl, ale i rodinné domy. Strojní hlazení, impregnace, ochranný lak.",
-  "provider": {
-    "@type": "LocalBusiness",
-    "@id": "https://mobetony.cz/#organization"
-  },
+  "serviceType": "Leštěný beton se vsypem",
+  "name": "Leštěný beton",
+  "description": "Drátkobetonová podlaha se vsypem (Fortedur, Panbex), strojně hlazená a leštěná. Pro výrobní haly, sklady, garáže, autoservisy i rodinné domy. Stupeň lesku Level 1–4.",
+  "provider": { "@id": "https://mobetony.cz/#business" },
   "areaServed": [
-    { "@type": "City", "name": "Olomouc" },
     { "@type": "AdministrativeArea", "name": "Olomoucký kraj" },
-    { "@type": "City", "name": "Brno" }
+    { "@type": "AdministrativeArea", "name": "Jihomoravský kraj" },
+    { "@type": "AdministrativeArea", "name": "Moravskoslezský kraj" },
+    { "@type": "AdministrativeArea", "name": "Zlínský kraj" }
   ],
-  "url": "https://mobetony.cz/typy-podlah"
+  "offers": {
+    "@type": "Offer",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "minPrice": "650",
+      "maxPrice": "1800",
+      "priceCurrency": "CZK"
+    }
+  },
+  "url": "https://mobetony.cz/lesteny-beton"
 }
 </script>
- 
+
 <!-- ④ Service: Průmyslová podlaha -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "serviceType": "Průmyslová betonová podlaha",
-  "provider": {
-    "@type": "LocalBusiness",
-    "@id": "https://mobetony.cz/#organization"
-  },
+  "serviceType": "Průmyslová drátkobetonová podlaha",
+  "name": "Průmyslové podlahy",
+  "description": "Drátkobetonové průmyslové podlahy s nosností až 50 t/m² pro výrobní haly, sklady, logistická centra, autoservisy a zemědělské objekty. Strojně hlazené, dlouhá životnost.",
+  "provider": { "@id": "https://mobetony.cz/#business" },
   "areaServed": [
-    { "@type": "City", "name": "Olomouc" },
     { "@type": "AdministrativeArea", "name": "Olomoucký kraj" },
-    { "@type": "City", "name": "Brno" }
+    { "@type": "AdministrativeArea", "name": "Jihomoravský kraj" },
+    { "@type": "AdministrativeArea", "name": "Moravskoslezský kraj" },
+    { "@type": "AdministrativeArea", "name": "Zlínský kraj" }
   ],
-  "url": "https://mobetony.cz/typy-podlah"
+  "offers": {
+    "@type": "Offer",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "minPrice": "550",
+      "maxPrice": "1200",
+      "priceCurrency": "CZK"
+    }
+  },
+  "url": "https://mobetony.cz/prumyslova-podlaha"
+}
+</script>
+
+<!-- ⑤ Service: Cementový potěr -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Cementový potěr",
+  "name": "Cementové potěry",
+  "description": "Litý nebo klasický cementový potěr (CEMFLOW i tradiční). Ekonomické řešení do vlhkých prostor — koupelny, garáže, sklepy, terasy. Odolný vůči vodě, použitelný i v exteriéru.",
+  "provider": { "@id": "https://mobetony.cz/#business" },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Olomoucký kraj" },
+    { "@type": "AdministrativeArea", "name": "Jihomoravský kraj" },
+    { "@type": "AdministrativeArea", "name": "Moravskoslezský kraj" },
+    { "@type": "AdministrativeArea", "name": "Zlínský kraj" }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "minPrice": "250",
+      "maxPrice": "520",
+      "priceCurrency": "CZK"
+    }
+  },
+  "url": "https://mobetony.cz/cementovy-poter"
 }
 </script>
  
