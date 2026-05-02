@@ -95,6 +95,49 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Detailni reference NEW 5.2.2026 -->
+  <url>
+    <loc>https://mobetony.cz/reference</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/reference/anhydrit-bytovy-dum-prostejov</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/reference/prumyslova-podlaha-cnc-vyrobna-zlin</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/reference/lesteny-beton-rodinny-dum-ostrava</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/reference/lesteny-beton-autoservis-prerov</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mobetony.cz/reference/lesteny-beton-zemedelska-hala-prerov</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <url>
     <loc>https://mobetony.cz/technicke-prace</loc>
     <lastmod>2026-04-04</lastmod>
