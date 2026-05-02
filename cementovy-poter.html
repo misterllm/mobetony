@@ -89,17 +89,26 @@
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": "Cementový potěr",
+    "name": "Cementové potěry",
+    "serviceType": "Cementový potěr (CEMFLOW i tradiční)",
     "provider": {"@id": "https://mobetony.cz/#business"},
-    "areaServed": {"@type": "AdministrativeArea", "name": "Olomoucký kraj"},
+    "areaServed": [
+      {"@type": "AdministrativeArea", "name": "Olomoucký kraj"},
+      {"@type": "AdministrativeArea", "name": "Jihomoravský kraj"},
+      {"@type": "AdministrativeArea", "name": "Moravskoslezský kraj"},
+      {"@type": "AdministrativeArea", "name": "Zlínský kraj"}
+    ],
     "description": "Lití cementového potěru pro garáže, sklepy, koupelny, prádelny, terasy a exteriéry — tam, kde anhydrit nelze použít kvůli vlhkosti. Moderní litý cementový potěr CEMFLOW (samonivelační, tekutá konzistence) i tradiční cementové potěry vyšší pevnosti pro průmyslové aplikace. Materiál dovážíme z betonárny CEMEX a BREMAT, čerpáme přímo na stavbu. Pevnostní třídy CT-C20 až CT-C30, tloušťky 30–80 mm.",
     "offers": {
-      "@type": "AggregateOffer",
-      "priceCurrency": "CZK",
-      "lowPrice": "280",
-      "highPrice": "500",
-      "offerCount": "2"
-    }
+      "@type": "Offer",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": "250",
+        "maxPrice": "520",
+        "priceCurrency": "CZK"
+      }
+    },
+    "url": "https://mobetony.cz/cementovy-poter"
   }
   </script>
 
