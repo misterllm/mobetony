@@ -158,7 +158,7 @@
   .nav-dropdown-footer{margin-top:14px!important;padding-top:14px!important;border-top:1px solid #2a2a2a!important;text-align:center!important}
   .nav-dropdown-footer a{color:#f97316!important;font-size:13px!important;font-weight:600!important;padding-bottom:0!important;display:inline-flex!important;gap:6px!important}
   .nav-dropdown-footer a::after{display:none!important}
-  .nav-dropdown-footer a:hover{color:#ea6b0e!important}
+  .nav-dropdown-footer a:hover{color:#ea6b0e!important}.nav-dropdown-item--featured{border-left-width:4px;background:linear-gradient(135deg,#1a1a1a 0%,rgba(249,115,22,.10) 100%);}.nav-dropdown-item--featured:hover{background:linear-gradient(135deg,#222 0%,rgba(249,115,22,.16) 100%);}.nav-dropdown-item--featured .nav-dropdown-title{color:#f97316;}.nav-dropdown-badge{display:inline-block;font-size:9px;font-weight:800;background:#f97316;color:white;padding:2px 6px;border-radius:4px;letter-spacing:.4px;text-transform:uppercase;margin-left:6px;vertical-align:middle;}.nav-mobile-dropdown-list a .nav-dropdown-badge{font-size:9px;padding:1px 5px;margin-left:5px;}
   .badge-new{font-size:10px!important;font-weight:600!important;background:#06b6d4!important;color:#042c53!important;padding:1px 6px!important;border-radius:4px!important;letter-spacing:0.3px!important}
   .btn-cta{color:#000!important;text-decoration:none!important}
   .article-cta .btn-cta,.article-cta a.btn-cta{color:#000!important}
@@ -230,13 +230,19 @@
               <span class="nav-dropdown-desc">Hlazen&#253; beton, podkladn&#237; desky, kompletn&#237; &#345;e&#353;en&#237;</span>
             </div>
           </a>
-        </div>
-        <div class="nav-dropdown-footer">
-          <a href="/typy-podlah">
-            Zobrazit v&#353;echny typy podlah
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
+          <a href="/cementovy-poter" class="nav-dropdown-item">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c0-5 4-9 9-9s9 4 9 9"/><path d="M3 12v3a2 2 0 002 2h14a2 2 0 002-2v-3"/><path d="M7 17v3M12 17v3M17 17v3"/><line x1="9" y1="8" x2="15" y2="8"/></svg>
+            <div class="nav-dropdown-text">
+              <span class="nav-dropdown-title">Cementov&#253; pot&#283;r</span>
+              <span class="nav-dropdown-desc">CEMFLOW + tradi&#269;n&#237; pro vlhk&#233; prostory</span>
+            </div>
+          </a>          <a href="/typy-podlah" class="nav-dropdown-item nav-dropdown-item--featured">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <div class="nav-dropdown-text">
+              <span class="nav-dropdown-title">V&#353;echny typy podlah <span class="nav-dropdown-badge">S kv&#237;zem</span></span>
+              <span class="nav-dropdown-desc">Porovn&#225;n&#237; + interaktivn&#237; pr&#367;vodce + ceny</span>
+            </div>
+          </a>        </div>
       </div>
     </li>
     <li><a href="/cenik">Cen&#237;k</a></li>
@@ -265,6 +271,8 @@
       <a href="/lesteny-beton"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 9.5c1-2 3-3 5.5-2.5"/><circle cx="12" cy="12" r="3.5"/></svg>Le&#353;t&#283;n&#253; beton</a>
       <a href="/prumyslova-podlaha"><svg viewBox="0 0 24 24"><path d="M3 21V10l5 3V10l5 3V10l5 3v8z"/><path d="M3 21h18"/><path d="M8 17h2M13 17h2M18 17h.01"/></svg>Pr&#367;myslov&#233; podlahy</a>
       <a href="/betonove-podlahy-olomouc"><svg viewBox="0 0 24 24"><rect x="3" y="14" width="18" height="6" rx="0.5"/><path d="M3 14l3-4h12l3 4"/><path d="M9 10V6h6v4"/></svg>Betonov&#233; podlahy</a>
+      <a href="/cementovy-poter"><svg viewBox="0 0 24 24"><path d="M3 12c0-5 4-9 9-9s9 4 9 9"/><path d="M3 12v3a2 2 0 002 2h14a2 2 0 002-2v-3"/><path d="M7 17v3M12 17v3M17 17v3"/><line x1="9" y1="8" x2="15" y2="8"/></svg>Cementov&#253; pot&#283;r</a>
+      <a href="/typy-podlah" style="color: var(--orange); font-weight: 600;"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>V&#353;echny typy podlah <span class="nav-dropdown-badge">S kv&#237;zem</span></a>
     </div>
   </div>
   <a href="/cenik">Cen&#237;k</a>
