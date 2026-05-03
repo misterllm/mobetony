@@ -401,6 +401,37 @@
       .faq-cat-title { font-size: 26px; }
       .faq-q { font-size: 16px; padding: 1.25rem 0; }
     }
+
+    /* ========== QUIZ TEASER (10s) ========== */
+    .quiz-teaser-wrap { max-width: 1100px; margin: 0 auto; padding: clamp(1.5rem, 3vw, 2.5rem) clamp(16px, 4vw, 48px); }
+    .quiz-teaser { display: grid; grid-template-columns: auto 1fr auto; gap: 1.5rem; align-items: center; padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.25rem, 3vw, 2.25rem); background: linear-gradient(135deg, rgba(249,115,22,0.14) 0%, rgba(249,115,22,0.04) 100%); border: 1px solid rgba(249,115,22,0.3); border-radius: 16px; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; position: relative; overflow: hidden; color: inherit; text-decoration: none; }
+    .quiz-teaser::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 0%, rgba(249,115,22,0.10) 50%, transparent 100%); opacity: 0; transition: opacity .35s ease; pointer-events: none; }
+    .quiz-teaser:hover { border-color: var(--orange, #f97316); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(249,115,22,0.18); }
+    .quiz-teaser:hover::before { opacity: 1; }
+    .quiz-teaser-icon { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, var(--orange, #f97316) 0%, var(--orange2, #ea6b0e) 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1; box-shadow: 0 6px 18px rgba(249,115,22,0.35); }
+    .quiz-teaser-icon svg { width: 28px; height: 28px; fill: none; stroke: white; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; animation: quizTeaserPulse 2.4s ease-in-out infinite; }
+    @keyframes quizTeaserPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.10); } }
+    .quiz-teaser-content { position: relative; z-index: 1; min-width: 0; }
+    .quiz-teaser-eyebrow { display: flex; gap: .65rem; align-items: center; margin-bottom: .4rem; flex-wrap: wrap; }
+    .quiz-teaser-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 11px; background: var(--orange, #f97316); color: white; border-radius: 100px; font-size: 11px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; line-height: 1; }
+    .quiz-teaser-badge svg { width: 11px; height: 11px; fill: none; stroke: white; stroke-width: 2.5; }
+    .quiz-teaser-label { font-size: 11px; color: var(--gray, #9ca3af); text-transform: uppercase; letter-spacing: .5px; font-weight: 600; }
+    .quiz-teaser-title { font-family: var(--font-head, 'Barlow Condensed', sans-serif); font-weight: 800; font-size: clamp(20px, 2.4vw, 26px); color: var(--white, #fff); text-transform: uppercase; margin: 0 0 .35rem; line-height: 1.15; letter-spacing: -.3px; }
+    .quiz-teaser-sub { font-size: 14px; color: var(--gray, #9ca3af); margin: 0; line-height: 1.5; }
+    .quiz-teaser-sub strong { color: var(--white, #fff); font-weight: 700; }
+    .quiz-teaser-cta { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; background: var(--orange, #f97316); border-radius: 100px; box-shadow: 0 4px 16px rgba(249,115,22,0.40); transition: background .25s ease, transform .25s ease, box-shadow .25s ease; flex-shrink: 0; position: relative; z-index: 1; }
+    .quiz-teaser:hover .quiz-teaser-cta { background: #fb923c; box-shadow: 0 6px 22px rgba(249,115,22,0.55); transform: scale(1.03); }
+    .quiz-teaser-btn { font-size: 15px; font-weight: 800; color: white; white-space: nowrap; text-transform: uppercase; letter-spacing: .6px; }
+    .quiz-teaser-arrow { width: 18px; height: 18px; fill: none; stroke: white; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s ease; }
+    .quiz-teaser:hover .quiz-teaser-arrow { transform: translateX(5px); }
+    @media (max-width: 768px) {
+      .quiz-teaser { grid-template-columns: auto 1fr; gap: 1rem; padding: 1.1rem 1.1rem 1.25rem; }
+      .quiz-teaser-icon { width: 48px; height: 48px; border-radius: 12px; }
+      .quiz-teaser-icon svg { width: 24px; height: 24px; }
+      .quiz-teaser-cta { grid-column: 1 / -1; justify-content: center; padding: 11px 18px; margin-top: .5rem; }
+      .quiz-teaser-title { font-size: 18px; }
+      .quiz-teaser-sub { font-size: 13px; }
+    }
   </style>
 </head>
 <body>
@@ -494,6 +525,30 @@
     <button id="faqSearchClear" class="faq-search-clear" type="button" aria-label="Vymazat hledání"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Vymazat</button>
   </div>
   <div id="faqSearchInfo" class="faq-search-info"></div>
+</div>
+
+<!-- ===== QUIZ TEASER (10s) ===== -->
+<div class="quiz-teaser-wrap">
+  <a href="/typy-podlah#quiz" class="quiz-teaser" aria-label="Spustit krátký kviz na výběr podlahy">
+    <div class="quiz-teaser-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/><circle cx="12" cy="12" r="10"/></svg>
+    </div>
+    <div class="quiz-teaser-content">
+      <div class="quiz-teaser-eyebrow">
+        <span class="quiz-teaser-badge">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 15 14"/></svg>
+          10 s · 5 otázek
+        </span>
+        <span class="quiz-teaser-label">Interaktivní průvodce</span>
+      </div>
+      <h3 class="quiz-teaser-title">Stále nejste si jistí? Náš kvíz vám doporučí.</h3>
+      <p class="quiz-teaser-sub">Místo procházení 100 otázek — odpovězte na <strong>5 cílených otázek</strong> a doporučíme vám <strong>nejvhodnější typ podlahy</strong> pro váš projekt.</p>
+    </div>
+    <div class="quiz-teaser-cta">
+      <span class="quiz-teaser-btn">Spustit kvíz</span>
+      <svg class="quiz-teaser-arrow" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </div>
+  </a>
 </div>
 
 <!-- ========== POPULAR QUESTIONS ========== -->
