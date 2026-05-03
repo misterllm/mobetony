@@ -3157,9 +3157,9 @@
         const top1Pct = Math.max(60, Math.min(95, Math.round((top1[1] / MAX_POSSIBLE) * 100)));
         const top2Pct = Math.max(40, Math.min(top1Pct - 10, Math.round((top2[1] / MAX_POSSIBLE) * 100)));
 
-        // Fallback pokud uživatel přeskočil všechno — defaultní doporučení
+        // No-data case — uživatel přeskočil všechny otázky → poctivá zpráva, žádné fake "shody"
         if (answeredCount === 0) {
-          return { picks: ['anhydrit', 'beton'], match: { anhydrit: 75, beton: 60 }, answeredCount: 0 };
+          return { picks: [], match: {}, answeredCount: 0, noData: true };
         }
 
         return {
@@ -3212,6 +3212,29 @@
       }
 
       function buildResult(rec) {
+        // No-data case — user přeskočil všechny otázky. Poctivá zpráva místo fake doporučení.
+        if (rec.noData) {
+          resultHero.innerHTML = `
+            <div class="quiz-result-hero" style="cursor: default;">
+              <div class="quiz-result-hero-top">
+                <span class="quiz-result-hero-rank">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  Bez odpovědí nelze doporučit
+                </span>
+              </div>
+              <h4 class="quiz-result-hero-name">Vyplňte alespoň jednu otázku</h4>
+              <p class="quiz-result-hero-desc">Bez odpovědí nemůžeme doporučit nejvhodnější typ podlahy. Vraťte se zpět a odpovězte na otázky — i jedna odpověď stačí pro orientační doporučení. Nebo si projděte všechny typy podlah níže a vyberte si sami.</p>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1rem;">
+                <a href="#typy" class="quiz-result-hero-cta" style="background: var(--bg4); color: var(--white);">Projít typy podlah</a>
+                <a href="/kontakt" class="quiz-result-hero-cta">Nezávazná konzultace →</a>
+              </div>
+            </div>`;
+          resultInsight.innerHTML = '';
+          resultAlt.innerHTML = '';
+          if (ctaPrimary) ctaPrimary.setAttribute('href', '/kontakt');
+          return;
+        }
+
         const top1Key = rec.picks[0];
         const top2Key = rec.picks[1];
         const top1 = FLOORS[top1Key];
@@ -3306,13 +3329,17 @@
         showLoading();
         setTimeout(() => {
           showStep('result');
-          trackEvent('quiz_completed', {
-            top1: rec.picks[0],
-            top2: rec.picks[1],
-            top1_match: rec.match[rec.picks[0]],
-            answered_count: rec.answeredCount,
-            skipped_count: TOTAL_Q - rec.answeredCount
-          });
+          if (rec.noData) {
+            trackEvent('quiz_no_answers', { skipped_count: TOTAL_Q });
+          } else {
+            trackEvent('quiz_completed', {
+              top1: rec.picks[0],
+              top2: rec.picks[1],
+              top1_match: rec.match[rec.picks[0]],
+              answered_count: rec.answeredCount,
+              skipped_count: TOTAL_Q - rec.answeredCount
+            });
+          }
         }, LOADING_DELAY);
       }
 
